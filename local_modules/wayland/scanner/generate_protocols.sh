@@ -2,16 +2,18 @@
 
 set -e
 BASE_DIR=$(dirname "$0")
+JAI="${BASE_DIR}/../../../jai"
+SCANNER="${BASE_DIR}/../../../build/wayland-scanner"
 
 cd "${BASE_DIR}"
 
-[ -e ./wayland-scanner ] || jai -import_dir ../../ wayland-scanner.jai
+[ -e ${SCANNER} ] || ${JAI} wayland-scanner.jai
 
 generate() {
     src="$1"
     dst="$2"
     echo "Generating ${dst} (${src})..."
-    ./wayland-scanner ${src} > ${dst} || exit 1
+    ${SCANNER} ${src} > ${dst} || exit 1
 }
 
 mkdir -p ../protocols/core
