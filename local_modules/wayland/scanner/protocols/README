@@ -1,0 +1,4 @@
+SOURCES:
+    - https://gitlab.freedesktop.org/wayland/wayland.git
+    - https://gitlab.freedesktop.org/wayland/wayland-protocols.git
+    - https://invent.kde.org/libraries/plasma-wayland-protocols.git
