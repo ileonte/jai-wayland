@@ -481,8 +481,8 @@ compile_program :: (w: *Window) -> u32 {
 
 window_redraw :: (w: *Window, time: u32) {
     if w.use_gl {
-        ret := eglMakeCurrent(w.display.egl.dpy, w.egl_surface, w.egl_surface, w.display.egl.ctx);
-        assert(ret == EGL_TRUE);
+        eglMakeCurrent(w.display.egl.dpy, w.egl_surface, w.egl_surface, w.display.egl.ctx);
+        defer eglSwapBuffers(w.display.egl.dpy, w.egl_surface);
 
         if !w.initial_time return;
 
@@ -510,8 +510,6 @@ window_redraw :: (w: *Window, time: u32) {
         glUniformMatrix4fv(w.gl.rotation_uniform, 1, GL_FALSE, rotation.data);
         glBindVertexArray(w.gl.empty_vao);
         glDrawArrays(GL_TRIANGLES, 0, 3);
-
-        eglSwapBuffers(w.display.egl.dpy, w.egl_surface);
     } else {
         b := window_next_buffer(w);
         assert(b != null);
