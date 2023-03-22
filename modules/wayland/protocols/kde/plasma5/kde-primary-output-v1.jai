@@ -69,3 +69,5 @@ kde_primary_output_v1_types_storage: []*wl_interface;
 
 kde_primary_output_v1_requests: [1]wl_message;
 kde_primary_output_v1_events  : [1]wl_message;
+
+#assert size_of(kde_primary_output_v1) == 0 "wayland-scanner bug: kde_primary_output_v1 is non-empty";

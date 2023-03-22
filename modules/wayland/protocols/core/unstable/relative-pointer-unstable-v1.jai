@@ -128,3 +128,6 @@ zwp_relative_pointer_manager_v1_requests: [2]wl_message;
 
 zwp_relative_pointer_v1_requests: [1]wl_message;
 zwp_relative_pointer_v1_events  : [1]wl_message;
+
+#assert size_of(zwp_relative_pointer_manager_v1) == 0 "wayland-scanner bug: zwp_relative_pointer_manager_v1 is non-empty";
+#assert size_of(zwp_relative_pointer_v1) == 0 "wayland-scanner bug: zwp_relative_pointer_v1 is non-empty";

@@ -869,3 +869,12 @@ zwp_tablet_pad_group_v2_events  : [6]wl_message;
 
 zwp_tablet_pad_v2_requests: [2]wl_message;
 zwp_tablet_pad_v2_events  : [8]wl_message;
+
+#assert size_of(zwp_tablet_manager_v2) == 0 "wayland-scanner bug: zwp_tablet_manager_v2 is non-empty";
+#assert size_of(zwp_tablet_seat_v2) == 0 "wayland-scanner bug: zwp_tablet_seat_v2 is non-empty";
+#assert size_of(zwp_tablet_tool_v2) == 0 "wayland-scanner bug: zwp_tablet_tool_v2 is non-empty";
+#assert size_of(zwp_tablet_v2) == 0 "wayland-scanner bug: zwp_tablet_v2 is non-empty";
+#assert size_of(zwp_tablet_pad_ring_v2) == 0 "wayland-scanner bug: zwp_tablet_pad_ring_v2 is non-empty";
+#assert size_of(zwp_tablet_pad_strip_v2) == 0 "wayland-scanner bug: zwp_tablet_pad_strip_v2 is non-empty";
+#assert size_of(zwp_tablet_pad_group_v2) == 0 "wayland-scanner bug: zwp_tablet_pad_group_v2 is non-empty";
+#assert size_of(zwp_tablet_pad_v2) == 0 "wayland-scanner bug: zwp_tablet_pad_v2 is non-empty";

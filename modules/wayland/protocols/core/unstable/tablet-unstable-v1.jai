@@ -452,3 +452,8 @@ zwp_tablet_tool_v1_events  : [19]wl_message;
 
 zwp_tablet_v1_requests: [1]wl_message;
 zwp_tablet_v1_events  : [5]wl_message;
+
+#assert size_of(zwp_tablet_manager_v1) == 0 "wayland-scanner bug: zwp_tablet_manager_v1 is non-empty";
+#assert size_of(zwp_tablet_seat_v1) == 0 "wayland-scanner bug: zwp_tablet_seat_v1 is non-empty";
+#assert size_of(zwp_tablet_tool_v1) == 0 "wayland-scanner bug: zwp_tablet_tool_v1 is non-empty";
+#assert size_of(zwp_tablet_v1) == 0 "wayland-scanner bug: zwp_tablet_v1 is non-empty";

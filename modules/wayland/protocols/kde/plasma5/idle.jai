@@ -129,3 +129,6 @@ org_kde_kwin_idle_requests: [1]wl_message;
 
 org_kde_kwin_idle_timeout_requests: [2]wl_message;
 org_kde_kwin_idle_timeout_events  : [2]wl_message;
+
+#assert size_of(org_kde_kwin_idle) == 0 "wayland-scanner bug: org_kde_kwin_idle is non-empty";
+#assert size_of(org_kde_kwin_idle_timeout) == 0 "wayland-scanner bug: org_kde_kwin_idle_timeout is non-empty";

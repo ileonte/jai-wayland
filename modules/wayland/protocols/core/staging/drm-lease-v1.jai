@@ -303,3 +303,8 @@ wp_drm_lease_request_v1_requests: [2]wl_message;
 
 wp_drm_lease_v1_requests: [1]wl_message;
 wp_drm_lease_v1_events  : [2]wl_message;
+
+#assert size_of(wp_drm_lease_device_v1) == 0 "wayland-scanner bug: wp_drm_lease_device_v1 is non-empty";
+#assert size_of(wp_drm_lease_connector_v1) == 0 "wayland-scanner bug: wp_drm_lease_connector_v1 is non-empty";
+#assert size_of(wp_drm_lease_request_v1) == 0 "wayland-scanner bug: wp_drm_lease_request_v1 is non-empty";
+#assert size_of(wp_drm_lease_v1) == 0 "wayland-scanner bug: wp_drm_lease_v1 is non-empty";

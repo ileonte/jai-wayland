@@ -151,3 +151,6 @@ zxdg_output_manager_v1_requests: [2]wl_message;
 
 zxdg_output_v1_requests: [1]wl_message;
 zxdg_output_v1_events  : [5]wl_message;
+
+#assert size_of(zxdg_output_manager_v1) == 0 "wayland-scanner bug: zxdg_output_manager_v1 is non-empty";
+#assert size_of(zxdg_output_v1) == 0 "wayland-scanner bug: zxdg_output_v1 is non-empty";

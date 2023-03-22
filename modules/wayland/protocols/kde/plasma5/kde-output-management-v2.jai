@@ -266,3 +266,6 @@ kde_output_management_v2_requests: [1]wl_message;
 
 kde_output_configuration_v2_requests: [12]wl_message;
 kde_output_configuration_v2_events  : [2]wl_message;
+
+#assert size_of(kde_output_management_v2) == 0 "wayland-scanner bug: kde_output_management_v2 is non-empty";
+#assert size_of(kde_output_configuration_v2) == 0 "wayland-scanner bug: kde_output_configuration_v2 is non-empty";

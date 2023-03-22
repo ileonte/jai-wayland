@@ -172,3 +172,6 @@ zwp_fullscreen_shell_v1_requests: [3]wl_message;
 zwp_fullscreen_shell_v1_events  : [1]wl_message;
 
 zwp_fullscreen_shell_mode_feedback_v1_events  : [3]wl_message;
+
+#assert size_of(zwp_fullscreen_shell_v1) == 0 "wayland-scanner bug: zwp_fullscreen_shell_v1 is non-empty";
+#assert size_of(zwp_fullscreen_shell_mode_feedback_v1) == 0 "wayland-scanner bug: zwp_fullscreen_shell_mode_feedback_v1 is non-empty";

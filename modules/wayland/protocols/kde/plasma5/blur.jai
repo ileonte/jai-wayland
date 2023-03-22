@@ -131,3 +131,6 @@ blur_types_storage: []*wl_interface;
 org_kde_kwin_blur_manager_requests: [2]wl_message;
 
 org_kde_kwin_blur_requests: [3]wl_message;
+
+#assert size_of(org_kde_kwin_blur_manager) == 0 "wayland-scanner bug: org_kde_kwin_blur_manager is non-empty";
+#assert size_of(org_kde_kwin_blur) == 0 "wayland-scanner bug: org_kde_kwin_blur is non-empty";

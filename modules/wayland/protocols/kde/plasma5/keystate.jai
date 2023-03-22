@@ -90,3 +90,5 @@ keystate_types_storage: []*wl_interface;
 
 org_kde_kwin_keystate_requests: [2]wl_message;
 org_kde_kwin_keystate_events  : [1]wl_message;
+
+#assert size_of(org_kde_kwin_keystate) == 0 "wayland-scanner bug: org_kde_kwin_keystate is non-empty";

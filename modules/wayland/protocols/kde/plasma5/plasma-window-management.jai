@@ -618,3 +618,8 @@ org_kde_plasma_activation_feedback_events  : [1]wl_message;
 
 org_kde_plasma_activation_requests: [1]wl_message;
 org_kde_plasma_activation_events  : [2]wl_message;
+
+#assert size_of(org_kde_plasma_window_management) == 0 "wayland-scanner bug: org_kde_plasma_window_management is non-empty";
+#assert size_of(org_kde_plasma_window) == 0 "wayland-scanner bug: org_kde_plasma_window is non-empty";
+#assert size_of(org_kde_plasma_activation_feedback) == 0 "wayland-scanner bug: org_kde_plasma_activation_feedback is non-empty";
+#assert size_of(org_kde_plasma_activation) == 0 "wayland-scanner bug: org_kde_plasma_activation is non-empty";

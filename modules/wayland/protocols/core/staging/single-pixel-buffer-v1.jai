@@ -67,3 +67,5 @@ single_pixel_buffer_v1_protocol_init :: () {
 single_pixel_buffer_v1_types_storage: []*wl_interface;
 
 wp_single_pixel_buffer_manager_v1_requests: [2]wl_message;
+
+#assert size_of(wp_single_pixel_buffer_manager_v1) == 0 "wayland-scanner bug: wp_single_pixel_buffer_manager_v1 is non-empty";

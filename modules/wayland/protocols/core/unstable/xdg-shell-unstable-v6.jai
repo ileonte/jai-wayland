@@ -674,3 +674,9 @@ zxdg_toplevel_v6_events  : [2]wl_message;
 
 zxdg_popup_v6_requests: [2]wl_message;
 zxdg_popup_v6_events  : [2]wl_message;
+
+#assert size_of(zxdg_shell_v6) == 0 "wayland-scanner bug: zxdg_shell_v6 is non-empty";
+#assert size_of(zxdg_positioner_v6) == 0 "wayland-scanner bug: zxdg_positioner_v6 is non-empty";
+#assert size_of(zxdg_surface_v6) == 0 "wayland-scanner bug: zxdg_surface_v6 is non-empty";
+#assert size_of(zxdg_toplevel_v6) == 0 "wayland-scanner bug: zxdg_toplevel_v6 is non-empty";
+#assert size_of(zxdg_popup_v6) == 0 "wayland-scanner bug: zxdg_popup_v6 is non-empty";

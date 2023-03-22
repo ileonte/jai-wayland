@@ -781,3 +781,9 @@ xdg_toplevel_events  : [4]wl_message;
 
 xdg_popup_requests: [3]wl_message;
 xdg_popup_events  : [3]wl_message;
+
+#assert size_of(xdg_wm_base) == 0 "wayland-scanner bug: xdg_wm_base is non-empty";
+#assert size_of(xdg_positioner) == 0 "wayland-scanner bug: xdg_positioner is non-empty";
+#assert size_of(xdg_surface) == 0 "wayland-scanner bug: xdg_surface is non-empty";
+#assert size_of(xdg_toplevel) == 0 "wayland-scanner bug: xdg_toplevel is non-empty";
+#assert size_of(xdg_popup) == 0 "wayland-scanner bug: xdg_popup is non-empty";

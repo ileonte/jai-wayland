@@ -171,3 +171,6 @@ _wl_fullscreen_shell_requests: [3]wl_message;
 _wl_fullscreen_shell_events  : [1]wl_message;
 
 _wl_fullscreen_shell_mode_feedback_events  : [3]wl_message;
+
+#assert size_of(_wl_fullscreen_shell) == 0 "wayland-scanner bug: _wl_fullscreen_shell is non-empty";
+#assert size_of(_wl_fullscreen_shell_mode_feedback) == 0 "wayland-scanner bug: _wl_fullscreen_shell_mode_feedback is non-empty";

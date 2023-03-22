@@ -121,3 +121,6 @@ wp_fractional_scale_manager_v1_requests: [2]wl_message;
 
 wp_fractional_scale_v1_requests: [1]wl_message;
 wp_fractional_scale_v1_events  : [1]wl_message;
+
+#assert size_of(wp_fractional_scale_manager_v1) == 0 "wayland-scanner bug: wp_fractional_scale_manager_v1 is non-empty";
+#assert size_of(wp_fractional_scale_v1) == 0 "wayland-scanner bug: wp_fractional_scale_v1 is non-empty";

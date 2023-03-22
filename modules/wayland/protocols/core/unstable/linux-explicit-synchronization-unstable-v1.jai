@@ -187,3 +187,7 @@ zwp_linux_explicit_synchronization_v1_requests: [2]wl_message;
 zwp_linux_surface_synchronization_v1_requests: [3]wl_message;
 
 zwp_linux_buffer_release_v1_events  : [2]wl_message;
+
+#assert size_of(zwp_linux_explicit_synchronization_v1) == 0 "wayland-scanner bug: zwp_linux_explicit_synchronization_v1 is non-empty";
+#assert size_of(zwp_linux_surface_synchronization_v1) == 0 "wayland-scanner bug: zwp_linux_surface_synchronization_v1 is non-empty";
+#assert size_of(zwp_linux_buffer_release_v1) == 0 "wayland-scanner bug: zwp_linux_buffer_release_v1 is non-empty";

@@ -81,3 +81,5 @@ wl_eglstream_controller_protocol_init :: () {
 wl_eglstream_controller_types_storage: []*wl_interface;
 
 wl_eglstream_controller_requests: [2]wl_message;
+
+#assert size_of(wl_eglstream_controller) == 0 "wayland-scanner bug: wl_eglstream_controller is non-empty";

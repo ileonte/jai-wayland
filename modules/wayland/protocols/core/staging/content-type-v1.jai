@@ -120,3 +120,6 @@ content_type_v1_types_storage: []*wl_interface;
 wp_content_type_manager_v1_requests: [2]wl_message;
 
 wp_content_type_v1_requests: [2]wl_message;
+
+#assert size_of(wp_content_type_manager_v1) == 0 "wayland-scanner bug: wp_content_type_manager_v1 is non-empty";
+#assert size_of(wp_content_type_v1) == 0 "wayland-scanner bug: wp_content_type_v1 is non-empty";

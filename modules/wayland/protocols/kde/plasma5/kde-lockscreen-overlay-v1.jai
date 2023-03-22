@@ -65,3 +65,5 @@ kde_lockscreen_overlay_v1_protocol_init :: () {
 kde_lockscreen_overlay_v1_types_storage: []*wl_interface;
 
 kde_lockscreen_overlay_v1_requests: [2]wl_message;
+
+#assert size_of(kde_lockscreen_overlay_v1) == 0 "wayland-scanner bug: kde_lockscreen_overlay_v1 is non-empty";

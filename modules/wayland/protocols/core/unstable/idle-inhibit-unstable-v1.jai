@@ -99,3 +99,6 @@ idle_inhibit_unstable_v1_types_storage: []*wl_interface;
 zwp_idle_inhibit_manager_v1_requests: [2]wl_message;
 
 zwp_idle_inhibitor_v1_requests: [1]wl_message;
+
+#assert size_of(zwp_idle_inhibit_manager_v1) == 0 "wayland-scanner bug: zwp_idle_inhibit_manager_v1 is non-empty";
+#assert size_of(zwp_idle_inhibitor_v1) == 0 "wayland-scanner bug: zwp_idle_inhibitor_v1 is non-empty";

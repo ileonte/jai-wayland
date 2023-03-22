@@ -119,3 +119,6 @@ xwayland_shell_v1_types_storage: []*wl_interface;
 xwayland_shell_v1_requests: [2]wl_message;
 
 xwayland_surface_v1_requests: [2]wl_message;
+
+#assert size_of(xwayland_shell_v1) == 0 "wayland-scanner bug: xwayland_shell_v1 is non-empty";
+#assert size_of(xwayland_surface_v1) == 0 "wayland-scanner bug: xwayland_surface_v1 is non-empty";

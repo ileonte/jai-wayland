@@ -340,3 +340,8 @@ zwp_pointer_gesture_pinch_v1_events  : [3]wl_message;
 
 zwp_pointer_gesture_hold_v1_requests: [1]wl_message;
 zwp_pointer_gesture_hold_v1_events  : [2]wl_message;
+
+#assert size_of(zwp_pointer_gestures_v1) == 0 "wayland-scanner bug: zwp_pointer_gestures_v1 is non-empty";
+#assert size_of(zwp_pointer_gesture_swipe_v1) == 0 "wayland-scanner bug: zwp_pointer_gesture_swipe_v1 is non-empty";
+#assert size_of(zwp_pointer_gesture_pinch_v1) == 0 "wayland-scanner bug: zwp_pointer_gesture_pinch_v1 is non-empty";
+#assert size_of(zwp_pointer_gesture_hold_v1) == 0 "wayland-scanner bug: zwp_pointer_gesture_hold_v1 is non-empty";

@@ -246,3 +246,6 @@ org_kde_plasma_shell_requests: [1]wl_message;
 
 org_kde_plasma_surface_requests: [11]wl_message;
 org_kde_plasma_surface_events  : [2]wl_message;
+
+#assert size_of(org_kde_plasma_shell) == 0 "wayland-scanner bug: org_kde_plasma_shell is non-empty";
+#assert size_of(org_kde_plasma_surface) == 0 "wayland-scanner bug: org_kde_plasma_surface is non-empty";

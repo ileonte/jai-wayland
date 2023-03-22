@@ -110,3 +110,6 @@ server_decoration_palette_types_storage: []*wl_interface;
 org_kde_kwin_server_decoration_palette_manager_requests: [1]wl_message;
 
 org_kde_kwin_server_decoration_palette_requests: [2]wl_message;
+
+#assert size_of(org_kde_kwin_server_decoration_palette_manager) == 0 "wayland-scanner bug: org_kde_kwin_server_decoration_palette_manager is non-empty";
+#assert size_of(org_kde_kwin_server_decoration_palette) == 0 "wayland-scanner bug: org_kde_kwin_server_decoration_palette is non-empty";

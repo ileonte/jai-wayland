@@ -118,3 +118,6 @@ tearing_control_v1_types_storage: []*wl_interface;
 wp_tearing_control_manager_v1_requests: [2]wl_message;
 
 wp_tearing_control_v1_requests: [2]wl_message;
+
+#assert size_of(wp_tearing_control_manager_v1) == 0 "wayland-scanner bug: wp_tearing_control_manager_v1 is non-empty";
+#assert size_of(wp_tearing_control_v1) == 0 "wayland-scanner bug: wp_tearing_control_v1 is non-empty";

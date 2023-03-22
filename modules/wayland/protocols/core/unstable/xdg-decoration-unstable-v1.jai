@@ -148,3 +148,6 @@ zxdg_decoration_manager_v1_requests: [2]wl_message;
 
 zxdg_toplevel_decoration_v1_requests: [3]wl_message;
 zxdg_toplevel_decoration_v1_events  : [1]wl_message;
+
+#assert size_of(zxdg_decoration_manager_v1) == 0 "wayland-scanner bug: zxdg_decoration_manager_v1 is non-empty";
+#assert size_of(zxdg_toplevel_decoration_v1) == 0 "wayland-scanner bug: zxdg_toplevel_decoration_v1 is non-empty";

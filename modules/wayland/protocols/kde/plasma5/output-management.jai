@@ -248,3 +248,6 @@ org_kde_kwin_outputmanagement_requests: [1]wl_message;
 
 org_kde_kwin_outputconfiguration_requests: [11]wl_message;
 org_kde_kwin_outputconfiguration_events  : [2]wl_message;
+
+#assert size_of(org_kde_kwin_outputmanagement) == 0 "wayland-scanner bug: org_kde_kwin_outputmanagement is non-empty";
+#assert size_of(org_kde_kwin_outputconfiguration) == 0 "wayland-scanner bug: org_kde_kwin_outputconfiguration is non-empty";

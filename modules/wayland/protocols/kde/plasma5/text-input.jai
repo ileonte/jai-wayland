@@ -402,3 +402,6 @@ wl_text_input_requests: [11]wl_message;
 wl_text_input_events  : [13]wl_message;
 
 wl_text_input_manager_requests: [1]wl_message;
+
+#assert size_of(wl_text_input) == 0 "wayland-scanner bug: wl_text_input is non-empty";
+#assert size_of(wl_text_input_manager) == 0 "wayland-scanner bug: wl_text_input_manager is non-empty";

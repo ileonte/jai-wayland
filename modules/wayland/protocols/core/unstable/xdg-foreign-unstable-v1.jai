@@ -230,3 +230,8 @@ zxdg_exported_v1_events  : [1]wl_message;
 
 zxdg_imported_v1_requests: [2]wl_message;
 zxdg_imported_v1_events  : [1]wl_message;
+
+#assert size_of(zxdg_exporter_v1) == 0 "wayland-scanner bug: zxdg_exporter_v1 is non-empty";
+#assert size_of(zxdg_importer_v1) == 0 "wayland-scanner bug: zxdg_importer_v1 is non-empty";
+#assert size_of(zxdg_exported_v1) == 0 "wayland-scanner bug: zxdg_exported_v1 is non-empty";
+#assert size_of(zxdg_imported_v1) == 0 "wayland-scanner bug: zxdg_imported_v1 is non-empty";

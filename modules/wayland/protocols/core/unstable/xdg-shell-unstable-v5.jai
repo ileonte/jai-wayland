@@ -421,3 +421,7 @@ xdg_surface_events  : [2]wl_message;
 
 xdg_popup_requests: [1]wl_message;
 xdg_popup_events  : [1]wl_message;
+
+#assert size_of(xdg_shell) == 0 "wayland-scanner bug: xdg_shell is non-empty";
+#assert size_of(xdg_surface) == 0 "wayland-scanner bug: xdg_surface is non-empty";
+#assert size_of(xdg_popup) == 0 "wayland-scanner bug: xdg_popup is non-empty";

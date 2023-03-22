@@ -191,3 +191,6 @@ contrast_types_storage: []*wl_interface;
 org_kde_kwin_contrast_manager_requests: [2]wl_message;
 
 org_kde_kwin_contrast_requests: [8]wl_message;
+
+#assert size_of(org_kde_kwin_contrast_manager) == 0 "wayland-scanner bug: org_kde_kwin_contrast_manager is non-empty";
+#assert size_of(org_kde_kwin_contrast) == 0 "wayland-scanner bug: org_kde_kwin_contrast is non-empty";

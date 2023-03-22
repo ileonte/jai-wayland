@@ -286,3 +286,6 @@ kde_output_device_v2_types_storage: []*wl_interface;
 kde_output_device_v2_events  : [15]wl_message;
 
 kde_output_device_mode_v2_events  : [4]wl_message;
+
+#assert size_of(kde_output_device_v2) == 0 "wayland-scanner bug: kde_output_device_v2 is non-empty";
+#assert size_of(kde_output_device_mode_v2) == 0 "wayland-scanner bug: kde_output_device_mode_v2 is non-empty";

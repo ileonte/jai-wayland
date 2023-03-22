@@ -179,3 +179,6 @@ xdg_activation_v1_requests: [3]wl_message;
 
 xdg_activation_token_v1_requests: [5]wl_message;
 xdg_activation_token_v1_events  : [1]wl_message;
+
+#assert size_of(xdg_activation_v1) == 0 "wayland-scanner bug: xdg_activation_v1 is non-empty";
+#assert size_of(xdg_activation_token_v1) == 0 "wayland-scanner bug: xdg_activation_token_v1 is non-empty";

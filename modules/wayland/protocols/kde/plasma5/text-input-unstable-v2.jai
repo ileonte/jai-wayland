@@ -424,3 +424,6 @@ zwp_text_input_v2_requests: [10]wl_message;
 zwp_text_input_v2_events  : [15]wl_message;
 
 zwp_text_input_manager_v2_requests: [2]wl_message;
+
+#assert size_of(zwp_text_input_v2) == 0 "wayland-scanner bug: zwp_text_input_v2 is non-empty";
+#assert size_of(zwp_text_input_manager_v2) == 0 "wayland-scanner bug: zwp_text_input_manager_v2 is non-empty";

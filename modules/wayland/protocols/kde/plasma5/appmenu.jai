@@ -111,3 +111,6 @@ appmenu_types_storage: []*wl_interface;
 org_kde_kwin_appmenu_manager_requests: [1]wl_message;
 
 org_kde_kwin_appmenu_requests: [2]wl_message;
+
+#assert size_of(org_kde_kwin_appmenu_manager) == 0 "wayland-scanner bug: org_kde_kwin_appmenu_manager is non-empty";
+#assert size_of(org_kde_kwin_appmenu) == 0 "wayland-scanner bug: org_kde_kwin_appmenu is non-empty";

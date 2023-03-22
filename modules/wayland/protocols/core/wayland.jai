@@ -2442,3 +2442,26 @@ wl_region_requests: [3]wl_message;
 wl_subcompositor_requests: [2]wl_message;
 
 wl_subsurface_requests: [6]wl_message;
+
+#assert size_of(wl_display) == 0 "wayland-scanner bug: wl_display is non-empty";
+#assert size_of(wl_registry) == 0 "wayland-scanner bug: wl_registry is non-empty";
+#assert size_of(wl_callback) == 0 "wayland-scanner bug: wl_callback is non-empty";
+#assert size_of(wl_compositor) == 0 "wayland-scanner bug: wl_compositor is non-empty";
+#assert size_of(wl_shm_pool) == 0 "wayland-scanner bug: wl_shm_pool is non-empty";
+#assert size_of(wl_shm) == 0 "wayland-scanner bug: wl_shm is non-empty";
+#assert size_of(wl_buffer) == 0 "wayland-scanner bug: wl_buffer is non-empty";
+#assert size_of(wl_data_offer) == 0 "wayland-scanner bug: wl_data_offer is non-empty";
+#assert size_of(wl_data_source) == 0 "wayland-scanner bug: wl_data_source is non-empty";
+#assert size_of(wl_data_device) == 0 "wayland-scanner bug: wl_data_device is non-empty";
+#assert size_of(wl_data_device_manager) == 0 "wayland-scanner bug: wl_data_device_manager is non-empty";
+#assert size_of(wl_shell) == 0 "wayland-scanner bug: wl_shell is non-empty";
+#assert size_of(wl_shell_surface) == 0 "wayland-scanner bug: wl_shell_surface is non-empty";
+#assert size_of(wl_surface) == 0 "wayland-scanner bug: wl_surface is non-empty";
+#assert size_of(wl_seat) == 0 "wayland-scanner bug: wl_seat is non-empty";
+#assert size_of(wl_pointer) == 0 "wayland-scanner bug: wl_pointer is non-empty";
+#assert size_of(wl_keyboard) == 0 "wayland-scanner bug: wl_keyboard is non-empty";
+#assert size_of(wl_touch) == 0 "wayland-scanner bug: wl_touch is non-empty";
+#assert size_of(wl_output) == 0 "wayland-scanner bug: wl_output is non-empty";
+#assert size_of(wl_region) == 0 "wayland-scanner bug: wl_region is non-empty";
+#assert size_of(wl_subcompositor) == 0 "wayland-scanner bug: wl_subcompositor is non-empty";
+#assert size_of(wl_subsurface) == 0 "wayland-scanner bug: wl_subsurface is non-empty";

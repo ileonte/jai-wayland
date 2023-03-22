@@ -136,3 +136,6 @@ viewporter_types_storage: []*wl_interface;
 wp_viewporter_requests: [2]wl_message;
 
 wp_viewport_requests: [3]wl_message;
+
+#assert size_of(wp_viewporter) == 0 "wayland-scanner bug: wp_viewporter is non-empty";
+#assert size_of(wp_viewport) == 0 "wayland-scanner bug: wp_viewport is non-empty";

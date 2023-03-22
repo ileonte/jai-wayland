@@ -264,3 +264,6 @@ shadow_types_storage: []*wl_interface;
 org_kde_kwin_shadow_manager_requests: [3]wl_message;
 
 org_kde_kwin_shadow_requests: [14]wl_message;
+
+#assert size_of(org_kde_kwin_shadow_manager) == 0 "wayland-scanner bug: org_kde_kwin_shadow_manager is non-empty";
+#assert size_of(org_kde_kwin_shadow) == 0 "wayland-scanner bug: org_kde_kwin_shadow is non-empty";

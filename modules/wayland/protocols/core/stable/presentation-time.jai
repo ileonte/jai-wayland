@@ -165,3 +165,6 @@ wp_presentation_requests: [2]wl_message;
 wp_presentation_events  : [1]wl_message;
 
 wp_presentation_feedback_events  : [3]wl_message;
+
+#assert size_of(wp_presentation) == 0 "wayland-scanner bug: wp_presentation is non-empty";
+#assert size_of(wp_presentation_feedback) == 0 "wayland-scanner bug: wp_presentation_feedback is non-empty";

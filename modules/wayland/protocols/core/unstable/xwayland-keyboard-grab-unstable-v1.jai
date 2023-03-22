@@ -100,3 +100,6 @@ xwayland_keyboard_grab_unstable_v1_types_storage: []*wl_interface;
 zwp_xwayland_keyboard_grab_manager_v1_requests: [2]wl_message;
 
 zwp_xwayland_keyboard_grab_v1_requests: [1]wl_message;
+
+#assert size_of(zwp_xwayland_keyboard_grab_manager_v1) == 0 "wayland-scanner bug: zwp_xwayland_keyboard_grab_manager_v1 is non-empty";
+#assert size_of(zwp_xwayland_keyboard_grab_v1) == 0 "wayland-scanner bug: zwp_xwayland_keyboard_grab_v1 is non-empty";

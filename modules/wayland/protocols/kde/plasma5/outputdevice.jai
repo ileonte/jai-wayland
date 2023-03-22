@@ -224,3 +224,5 @@ org_kde_kwin_outputdevice_protocol_init :: () {
 org_kde_kwin_outputdevice_types_storage: []*wl_interface;
 
 org_kde_kwin_outputdevice_events  : [14]wl_message;
+
+#assert size_of(org_kde_kwin_outputdevice) == 0 "wayland-scanner bug: org_kde_kwin_outputdevice is non-empty";

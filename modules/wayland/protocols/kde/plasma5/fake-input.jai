@@ -181,3 +181,5 @@ fake_input_protocol_init :: () {
 fake_input_types_storage: []*wl_interface;
 
 org_kde_kwin_fake_input_requests: [11]wl_message;
+
+#assert size_of(org_kde_kwin_fake_input) == 0 "wayland-scanner bug: org_kde_kwin_fake_input is non-empty";

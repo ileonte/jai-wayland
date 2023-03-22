@@ -190,3 +190,6 @@ qt_surface_extension_requests: [1]wl_message;
 
 qt_extended_surface_requests: [5]wl_message;
 qt_extended_surface_events  : [3]wl_message;
+
+#assert size_of(qt_surface_extension) == 0 "wayland-scanner bug: qt_surface_extension is non-empty";
+#assert size_of(qt_extended_surface) == 0 "wayland-scanner bug: qt_extended_surface is non-empty";

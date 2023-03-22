@@ -292,3 +292,8 @@ zwp_primary_selection_offer_v1_events  : [1]wl_message;
 
 zwp_primary_selection_source_v1_requests: [2]wl_message;
 zwp_primary_selection_source_v1_events  : [2]wl_message;
+
+#assert size_of(zwp_primary_selection_device_manager_v1) == 0 "wayland-scanner bug: zwp_primary_selection_device_manager_v1 is non-empty";
+#assert size_of(zwp_primary_selection_device_v1) == 0 "wayland-scanner bug: zwp_primary_selection_device_v1 is non-empty";
+#assert size_of(zwp_primary_selection_offer_v1) == 0 "wayland-scanner bug: zwp_primary_selection_offer_v1 is non-empty";
+#assert size_of(zwp_primary_selection_source_v1) == 0 "wayland-scanner bug: zwp_primary_selection_source_v1 is non-empty";

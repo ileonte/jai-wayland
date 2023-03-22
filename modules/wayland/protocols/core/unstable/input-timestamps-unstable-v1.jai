@@ -150,3 +150,6 @@ zwp_input_timestamps_manager_v1_requests: [4]wl_message;
 
 zwp_input_timestamps_v1_requests: [1]wl_message;
 zwp_input_timestamps_v1_events  : [1]wl_message;
+
+#assert size_of(zwp_input_timestamps_manager_v1) == 0 "wayland-scanner bug: zwp_input_timestamps_manager_v1 is non-empty";
+#assert size_of(zwp_input_timestamps_v1) == 0 "wayland-scanner bug: zwp_input_timestamps_v1 is non-empty";

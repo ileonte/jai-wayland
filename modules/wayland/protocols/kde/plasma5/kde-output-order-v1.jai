@@ -74,3 +74,5 @@ kde_output_order_v1_types_storage: []*wl_interface;
 
 kde_output_order_v1_requests: [1]wl_message;
 kde_output_order_v1_events  : [2]wl_message;
+
+#assert size_of(kde_output_order_v1) == 0 "wayland-scanner bug: kde_output_order_v1 is non-empty";

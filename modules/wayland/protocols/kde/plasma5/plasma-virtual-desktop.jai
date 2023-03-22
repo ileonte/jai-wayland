@@ -212,3 +212,6 @@ org_kde_plasma_virtual_desktop_management_events  : [4]wl_message;
 
 org_kde_plasma_virtual_desktop_requests: [1]wl_message;
 org_kde_plasma_virtual_desktop_events  : [6]wl_message;
+
+#assert size_of(org_kde_plasma_virtual_desktop_management) == 0 "wayland-scanner bug: org_kde_plasma_virtual_desktop_management is non-empty";
+#assert size_of(org_kde_plasma_virtual_desktop) == 0 "wayland-scanner bug: org_kde_plasma_virtual_desktop is non-empty";

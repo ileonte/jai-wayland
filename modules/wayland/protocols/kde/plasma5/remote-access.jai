@@ -155,3 +155,6 @@ org_kde_kwin_remote_access_manager_events  : [1]wl_message;
 
 org_kde_kwin_remote_buffer_requests: [1]wl_message;
 org_kde_kwin_remote_buffer_events  : [1]wl_message;
+
+#assert size_of(org_kde_kwin_remote_access_manager) == 0 "wayland-scanner bug: org_kde_kwin_remote_access_manager is non-empty";
+#assert size_of(org_kde_kwin_remote_buffer) == 0 "wayland-scanner bug: org_kde_kwin_remote_buffer is non-empty";

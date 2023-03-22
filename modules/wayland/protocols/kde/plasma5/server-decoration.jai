@@ -158,3 +158,6 @@ org_kde_kwin_server_decoration_manager_events  : [1]wl_message;
 
 org_kde_kwin_server_decoration_requests: [2]wl_message;
 org_kde_kwin_server_decoration_events  : [1]wl_message;
+
+#assert size_of(org_kde_kwin_server_decoration_manager) == 0 "wayland-scanner bug: org_kde_kwin_server_decoration_manager is non-empty";
+#assert size_of(org_kde_kwin_server_decoration) == 0 "wayland-scanner bug: org_kde_kwin_server_decoration is non-empty";

@@ -121,3 +121,6 @@ ext_idle_notifier_v1_requests: [2]wl_message;
 
 ext_idle_notification_v1_requests: [1]wl_message;
 ext_idle_notification_v1_events  : [2]wl_message;
+
+#assert size_of(ext_idle_notifier_v1) == 0 "wayland-scanner bug: ext_idle_notifier_v1 is non-empty";
+#assert size_of(ext_idle_notification_v1) == 0 "wayland-scanner bug: ext_idle_notification_v1 is non-empty";

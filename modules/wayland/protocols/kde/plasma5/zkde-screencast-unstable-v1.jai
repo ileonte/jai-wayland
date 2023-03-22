@@ -193,3 +193,6 @@ zkde_screencast_unstable_v1_requests: [5]wl_message;
 
 zkde_screencast_stream_unstable_v1_requests: [1]wl_message;
 zkde_screencast_stream_unstable_v1_events  : [3]wl_message;
+
+#assert size_of(zkde_screencast_unstable_v1) == 0 "wayland-scanner bug: zkde_screencast_unstable_v1 is non-empty";
+#assert size_of(zkde_screencast_stream_unstable_v1) == 0 "wayland-scanner bug: zkde_screencast_stream_unstable_v1 is non-empty";

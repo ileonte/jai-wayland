@@ -149,3 +149,6 @@ slide_types_storage: []*wl_interface;
 org_kde_kwin_slide_manager_requests: [2]wl_message;
 
 org_kde_kwin_slide_requests: [4]wl_message;
+
+#assert size_of(org_kde_kwin_slide_manager) == 0 "wayland-scanner bug: org_kde_kwin_slide_manager is non-empty";
+#assert size_of(org_kde_kwin_slide) == 0 "wayland-scanner bug: org_kde_kwin_slide is non-empty";

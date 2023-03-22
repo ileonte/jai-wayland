@@ -124,3 +124,6 @@ zwp_keyboard_shortcuts_inhibit_manager_v1_requests: [2]wl_message;
 
 zwp_keyboard_shortcuts_inhibitor_v1_requests: [1]wl_message;
 zwp_keyboard_shortcuts_inhibitor_v1_events  : [2]wl_message;
+
+#assert size_of(zwp_keyboard_shortcuts_inhibit_manager_v1) == 0 "wayland-scanner bug: zwp_keyboard_shortcuts_inhibit_manager_v1 is non-empty";
+#assert size_of(zwp_keyboard_shortcuts_inhibitor_v1) == 0 "wayland-scanner bug: zwp_keyboard_shortcuts_inhibitor_v1 is non-empty";

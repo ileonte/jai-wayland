@@ -148,3 +148,6 @@ org_kde_kwin_dpms_manager_requests: [1]wl_message;
 
 org_kde_kwin_dpms_requests: [2]wl_message;
 org_kde_kwin_dpms_events  : [3]wl_message;
+
+#assert size_of(org_kde_kwin_dpms_manager) == 0 "wayland-scanner bug: org_kde_kwin_dpms_manager is non-empty";
+#assert size_of(org_kde_kwin_dpms) == 0 "wayland-scanner bug: org_kde_kwin_dpms is non-empty";

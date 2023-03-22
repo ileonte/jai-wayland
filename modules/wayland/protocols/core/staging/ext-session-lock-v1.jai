@@ -226,3 +226,7 @@ ext_session_lock_v1_events  : [2]wl_message;
 
 ext_session_lock_surface_v1_requests: [2]wl_message;
 ext_session_lock_surface_v1_events  : [1]wl_message;
+
+#assert size_of(ext_session_lock_manager_v1) == 0 "wayland-scanner bug: ext_session_lock_manager_v1 is non-empty";
+#assert size_of(ext_session_lock_v1) == 0 "wayland-scanner bug: ext_session_lock_v1 is non-empty";
+#assert size_of(ext_session_lock_surface_v1) == 0 "wayland-scanner bug: ext_session_lock_surface_v1 is non-empty";

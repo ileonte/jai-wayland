@@ -240,3 +240,7 @@ zwp_locked_pointer_v1_events  : [2]wl_message;
 
 zwp_confined_pointer_v1_requests: [2]wl_message;
 zwp_confined_pointer_v1_events  : [2]wl_message;
+
+#assert size_of(zwp_pointer_constraints_v1) == 0 "wayland-scanner bug: zwp_pointer_constraints_v1 is non-empty";
+#assert size_of(zwp_locked_pointer_v1) == 0 "wayland-scanner bug: zwp_locked_pointer_v1 is non-empty";
+#assert size_of(zwp_confined_pointer_v1) == 0 "wayland-scanner bug: zwp_confined_pointer_v1 is non-empty";
