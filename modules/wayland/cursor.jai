@@ -21,6 +21,12 @@ wl_cursor_theme :: struct {
 	cursor_count: u32;
 	cursors: **wl_cursor;
 
+    /*
+     * The corresponding structure in the `libwayland-cursor` has more fields than
+     * those above. Instantiating this structure is an error, it should only be used
+     * via pointers returned by the library.
+     */
+
     load       :: wl_cursor_theme_load;
     destroy    :: wl_cursor_theme_destroy;
     get_cursor :: wl_cursor_theme_get_cursor;
