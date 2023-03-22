@@ -1,7 +1,7 @@
 **/.build/
 **/build/
 **/.vscode/
-local_modules/brrap/
-local_modules/luigi/
-local_modules/nativeui/
-local_modules/wayland/scanner/wayland-scanner
+modules/brrap/
+modules/luigi/
+modules/nativeui/
+modules/wayland/scanner/wayland-scanner
