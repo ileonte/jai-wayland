@@ -222,7 +222,6 @@ display_init :: (d: *Display) -> bool {
     assert(ret == EGL_TRUE && n == 1);
 
     context_attribs: []s32 = .[
-		// EGL_CONTEXT_CLIENT_VERSION, 2,
 		EGL_CONTEXT_MAJOR_VERSION, 4,
 		EGL_CONTEXT_MINOR_VERSION, 6,
 		EGL_NONE
@@ -281,7 +280,6 @@ window_init :: (d: *Display, w: *Window, width: s32, height: s32, use_gl := true
                     wl_callback.add_listener(w.callback, *frame_listener, w);
                     window_redraw(w, 0);
                 }
-                // print("XDG_SURFACE CONFIGURE(%) - CALLBACK = %\n", surface, w.callback);
             }
 
             wl_surface.commit(w.surface);
@@ -294,25 +292,6 @@ window_init :: (d: *Display, w: *Window, width: s32, height: s32, use_gl := true
             w.gl.w = width;
             w.gl.h = height;
             wl_egl_window.resize(w.native, width, height, 0, 0);
-
-            // ctx: Context;
-            // push_context ctx {
-            //     print("XDG_TOPLEVEL CONFIGURE(%) STATES: [ ", toplevel);
-            //     for state: wl_array_each(u32, states) {
-            //         if <<state == {
-            //             case xdg_toplevel.state_maximized; print("maximized ");
-            //             case xdg_toplevel.state_fullscreen; print("fullscreen ");
-            //             case xdg_toplevel.state_resizing; print("resizing(%x%) ", width, height);
-            //             case xdg_toplevel.state_activated; print("activated ");
-            //             case xdg_toplevel.state_tiled_left; print("tiled_left ");
-            //             case xdg_toplevel.state_tiled_right; print("tiled_right ");
-            //             case xdg_toplevel.state_tiled_top; print("tiled_top ");
-            //             case xdg_toplevel.state_tiled_bottom; print("tiled_bottom ");
-            //             case; print("unknown_state(%) ", <<state);
-            //         }
-            //     }
-            //     print("]\n");
-            // }
         },
         close = (data: *void, toplevel: *xdg_toplevel) -> void #c_call {
             ctx: Context;
@@ -325,10 +304,6 @@ window_init :: (d: *Display, w: *Window, width: s32, height: s32, use_gl := true
 
     decoration_listener :: zxdg_toplevel_decoration_v1_listener.{
         configure = (data: *void, decoration: *zxdg_toplevel_decoration_v1, mode: u32) -> void #c_call {
-            ctx: Context;
-            push_context ctx {
-                print("XDG_DECORATION CONFIGURE(%) mode = %\n", decoration, mode);
-            }
         }
     };
 
