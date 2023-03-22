@@ -970,7 +970,11 @@ emit_file_scope :: (ctx: *Parse_Context) {
         num_events   := wl_list_length(*intf.event_list);
         if num_requests print("%_requests: [%]wl_message;\n", intf.name, num_requests);
         if num_events   print("%_events  : [%]wl_message;\n", intf.name, num_events);
-        if intf.link.next != last print("\n");
+        print("\n");
+    }
+
+    for intf: wl_list_each(Interface, *ctx.protocol.interface_list) {
+        print("#assert size_of(%1) == 0 \"wayland-scanner bug: %1 is non-empty\";\n", intf.name);
     }
 }
 
