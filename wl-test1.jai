@@ -505,7 +505,7 @@ window_redraw :: (w: *Window, time: u32) {
         ];
 
         speed_div : u32 : 5;
-        angle := cast(float32) (((time - w.initial_time) / speed_div) % 360) * PI / 180.0;
+        angle := cast(float32) ((time / speed_div) % 360) * PI / 180.0;
         rotation[ 0] =  cos(angle);
         rotation[ 2] =  sin(angle);
         rotation[ 8] = -sin(angle);
@@ -513,9 +513,8 @@ window_redraw :: (w: *Window, time: u32) {
 
         glViewport(0, 0, xx w.gl.w, xx w.gl.h);
 
-        // glClearColor(0.0, 0.0, 0.0, 1.0);
-        v := cast(float32)((time % 1000) + 1) / 1000.0;
-        glClearColor(v, v, v, 1.0);
+        v := abs(1.0 - cast(float32)((time % 2001) / 1000.0));
+        glClearColor(v, v, v, 0.9);
         glClear(GL_COLOR_BUFFER_BIT);
 
         glUseProgram(w.gl.program);
