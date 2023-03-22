@@ -1,6 +1,7 @@
 **/.build/
 **/build/
 **/.vscode/
+modules/c-source/
 modules/brrap/
 modules/luigi/
 modules/nativeui/
