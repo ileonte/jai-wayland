@@ -2,7 +2,12 @@
 #import "POSIX";
 #import "File";
 #import "Sort";
+#import "String";
+#import "Math";
+
 #import "wayland";
+#import "EGL";
+#import "glad";
 
 running := true;
 
@@ -22,6 +27,12 @@ Display :: struct {
 
     has_argb: bool;
     globals: [..]string;
+
+    egl: struct {
+        dpy: EGLDisplay;
+        ctx: EGLContext;
+        conf: EGLConfig;
+    }
 }
 
 Buffer :: struct {
@@ -37,11 +48,22 @@ Window :: struct {
     surface: *wl_surface;
     x_surface: *xdg_surface;
     x_toplevel: *xdg_toplevel;
+
+    use_gl: bool;
+    native: *wl_egl_window;
+    egl_surface: EGLSurface;
+    gl: struct {
+        w: s32;
+        h: s32;
+        program: u32;
+        rotation_uniform: s32;
+        empty_vao: u32;
+    }
+
     buffers: [2]Buffer;
     prev_buffer: *Buffer;
     callback: *wl_callback;
     decoration: *zxdg_toplevel_decoration_v1;
-    wait_for_configure: bool;
 
     enter_serial: u32;
 
@@ -61,10 +83,10 @@ display_init :: (d: *Display) -> bool {
                 hovered_window.enter_serial = serial;
             }
 
-            ctx: Context;
-            push_context ctx {
-                print("HOVERED WINDOW: %\n", hovered_window);
-            }
+            // ctx: Context;
+            // push_context ctx {
+            //     print("HOVERED WINDOW: % SERIAL %\n", hovered_window, serial);
+            // }
         },
 
         motion = (data: *void, self: *wl_pointer, time: u32, fx: wl_fixed_t, fy: wl_fixed_t) -> void #c_call {
@@ -73,7 +95,7 @@ display_init :: (d: *Display) -> bool {
         button = (data: *void, self: *wl_pointer, serial: u32, time: u32, button: u32, state: u32) -> void #c_call {
             ctx: Context;
             push_context ctx {
-                print("BUTTON EVENT -> serial = %, time = %, button = %, state = %\n", serial, time, button, state);
+                // print("BUTTON EVENT -> serial = %, time = %, button = %, state = %\n", serial, time, button, state);
             }
 
             if hovered_window {
@@ -82,7 +104,8 @@ display_init :: (d: *Display) -> bool {
                 if (button == 272) && (state == 1) {
                     xdg_toplevel.move(toplevel, seat, serial);
                 } else if (button == 273) && (state == 1) {
-                    xdg_toplevel.show_window_menu(toplevel, seat, serial, 0, 0);
+                    // xdg_toplevel.show_window_menu(toplevel, seat, serial, 0, 0);
+                    hovered_window.use_gl = !hovered_window.use_gl;
                 }
             }
         }
@@ -157,11 +180,6 @@ display_init :: (d: *Display) -> bool {
 
     d.cursor_theme = wl_cursor_theme.load("breeze_cursors", 128, d.shm);
     if d.cursor_theme {
-        for 0..d.cursor_theme.cursor_count - 1 {
-            cursor := d.cursor_theme.cursors[it];
-            name := to_string(cursor.name);
-            print("CURSOR: '%' (% images)\n", name, cursor.image_count);
-        }
         d.default_cursor = wl_cursor_theme.get_cursor(d.cursor_theme, "08e8e1c95fe2fc01f976f1e063a24ccd");
         if d.default_cursor {
             for image_idx: 0..d.default_cursor.image_count - 1 {
@@ -177,10 +195,58 @@ display_init :: (d: *Display) -> bool {
         }
     }
 
+    /* init EGL */
+    d.egl.dpy = eglGetDisplay(d.display);
+    assert(d.egl.dpy != null);
+
+    n: s32;
+    major: s32;
+    minor: s32;
+    ret := eglInitialize(d.egl.dpy, *major, *minor);
+    assert(ret == EGL_TRUE);
+    print("Initialized EGL version %.%\n", major, minor);
+
+    ret = eglBindAPI(EGL_OPENGL_API);
+    assert(ret == EGL_TRUE);
+
+    config_attribs : []s32 = .[
+		EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
+		EGL_RED_SIZE, 1,
+		EGL_GREEN_SIZE, 1,
+		EGL_BLUE_SIZE, 1,
+		EGL_ALPHA_SIZE, 1,
+		EGL_RENDERABLE_TYPE, EGL_OPENGL_BIT,
+		EGL_NONE
+    ];
+    ret = eglChooseConfig(d.egl.dpy, config_attribs.data, *d.egl.conf, 1, *n);
+    assert(ret == EGL_TRUE && n == 1);
+
+    context_attribs: []s32 = .[
+		// EGL_CONTEXT_CLIENT_VERSION, 2,
+		EGL_CONTEXT_MAJOR_VERSION, 4,
+		EGL_CONTEXT_MINOR_VERSION, 6,
+		EGL_NONE
+    ];
+    d.egl.ctx = eglCreateContext(d.egl.dpy, d.egl.conf, EGL_NO_CONTEXT, context_attribs.data);
+    assert(d.egl.ctx != null);
+
+    wls := d.compositor.create_surface(d.compositor);
+    wln := wl_egl_window.create(wls, 1, 1);
+    egs := eglCreateWindowSurface(d.egl.dpy, d.egl.conf, wln, null);
+    ret = eglMakeCurrent(d.egl.dpy, egs, egs, d.egl.ctx);
+    gl_load(*gl, eglGetProcAddress);
+    eglDestroySurface(d.egl.dpy, egs);
+    wl_egl_window.destroy(wln);
+    wl_surface.destroy(wls);
+
     return true;
 }
 
 display_destroy :: (display: *Display) {
+    eglMakeCurrent(display.egl.dpy, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
+    eglTerminate(display.egl.dpy);
+    eglReleaseThread();
+
     if display.shm wl_shm.destroy(display.shm);
     if display.wm_base xdg_wm_base.destroy(display.wm_base);
 
@@ -202,7 +268,7 @@ display_destroy :: (display: *Display) {
     memset(display, 0, size_of(Display));
 }
 
-window_init :: (d: *Display, w: *Window, width: s32, height: s32) -> bool {
+window_init :: (d: *Display, w: *Window, width: s32, height: s32, use_gl := true) -> bool {
     x_window_listener :: xdg_surface_listener.{
         configure = (data: *void, surface: *xdg_surface, serial: u32) -> void #c_call {
             w: *Window = data;
@@ -210,38 +276,50 @@ window_init :: (d: *Display, w: *Window, width: s32, height: s32) -> bool {
 
             ctx: Context;
             push_context ctx {
-                if w.wait_for_configure {
-                    window_redraw(w, null, 0);
-                    w.wait_for_configure = false;
+                if !w.callback {
+                    w.callback = wl_surface.frame(w.surface);
+                    wl_callback.add_listener(w.callback, *frame_listener, w);
+                    window_redraw(w, 0);
                 }
-                print("XDG_SURFACE CONFIGURE(%)\n", surface);
+                // print("XDG_SURFACE CONFIGURE(%) - CALLBACK = %\n", surface, w.callback);
             }
+
+            wl_surface.commit(w.surface);
         }
     };
 
     x_toplevel_listener :: xdg_toplevel_listener.{
-        configure = (data: *void, toplevel: *xdg_toplevel, w: s32, h: s32, states: *wl_array) -> void #c_call {
-            ctx: Context;
-            push_context ctx {
-                print("XDG_TOPLEVEL CONFIGURE(%) STATES: [ ", toplevel);
-                for state: wl_array_each(u32, states) {
-                    if <<state == {
-                        case xdg_toplevel.state_maximized; print("maximized ");
-                        case xdg_toplevel.state_fullscreen; print("fullscreen ");
-                        case xdg_toplevel.state_resizing; print("resizing(%x%) ", w, h);
-                        case xdg_toplevel.state_activated; print("activated ");
-                        case xdg_toplevel.state_tiled_left; print("tiled_left ");
-                        case xdg_toplevel.state_tiled_right; print("tiled_right ");
-                        case xdg_toplevel.state_tiled_top; print("tiled_top ");
-                        case xdg_toplevel.state_tiled_bottom; print("tiled_bottom ");
-                        case; print("unknown_state(%) ", <<state);
-                    }
-                }
-                print("]\n");
-            }
+        configure = (data: *void, toplevel: *xdg_toplevel, width: s32, height: s32, states: *wl_array) -> void #c_call {
+            w: *Window = data;
+            w.gl.w = width;
+            w.gl.h = height;
+            wl_egl_window.resize(w.native, width, height, 0, 0);
+
+            // ctx: Context;
+            // push_context ctx {
+            //     print("XDG_TOPLEVEL CONFIGURE(%) STATES: [ ", toplevel);
+            //     for state: wl_array_each(u32, states) {
+            //         if <<state == {
+            //             case xdg_toplevel.state_maximized; print("maximized ");
+            //             case xdg_toplevel.state_fullscreen; print("fullscreen ");
+            //             case xdg_toplevel.state_resizing; print("resizing(%x%) ", width, height);
+            //             case xdg_toplevel.state_activated; print("activated ");
+            //             case xdg_toplevel.state_tiled_left; print("tiled_left ");
+            //             case xdg_toplevel.state_tiled_right; print("tiled_right ");
+            //             case xdg_toplevel.state_tiled_top; print("tiled_top ");
+            //             case xdg_toplevel.state_tiled_bottom; print("tiled_bottom ");
+            //             case; print("unknown_state(%) ", <<state);
+            //         }
+            //     }
+            //     print("]\n");
+            // }
         },
         close = (data: *void, toplevel: *xdg_toplevel) -> void #c_call {
-            running = false;
+            ctx: Context;
+            push_context ctx {
+                print("Close requested...\n");
+                running = false;
+            }
         }
     };
 
@@ -251,6 +329,33 @@ window_init :: (d: *Display, w: *Window, width: s32, height: s32) -> bool {
             push_context ctx {
                 print("XDG_DECORATION CONFIGURE(%) mode = %\n", decoration, mode);
             }
+        }
+    };
+
+    frame_listener :: wl_callback_listener.{
+        done = (data: *void, callback: *wl_callback, time: u32) -> void #c_call {
+            w: *Window = data;
+
+            if callback wl_callback.destroy(callback);
+            w.callback = wl_surface.frame(w.surface);
+            wl_callback.add_listener(w.callback, *frame_listener, w);
+
+            if !w.initial_time w.initial_time = time;
+            w.final_time = time;
+            w.frames += 1;
+
+            ctx: Context;
+            push_context ctx {
+                window_redraw(w, time);
+            }
+
+            d := w.display;
+            if !d.default_cursor return;
+            image_idx := wl_cursor.frame(d.default_cursor, time);
+            image := d.default_cursor.images[image_idx];
+            wl_pointer.set_cursor(
+                d.pointer, w.enter_serial, d.cursor_surfaces[image_idx],
+                xx image.hotspot_x, xx image.hotspot_y);
         }
     };
 
@@ -274,8 +379,17 @@ window_init :: (d: *Display, w: *Window, width: s32, height: s32) -> bool {
         zxdg_toplevel_decoration_v1.add_listener(w.decoration, *decoration_listener, w);
     }
 
-    w.wait_for_configure = true;
+    w.use_gl = use_gl;
+    w.native = wl_egl_window.create(w.surface, width, height);
+    w.egl_surface = eglCreateWindowSurface(d.egl.dpy, d.egl.conf, w.native, null);
+    ret := eglMakeCurrent(d.egl.dpy, w.egl_surface, w.egl_surface, d.egl.ctx);
+    assert(ret == EGL_TRUE);
+
+    wl_surface.damage(w.surface, 0, 0, w.width, w.height);
     wl_surface.commit(w.surface);
+
+    w.gl.program = compile_program(w);
+    glGenVertexArrays(1, *w.gl.empty_vao);
 
     return true;
 }
@@ -312,6 +426,154 @@ window_next_buffer :: (w: *Window) -> *Buffer {
     }
 
     return b;
+}
+
+vert_shader_text :: #string DONE
+#version 460 core
+
+const vec2 vertices[3] = vec2[3](
+    vec2(-0.5, -0.5),
+    vec2( 0.5, -0.5),
+    vec2( 0,    0.5)
+);
+
+const vec4 colors[3] = vec4[3](
+    vec4(1.0, 0.0, 0.0, 1.0),
+    vec4(0.0, 1.0, 0.0, 1.0),
+    vec4(0.0, 0.0, 1.0, 1.0)
+);
+
+uniform mat4 rotation;
+
+out gl_PerVertex {
+    vec4 gl_Position;
+};
+out vec4 v_color;
+
+void main() {
+    gl_Position = vec4(vertices[gl_VertexID], 0, 1) * rotation;
+    v_color = colors[gl_VertexID];
+}
+DONE
+
+frag_shader_text :: #string DONE
+#version 460 core
+
+in vec4 v_color;
+out vec4 frag_color;
+void main() {
+    frag_color = v_color;
+}
+DONE
+
+compile_shader :: (w: *Window, source: string, shader_type: u32) -> u32 {
+	shader := glCreateShader(shader_type);
+	assert(shader != 0);
+
+	glShaderSource(shader, 1, *source.data, null);
+	glCompileShader(shader);
+
+    status: s32;
+	glGetShaderiv(shader, GL_COMPILE_STATUS, *status);
+	if (!status) {
+		log_buff: [1024]u8;
+		len: u32;
+		glGetShaderInfoLog(shader, log_buff.count, *len, log_buff.data);
+        log := to_string(log_buff.data, len);
+        print("Error: compiling %: %\n",
+			ifx shader_type == GL_VERTEX_SHADER then "vertex" else "fragment", log,
+            to_standard_error = true);
+		exit(1);
+	}
+
+	return shader;
+}
+
+compile_program :: (w: *Window) -> u32 {
+    vert := compile_shader(w, vert_shader_text, GL_VERTEX_SHADER);
+    frag := compile_shader(w, frag_shader_text, GL_FRAGMENT_SHADER);
+
+    program := glCreateProgram();
+    glAttachShader(program, frag);
+    glAttachShader(program, vert);
+    glLinkProgram(program);
+
+    status: s32;
+    log_buff: [1024]u8;
+    len: u32;
+    glGetProgramiv(program, GL_LINK_STATUS, *status);
+    if !status {
+        glGetProgramInfoLog(program, log_buff.count, *len, log_buff.data);
+        log := to_string(log_buff.data, len);
+        print("Shader link error: %\n", log);
+        exit(1);
+    }
+
+    glUseProgram(program);
+    w.gl.rotation_uniform = glGetUniformLocation(program, "rotation");
+
+    return program;
+}
+
+window_redraw :: (w: *Window, time: u32) {
+    if w.use_gl {
+        ret := eglMakeCurrent(w.display.egl.dpy, w.egl_surface, w.egl_surface, w.display.egl.ctx);
+        assert(ret == EGL_TRUE);
+
+        if !w.initial_time return;
+
+        rotation: [16]float32 = .[
+            1, 0, 0, 0,
+            0, 1, 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1,
+        ];
+
+        speed_div : u32 : 5;
+        angle := cast(float32) (((time - w.initial_time) / speed_div) % 360) * PI / 180.0;
+        rotation[ 0] =  cos(angle);
+        rotation[ 2] =  sin(angle);
+        rotation[ 8] = -sin(angle);
+        rotation[10] =  cos(angle);
+
+        glViewport(0, 0, xx w.gl.w, xx w.gl.h);
+
+        // glClearColor(0.0, 0.0, 0.0, 1.0);
+        v := cast(float32)((time % 1000) + 1) / 1000.0;
+        glClearColor(v, v, v, 1.0);
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        glUseProgram(w.gl.program);
+        glUniformMatrix4fv(w.gl.rotation_uniform, 1, GL_FALSE, rotation.data);
+        glBindVertexArray(w.gl.empty_vao);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        eglSwapBuffers(w.display.egl.dpy, w.egl_surface);
+    } else {
+        b := window_next_buffer(w);
+        assert(b != null);
+
+        paint_pixels(b.shm_data, 0, w.width, w.height, time);
+        wl_surface.attach(w.surface, b.buffer, 0, 0);
+        wl_surface.damage(w.surface, 0, 0, w.width, w.height);
+        wl_surface.commit(w.surface);
+        b.busy = true;
+    }
+}
+
+window_destroy :: (w: *Window) {
+    eglMakeCurrent(w.display.egl.dpy, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
+    eglDestroySurface(w.display.egl.dpy, w.egl_surface);
+    wl_egl_window.destroy(w.native);
+
+    if w.callback wl_callback.destroy(w.callback);
+    if w.buffers[0].buffer wl_buffer.destroy(w.buffers[0].buffer);
+    if w.buffers[1].buffer wl_buffer.destroy(w.buffers[1].buffer);
+    if w.decoration zxdg_toplevel_decoration_v1.destroy(w.decoration);
+    if w.x_toplevel xdg_toplevel.destroy(w.x_toplevel);
+    if w.x_surface xdg_surface.destroy(w.x_surface);
+    if w.surface wl_surface.destroy(w.surface);
+    memset(w, 0, size_of(Window));
 }
 
 paint_pixels :: (image: *void, padding: s32, width: s32, height: s32, time: u32) {
@@ -356,69 +618,32 @@ paint_pixels :: (image: *void, padding: s32, width: s32, height: s32, time: u32)
 	}
 }
 
-window_redraw :: (data: *void, callback: *wl_callback, time: u32) {
-    frame_listener :: wl_callback_listener.{
-        done = (data: *void, callback: *wl_callback, time: u32) -> void #c_call {
-            w: *Window = data;
-            if !w.initial_time w.initial_time = time;
-            w.final_time = time;
-            w.frames += 1;
-
-            ctx: Context;
-            push_context ctx {
-                window_redraw(data, callback, time);
-            }
-
-            d := w.display;
-            if !d.default_cursor return;
-            image_idx := wl_cursor.frame(d.default_cursor, time);
-            image := d.default_cursor.images[image_idx];
-            wl_pointer.set_cursor(
-                d.pointer, w.enter_serial, d.cursor_surfaces[image_idx],
-                xx image.hotspot_x, xx image.hotspot_y);
-        }
-    };
-
-    w: *Window = data;
-    b := window_next_buffer(w);
-    assert(b != null);
-
-    // paint_pixels(b.shm_data, 0, w.width, w.height, time);
-    wl_surface.attach(w.surface, b.buffer, 0, 0);
-    wl_surface.damage(w.surface, 0, 0, w.width, w.height);
-
-    if callback wl_callback.destroy(callback);
-    w.callback = wl_surface.frame(w.surface);
-    wl_callback.add_listener(w.callback, *frame_listener, w);
-    wl_surface.commit(w.surface);
-    b.busy = true;
-}
-
-window_destroy :: (w: *Window) {
-    if w.callback wl_callback.destroy(w.callback);
-    if w.buffers[0].buffer wl_buffer.destroy(w.buffers[0].buffer);
-    if w.buffers[1].buffer wl_buffer.destroy(w.buffers[1].buffer);
-    if w.decoration zxdg_toplevel_decoration_v1.destroy(w.decoration);
-    if w.x_toplevel xdg_toplevel.destroy(w.x_toplevel);
-    if w.x_surface xdg_surface.destroy(w.x_surface);
-    if w.surface wl_surface.destroy(w.surface);
-    memset(w, 0, size_of(Window));
-}
-
 window_list: [..]Window;
 hovered_window: *Window;
 
 main :: () {
-    print("%\n", type_of(wl_display_listener.error));
-
     args := get_command_line_arguments();
     defer array_reset(*args);
 
+    use_gl := false;
     window_count := 1;
-    if args.count > 1 {
-        count, ok := string_to_int(args[1], T = type_of(window_count));
-        if ok window_count = min(8, max(1, count));
+    for args {
+        if !it_index continue;
+        if !starts_with(it, "-") break;
+        arg := advance(it);
+        if starts_with(arg, "count=") {
+            s := advance(arg, 6);
+            count, ok := string_to_int(s);
+            if !ok {
+                print("Invalid count: '%'\n", s);
+                exit(1);
+            }
+            window_count = min(8, max(1, count));
+        } else if arg == "gl" {
+            use_gl = true;
+        }
     }
+    print("window_count = %, use_gl = %\n", window_count, use_gl);
 
     wl_global_init();
 
@@ -429,23 +654,15 @@ main :: () {
     }
     defer display_destroy(*d);
 
-    // for d.globals print("%\n", it);
-
     for 1..window_count {
         w := array_add(*window_list);
 
-        if !window_init(*d, w, 800, 600) {
+        if !window_init(*d, w, 800, 600, use_gl) {
             print("Could not create window.\n");
             exit(1);
         }
 
         print("WINDOW: %\n", <<w);
-
-        wl_surface.damage(w.surface, 0, 0, w.width, w.height);
-        if !w.wait_for_configure {
-            print("Redrawing window!\n");
-            window_redraw(w, null, 0);
-        }
     }
     defer for * w: window_list window_destroy(w);
 
