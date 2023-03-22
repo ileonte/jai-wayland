@@ -82,29 +82,18 @@ display_init :: (d: *Display) -> bool {
                 hovered_window = w;
                 hovered_window.enter_serial = serial;
             }
-
-            // ctx: Context;
-            // push_context ctx {
-            //     print("HOVERED WINDOW: % SERIAL %\n", hovered_window, serial);
-            // }
         },
 
         motion = (data: *void, self: *wl_pointer, time: u32, fx: wl_fixed_t, fy: wl_fixed_t) -> void #c_call {
         },
 
         button = (data: *void, self: *wl_pointer, serial: u32, time: u32, button: u32, state: u32) -> void #c_call {
-            ctx: Context;
-            push_context ctx {
-                // print("BUTTON EVENT -> serial = %, time = %, button = %, state = %\n", serial, time, button, state);
-            }
-
             if hovered_window {
                 toplevel := hovered_window.x_toplevel;
                 seat := hovered_window.display.seat;
                 if (button == 272) && (state == 1) {
                     xdg_toplevel.move(toplevel, seat, serial);
                 } else if (button == 273) && (state == 1) {
-                    // xdg_toplevel.show_window_menu(toplevel, seat, serial, 0, 0);
                     hovered_window.use_gl = !hovered_window.use_gl;
                 }
             }
