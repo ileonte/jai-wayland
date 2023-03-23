@@ -6,6 +6,7 @@
 #load "protocols/core/stable/viewporter.jai";
 #load "protocols/core/stable/xdg-shell.jai";
 
+#load "protocols/core/staging/tearing-control-v1.jai";
 #load "protocols/core/unstable/fullscreen-shell-unstable-v1.jai";
 #load "protocols/core/unstable/xdg-decoration-unstable-v1.jai";
 
@@ -18,6 +19,7 @@ wl_global_init :: () {
     xdg_shell_protocol_init();
     viewporter_protocol_init();
 
+    tearing_control_v1_protocol_init();
     fullscreen_shell_unstable_v1_protocol_init();
     xdg_decoration_unstable_v1_protocol_init();
 }
