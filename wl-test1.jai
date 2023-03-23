@@ -146,8 +146,19 @@ display_init :: (d: *Display) -> bool {
         }
     };
 
+    display_listener :: wl_display_listener.{
+        error = (data: *void, self: *wl_display, object_id: *void, code: u32, message: *u8) -> void #c_call {
+            ctx: Context;
+            push_context ctx {
+                msg := to_string(message);
+                print("PROTOCOL ERROR: (%) %\n", code, msg);
+            }
+        }
+    };
+
     d.display = wl_display.connect(null);
     assert(d.display != null);
+    wl_display.add_listener(d.display, *display_listener, null);
 
     d.has_argb = false;
     d.registry = wl_display.get_registry(d.display);
@@ -484,8 +495,6 @@ window_redraw :: (w: *Window, time: u32) {
         eglMakeCurrent(w.display.egl.dpy, w.egl_surface, w.egl_surface, w.display.egl.ctx);
         defer eglSwapBuffers(w.display.egl.dpy, w.egl_surface);
 
-        if !w.initial_time return;
-
         rotation: [16]float32 = .[
             1, 0, 0, 0,
             0, 1, 0, 0,
@@ -614,6 +623,8 @@ main :: () {
         exit(1);
     }
     defer display_destroy(*d);
+
+    print("%\n", d.globals);
 
     for 1..window_count {
         w := array_add(*window_list);
