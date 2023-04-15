@@ -5,9 +5,9 @@
 #import "String";
 #import "Math";
 
-#import "wayland";
+#import "Wayland";
 #import "EGL";
-#import "glad";
+#import "GL";
 
 running := true;
 
@@ -21,6 +21,7 @@ Display :: struct {
     decoration_manager: *zxdg_decoration_manager_v1;
 
     pointer: *wl_pointer;
+    keyboard: *wl_keyboard;
     cursor_theme: *wl_cursor_theme;
     default_cursor: *wl_cursor;
     cursor_surfaces: [..]*wl_surface;
@@ -100,6 +101,31 @@ display_init :: (d: *Display) -> bool {
         }
     };
 
+    keyboard_listenter :: wl_keyboard_listener.{
+        keymap = (data: *void, self: *wl_keyboard, format: u32, fd: s32, size: u32) -> void #c_call {
+            ctx: Context;
+            push_context ctx {
+                print("KEYMAP: % (fd = %, size = %):\n", format, fd, size);
+                s: string;
+                s.data = alloc(size);
+                s.count = xx size;
+                read(fd, s.data, size);
+                print("%\n", s);
+            }
+        },
+
+        key = (data: *void, self: *wl_keyboard, serial: u32, time: u32, key: u32, state: u32) -> void #c_call {
+            ctx: Context;
+            push_context ctx {
+                k := key + 8;
+                s := copy_string("a");
+                defer free(s);
+                s[0] = xx k;
+                print("KEY: code = % ('%'), state = %\n", key, ifx (k >= 32 && k <= 126) then s else "<>", state);
+            }
+        }
+    };
+
     wm_base_listener :: xdg_wm_base_listener.{
         ping = (data: *void, shell: *xdg_wm_base, serial: u32) -> void #c_call {
             xdg_wm_base.pong(shell, serial);
@@ -138,6 +164,8 @@ display_init :: (d: *Display) -> bool {
                         wl_min(version, cast(u32) wl_seat_interface.version));
                     d.pointer = wl_seat.get_pointer(d.seat);
                     wl_pointer.add_listener(d.pointer, *pointer_listener, d);
+                    d.keyboard = wl_seat.get_keyboard(d.seat);
+                    wl_keyboard.add_listener(d.keyboard, *keyboard_listenter, d);
                 }
                 case "zxdg_decoration_manager_v1"; {
                     d.decoration_manager = wl_registry.bind(registry, id, *zxdg_decoration_manager_v1_interface, 1);
@@ -197,7 +225,7 @@ display_init :: (d: *Display) -> bool {
 
     /* init EGL */
     d.egl.dpy = eglGetDisplay(d.display);
-    assert(d.egl.dpy != null);
+    assert(d.egl.dpy != EGL_NO_DISPLAY);
 
     n: s32;
     major: s32;
@@ -211,10 +239,10 @@ display_init :: (d: *Display) -> bool {
 
     config_attribs : []s32 = .[
 		EGL_SURFACE_TYPE, EGL_WINDOW_BIT,
-		EGL_RED_SIZE, 1,
-		EGL_GREEN_SIZE, 1,
-		EGL_BLUE_SIZE, 1,
-		EGL_ALPHA_SIZE, 1,
+		EGL_RED_SIZE, 8,
+		EGL_GREEN_SIZE, 8,
+		EGL_BLUE_SIZE, 8,
+		EGL_ALPHA_SIZE, 8,
 		EGL_RENDERABLE_TYPE, EGL_OPENGL_BIT,
 		EGL_NONE
     ];
@@ -227,7 +255,7 @@ display_init :: (d: *Display) -> bool {
 		EGL_NONE
     ];
     d.egl.ctx = eglCreateContext(d.egl.dpy, d.egl.conf, EGL_NO_CONTEXT, context_attribs.data);
-    assert(d.egl.ctx != null);
+    assert(d.egl.ctx != EGL_NO_CONTEXT);
 
     wls := d.compositor.create_surface(d.compositor);
     wln := wl_egl_window.create(wls, 1, 1);
@@ -255,6 +283,7 @@ display_destroy :: (display: *Display) {
     array_reset(*display.cursor_surfaces);
     if display.cursor_theme wl_cursor_theme.destroy(display.cursor_theme);
     if display.pointer wl_pointer.release(display.pointer);
+    if display.keyboard wl_keyboard.release(display.keyboard);
 
     if display.seat wl_seat.release(display.seat);
     if display.compositor wl_compositor.destroy(display.compositor);
@@ -645,7 +674,7 @@ main :: () {
 
         w := *window_list[0];
         seconds := (w.final_time - w.initial_time) / 1000;
-        if ((seconds % 15) == 0) && (seconds > last_write) {
+        if ((seconds % 3) == 0) && (seconds > last_write) {
             fseconds := cast(float64)(w.final_time - w.initial_time) / 1000.0;
             fps := cast(float64)w.frames / fseconds;
             print("% frames in % s = % fps\n", w.frames, fseconds, fps);

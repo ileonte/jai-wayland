@@ -1,6 +1,8 @@
 **/.build/
 **/build/
 **/.vscode/
+**/_unused/
+**/*.gf
 modules/c-source/
 modules/brrap/
 modules/luigi/
