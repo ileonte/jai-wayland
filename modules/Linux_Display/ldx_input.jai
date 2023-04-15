@@ -1,61 +1,61 @@
-x11_translate_key_code :: (key: X11.KeySym) -> Key_Code {
+x11_translate_key_code :: (key: KeySym) -> Key_Code {
     using Key_Code;
 
     if key == 32 return SPACEBAR;
 
-    if key == X11.XK_Left
+    if key == XK_Left
         return ARROW_LEFT;
-    if key == X11.XK_Right
+    if key == XK_Right
         return ARROW_RIGHT;
-    if key == X11.XK_Up
+    if key == XK_Up
         return ARROW_UP;
-    if key == X11.XK_Down
+    if key == XK_Down
         return ARROW_DOWN;
-    if (key == X11.XK_Shift_L) || (key == X11.XK_Shift_R)
+    if (key == XK_Shift_L) || (key == XK_Shift_R)
         return SHIFT;
-    if key == X11.XK_Escape
+    if key == XK_Escape
         return ESCAPE;
-    if key == X11.XK_Return
+    if key == XK_Return
         return ENTER;
-    if (key == X11.XK_Control_L) || (key == X11.XK_Control_R)
+    if (key == XK_Control_L) || (key == XK_Control_R)
         return CTRL;
-    if key == X11.XK_BackSpace
+    if key == XK_BackSpace
         return BACKSPACE;
-    if key == X11.XK_Delete
+    if key == XK_Delete
         return DELETE;
-    if key == X11.XK_Tab
+    if key == XK_Tab
         return TAB;
-    if key == X11.XK_F1
+    if key == XK_F1
         return F1;
-    if key == X11.XK_F2
+    if key == XK_F2
         return F2;
-    if key == X11.XK_F3
+    if key == XK_F3
         return F3;
-    if key == X11.XK_F4
+    if key == XK_F4
         return F4;
-    if key == X11.XK_F5
+    if key == XK_F5
         return F5;
-    if key == X11.XK_F6
+    if key == XK_F6
         return F6;
-    if key == X11.XK_F7
+    if key == XK_F7
         return F7;
-    if key == X11.XK_F8
+    if key == XK_F8
         return F8;
-    if key == X11.XK_F9
+    if key == XK_F9
         return F9;
-    if key == X11.XK_F10
+    if key == XK_F10
         return F10;
-    if key == X11.XK_F11
+    if key == XK_F11
         return F11;
-    if key == X11.XK_F12
+    if key == XK_F12
         return F12;
-    if key == X11.XK_F13
+    if key == XK_F13
         return F13;
-    if key == X11.XK_F14
+    if key == XK_F14
         return F14;
-    if key == X11.XK_F15
+    if key == XK_F15
         return F15;
-    if key == X11.XK_F16
+    if key == XK_F16
         return F16;
 
     key = key & 0xFF;
@@ -68,20 +68,20 @@ x11_update_window_events :: (x11_display: *X11Display) {
     using Key_Code;
 
     display := x11_display.handle;
-    X11.XLockDisplay(display);
+    XLockDisplay(display);
 
-    while X11.XPending(display) {
-        xev: X11.XEvent;
-        X11.XNextEvent(display, *xev);
+    while XPending(display) {
+        xev: XEvent;
+        XNextEvent(display, *xev);
 
         if xev.type == {
-        case X11.ClientMessage;
+        case ClientMessage;
             message_type := xev.xclient.message_type;
-            if message_type == X11.XdndEnter {
-                drop_handled := maybe_handle_xdnd_drop_events(display, *xev, *X11.drop_info);
+            if message_type == XdndEnter {
+                drop_handled := maybe_handle_xdnd_drop_events(display, *xev, *drop_info);
                 if drop_handled  continue;
-            } else if message_type == X11.x_global_wm_protocols {
-                message0 := cast(X11.Atom) xev.xclient.data.l[0];
+            } else if message_type == x_global_wm_protocols {
+                message0 := cast(Atom) xev.xclient.data.l[0];
 
                 // This can't be a switch, because the values are not constant!
                 // Except come on guys, every single implementation of X11 in the universe
@@ -89,24 +89,24 @@ x11_update_window_events :: (x11_display: *X11Display) {
                 // How about if we just look them up once and then hardcode them into this program?
                 // We'd save startup time...
 
-                if message0 == X11.x_global_wm_delete_window {
+                if message0 == x_global_wm_delete_window {
                     event: Event;
                     event.type = .QUIT;
                     array_add(*events_this_frame, event);
                 }
             }
-        case X11.KeyPress;
+        case KeyPress;
             event: Event;
 
             shift: u32;
-            if xev.xkey.state & X11.ShiftMask
+            if xev.xkey.state & ShiftMask
                 shift = 1;
-            if xev.xkey.state & X11.ControlMask
+            if xev.xkey.state & ControlMask
                 event.ctrl_pressed = true;
-            if xev.xkey.state & X11.Mod1Mask
+            if xev.xkey.state & Mod1Mask
                 event.alt_pressed = true;
 
-            keysym := X11.XkbKeycodeToKeysym(display, xx xev.xkey.keycode, 0, 0 /* English lowercase group*/);
+            keysym := XkbKeycodeToKeysym(display, xx xev.xkey.keycode, 0, 0 /* English lowercase group*/);
             event.type = .KEYBOARD;
             event.key_pressed = 1;
             event.key_code = x11_translate_key_code(keysym);
@@ -116,8 +116,8 @@ x11_update_window_events :: (x11_display: *X11Display) {
 
             array_add(*events_this_frame, event);
 
-            keysym = X11.XkbKeycodeToKeysym(display, xx xev.xkey.keycode, 0, shift);
-            if (keysym < X11.XK_BackSpace || keysym > X11.XK_Hyper_R) && !event.ctrl_pressed {
+            keysym = XkbKeycodeToKeysym(display, xx xev.xkey.keycode, 0, shift);
+            if (keysym < XK_BackSpace || keysym > XK_Hyper_R) && !event.ctrl_pressed {
                 //WM_CHAR equivalent
                 char_event: Event;
                 char_event.type = .TEXT_INPUT;
@@ -125,13 +125,13 @@ x11_update_window_events :: (x11_display: *X11Display) {
 
                 array_add(*events_this_frame, char_event);
             }
-        case X11.KeyRelease;
+        case KeyRelease;
             // For some odd reason X11 generates KeyRelease followed by a near identical KeyPress to simulate repeat events so we have to filter that out
-            if X11.XEventsQueued(display, X11.QueuedAfterReading) {
-                nev: X11.XEvent;
-                X11.XPeekEvent(display, *nev);
+            if XEventsQueued(display, QueuedAfterReading) {
+                nev: XEvent;
+                XPeekEvent(display, *nev);
 
-                if nev.type == X11.KeyPress
+                if nev.type == KeyPress
                     && nev.xkey.time == xev.xkey.time
                     && nev.xkey.keycode == xev.xkey.keycode {
 
@@ -143,14 +143,14 @@ x11_update_window_events :: (x11_display: *X11Display) {
             event: Event;
 
             shift: u32;
-            if xev.xkey.state & X11.ShiftMask
+            if xev.xkey.state & ShiftMask
                 shift = 1;
-            if xev.xkey.state & X11.ControlMask
+            if xev.xkey.state & ControlMask
                 event.ctrl_pressed = true;
-            if xev.xkey.state & X11.Mod1Mask
+            if xev.xkey.state & Mod1Mask
                 event.alt_pressed = true;
 
-            keysym := X11.XkbKeycodeToKeysym(display, xx xev.xkey.keycode, 0, 0 /* English lowercase group*/);
+            keysym := XkbKeycodeToKeysym(display, xx xev.xkey.keycode, 0, 0 /* English lowercase group*/);
             event.type = .KEYBOARD;
             event.key_pressed = 0;
             event.shift_pressed = cast(bool) shift;
@@ -159,77 +159,77 @@ x11_update_window_events :: (x11_display: *X11Display) {
             input_button_states[event.key_code] = Key_Current_State.END;
 
             array_add(*events_this_frame, event);
-        case X11.ButtonPress;
+        case ButtonPress;
             event: Event;
             event.type = .KEYBOARD;
 
             event.key_pressed = 1;
             button := xev.xbutton.button;
-            if button == X11.Button1 {
+            if button == Button1 {
                 event.key_code = MOUSE_BUTTON_LEFT;
-            } else if button == X11.Button2 {
+            } else if button == Button2 {
                 event.key_code = MOUSE_BUTTON_MIDDLE;
-            } else if button == X11.Button3 {
+            } else if button == Button3 {
                 event.key_code = MOUSE_BUTTON_RIGHT;
             }
 
             input_button_states[event.key_code] = (Key_Current_State.START | Key_Current_State.DOWN);
 
             array_add(*events_this_frame, event);
-        case X11.ButtonRelease;
+        case ButtonRelease;
             // it seems that mouse input doesnt generate repeat events so we dont have to peek the queue
             event: Event;
             event.type = .KEYBOARD;
 
             event.key_pressed = 0;
             button := xev.xbutton.button;
-            if button == X11.Button1 {
+            if button == Button1 {
                 event.key_code = MOUSE_BUTTON_LEFT;
-            } else if button == X11.Button2 {
+            } else if button == Button2 {
                 event.key_code = MOUSE_BUTTON_MIDDLE;
-            } else if button == X11.Button3 {
+            } else if button == Button3 {
                 event.key_code = MOUSE_BUTTON_RIGHT;
             }
 
             input_button_states[event.key_code] = Key_Current_State.END;
 
             array_add(*events_this_frame, event);
-        case X11.SelectionRequest;
-            selreq := cast(*X11.XSelectionRequestEvent) *xev;
+        case SelectionRequest;
+            selreq := cast(*XSelectionRequestEvent) *xev;
 
-            out: X11.XEvent;
-            selnot := cast(*X11.XSelectionEvent) *out;
-            selnot.type = X11.SelectionNotify;
+            out: XEvent;
+            selnot := cast(*XSelectionEvent) *out;
+            selnot.type = SelectionNotify;
             selnot.requestor = selreq.requestor;
             selnot.selection = selreq.selection;
             selnot.target = selreq.target;
             selnot.time = selreq.time;
-            selnot.property = X11.None;
+            selnot.property = None;
 
-            if X11.x_window_is_ours(display, selreq.owner) {
-                if selreq.target == X11.x_global_xa_utf8 {
+            if x_window_is_ours(display, selreq.owner) {
+                if selreq.target == x_global_xa_utf8 {
                     selnot.property = selreq.property;
 
-                    text_data := X11.x_global_clipboard_buffer.text_data;
-                    X11.XChangeProperty(
-                        selreq.display, selreq.requestor, selreq.property, selreq.target, 8, X11.PropModeReplace,
+                    text_data := x_global_clipboard_buffer.text_data;
+                    XChangeProperty(
+                        selreq.display, selreq.requestor, selreq.property, selreq.target, 8, PropModeReplace,
                         text_data.data, cast(s32) text_data.count);
-                } else if selreq.target == X11.x_global_xa_targets {
+                } else if selreq.target == x_global_xa_targets {
                     selnot.property = selreq.property;
 
-                    atoms: [..] X11.Atom;
-                    array_add(*atoms, X11.x_global_xa_utf8);
-                    array_add(*atoms, X11.x_global_xa_targets);
-                    array_add(*atoms, X11.x_global_xa_multiple);
-                    if X11.x_global_clipboard_buffer.rgb_data {
-                        array_add(*atoms, X11.x_global_image_bmp);
+                    atoms: [..] Atom;
+                    array_add(*atoms, x_global_xa_utf8);
+                    array_add(*atoms, x_global_xa_targets);
+                    array_add(*atoms, x_global_xa_multiple);
+                    if x_global_clipboard_buffer.rgb_data {
+                        array_add(*atoms, x_global_image_bmp);
                     }
-                    X11.XChangeProperty(
-                        selreq.display, selreq.requestor, selreq.property, X11.x_global_xa_atom, 32, X11.PropModeReplace,
+                    XChangeProperty(
+                        selreq.display, selreq.requestor, selreq.property, x_global_xa_atom, 32, PropModeReplace,
                         xx atoms.data, cast(s32) atoms.count);
 
                     array_reset(*atoms);
-                } else if selreq.target == X11.x_global_image_bmp {
+                } else if selreq.target == x_global_image_bmp {
                     #import "stb_image_write";
 
                     Data :: struct {
@@ -249,15 +249,15 @@ x11_update_window_events :: (x11_display: *X11Display) {
 
                     data: Data;
                     data._context = *context;
-                    w := X11.x_global_clipboard_buffer.width;
-                    h := X11.x_global_clipboard_buffer.height;
+                    w := x_global_clipboard_buffer.width;
+                    h := x_global_clipboard_buffer.height;
                     comp: s32 = 3;
-                    stride := X11.x_global_clipboard_buffer.pitch;
-                    stbi_write_bmp_to_func(write_func, *data, w, h, comp, X11.x_global_clipboard_buffer.rgb_data);
+                    stride := x_global_clipboard_buffer.pitch;
+                    stbi_write_bmp_to_func(write_func, *data, w, h, comp, x_global_clipboard_buffer.rgb_data);
 
                     selnot.property = selreq.property;
-                    X11.XChangeProperty(
-                        selreq.display, selreq.requestor, selreq.property, selreq.target, 8, X11.PropModeReplace,
+                    XChangeProperty(
+                        selreq.display, selreq.requestor, selreq.property, selreq.target, 8, PropModeReplace,
                         xx data.data.data, cast(s32) data.data.count);
 
                     array_reset(*data.data);
@@ -266,38 +266,38 @@ x11_update_window_events :: (x11_display: *X11Display) {
                 }
             }
 
-            X11.XSendEvent(selreq.display, selreq.requestor, X11.True, 0, *out);
-        case X11.ConfigureNotify;
-            config := cast(*X11.XConfigureEvent) *xev;
+            XSendEvent(selreq.display, selreq.requestor, True, 0, *out);
+        case ConfigureNotify;
+            config := cast(*XConfigureEvent) *xev;
             ld_win := get_by_native_handle(xx config.window);
             if ld_win add_resize_record(ld_win, config.width, config.height);
-        case X11.FocusIn;
+        case FocusIn;
             input_application_has_focus = true;
-        case X11.FocusOut;
+        case FocusOut;
             input_application_has_focus = false;
         }
     }
-    X11.XUnlockDisplay(display);
+    XUnlockDisplay(display);
 }
 
 #scope_file
 // Xdnd support by Jens Frederich. Send questions his way. Licensed under the MIT license; see copyright at the end
 // of the file.
 
-get_position_root_x :: inline (xevent: *X11.XEvent) -> s32 {
+get_position_root_x :: inline (xevent: *XEvent) -> s32 {
     return cast(s32) xevent.xclient.data.l[2] >> 16;
 }
 
-get_position_root_y :: inline (xevent: *X11.XEvent) -> s32 {
+get_position_root_y :: inline (xevent: *XEvent) -> s32 {
     return cast(s32) xevent.xclient.data.l[2] & 0xffff;
 }
 
-apply_position :: (dnd: *X11.Xdnd_Context, widget: X11.Window, from: X11.Window, action: X11.Atom, x: s32, y: s32, time: X11.Time, typelist: [] X11.Atom, want_position: *bool, supported_action_return: *X11.Atom, desired_type: *X11.Atom, rectangle: *X11.XRectangle) -> bool {
-    supported_type: X11.Atom;
-    supported_action: X11.Atom;
+apply_position :: (dnd: *Xdnd_Context, widget: Window, from: Window, action: Atom, x: s32, y: s32, time: Time, typelist: [] Atom, want_position: *bool, supported_action_return: *Atom, desired_type: *Atom, rectangle: *XRectangle) -> bool {
+    supported_type: Atom;
+    supported_action: Atom;
 
-    dropper_typelist  := X11.drop_info.user_typelist;
-    supported_actions := X11.drop_info.user_actions;
+    dropper_typelist  := drop_info.user_typelist;
+    supported_actions := drop_info.user_actions;
 
     if dropper_typelist.count > 0 {
         // find a correlation:
@@ -326,7 +326,7 @@ apply_position :: (dnd: *X11.Xdnd_Context, widget: X11.Window, from: X11.Window,
         }
     } else {
         // user did not specify
-        if action == X11.XdndActionCopy  supported_action = action;
+        if action == XdndActionCopy  supported_action = action;
     }
 
     if !supported_action  return false;
@@ -337,36 +337,36 @@ apply_position :: (dnd: *X11.Xdnd_Context, widget: X11.Window, from: X11.Window,
     rectangle.width = 0;
     rectangle.height = 0;
 
-    X11.drop_info.return_action = supported_action;
+    drop_info.return_action = supported_action;
     <<supported_action_return = supported_action;
-    X11.drop_info.return_type = supported_type;
+    drop_info.return_type = supported_type;
     <<desired_type = supported_type;
-    X11.drop_info.x = x;
-    X11.drop_info.y = y;
+    drop_info.x = x;
+    drop_info.y = y;
 
     return true;
 }
 
-send_finished :: (display: *X11.Display, window: X11.Window, from: X11.Window) {
-    xevent: X11.XEvent;
-    xevent.xany.type = X11.ClientMessage;
+send_finished :: (display: *Display, window: Window, from: Window) {
+    xevent: XEvent;
+    xevent.xany.type = ClientMessage;
     xevent.xany.display = display;
     xevent.xclient.window = window;
-    xevent.xclient.message_type = X11.XdndFinished;
+    xevent.xclient.message_type = XdndFinished;
     xevent.xclient.format = 32;
 
     // target window
     xevent.xclient.data.l[0] = cast(s64) from;
 
-    X11.XSendEvent(display, window, 0, 0, *xevent);
+    XSendEvent(display, window, 0, 0, *xevent);
 }
 
-send_status :: (display: *X11.Display, window: X11.Window, from: X11.Window, will_accept: bool, want_position: bool, x: int, y: int, w: int, h: int, action: X11.Atom) {
-    xevent: X11.XEvent;
-    xevent.xany.type = X11.ClientMessage;
+send_status :: (display: *Display, window: Window, from: Window, will_accept: bool, want_position: bool, x: int, y: int, w: int, h: int, action: Atom) {
+    xevent: XEvent;
+    xevent.xany.type = ClientMessage;
     xevent.xany.display = display;
     xevent.xclient.window = window;
-    xevent.xclient.message_type = X11.XdndStatus;
+    xevent.xclient.message_type = XdndStatus;
     xevent.xclient.format = 32;
 
     // Our window
@@ -385,37 +385,37 @@ send_status :: (display: *X11.Display, window: X11.Window, from: X11.Window, wil
 
     if will_accept  xevent.xclient.data.l[4] = cast(s64) action;
 
-    X11.XSendEvent(display, window, 0, 0, *xevent);
+    XSendEvent(display, window, 0, 0, *xevent);
 }
 
-paste_property :: (display: *X11.Display, from: X11.Window, insert: X11.Window, prop: u64, delete_prop: s64) -> bool {
+paste_property :: (display: *Display, from: Window, insert: Window, prop: u64, delete_prop: s64) -> bool {
     nread: s64;
     data_count: s64;
     bytes_after: s64;
     error: bool;
 
-    array_reset(*X11.drop_info.data);
+    array_reset(*drop_info.data);
     while true {
-        actual_type: X11.Atom;
+        actual_type: Atom;
         actual_fmt: s32;
         data: *u8;
 
         x := nread / 4;
 
-        if X11.XGetWindowProperty(display, insert, prop, xx x , 65536, xx delete_prop, X11.AnyPropertyType, *actual_type, *actual_fmt, xx *data_count, xx *bytes_after, *data) != X11.Success {
-            X11.XFree(data);
+        if XGetWindowProperty(display, insert, prop, xx x , 65536, xx delete_prop, AnyPropertyType, *actual_type, *actual_fmt, xx *data_count, xx *bytes_after, *data) != Success {
+            XFree(data);
             return false;
         }
 
         nread += data_count;
 
-        if (X11.drop_info.data.count == 0) {
-            array_reserve(*X11.drop_info.data, data_count + bytes_after);
+        if (drop_info.data.count == 0) {
+            array_reserve(*drop_info.data, data_count + bytes_after);
         }
-        memcpy(X11.drop_info.data.data + X11.drop_info.data.count, data, data_count);
-        X11.drop_info.data.count += data_count;
+        memcpy(drop_info.data.data + drop_info.data.count, data, data_count);
+        drop_info.data.count += data_count;
 
-        X11.XFree(data);
+        XFree(data);
 
         if bytes_after == 0  break;
     }
@@ -425,25 +425,25 @@ paste_property :: (display: *X11.Display, from: X11.Window, insert: X11.Window, 
     return true;
 }
 
-get_selection :: (display: *X11.Display, from: X11.Window, prop: X11.Atom, insert: X11.Window) -> bool {
-    if prop == X11.None  return false;
+get_selection :: (display: *Display, from: Window, prop: Atom, insert: Window) -> bool {
+    if prop == None  return false;
 
-    actual_type: X11.Atom;
+    actual_type: Atom;
     actual_fmt: s32;
     nitems: u64;
     bytes_after: u64;
     s: *u8;
-    if (X11.XGetWindowProperty(display, insert, prop, 0, 8, X11.False, X11.AnyPropertyType, *actual_type, *actual_fmt, *nitems, *bytes_after, *s) != X11.Success) {
-        X11.XFree(s);
+    if (XGetWindowProperty(display, insert, prop, 0, 8, False, AnyPropertyType, *actual_type, *actual_fmt, *nitems, *bytes_after, *s) != Success) {
+        XFree(s);
         return false;
     }
 
-    X11.XFree(s);
-    if actual_type != X11.XInternAtom(display, "INCR", X11.False) {
-        return paste_property(display, from, insert, prop, X11.True);
+    XFree(s);
+    if actual_type != XInternAtom(display, "INCR", False) {
+        return paste_property(display, from, insert, prop, True);
     }
 
-    X11.XDeleteProperty(display, insert, prop);
+    XDeleteProperty(display, insert, prop);
 
     /* @Cleanup: Get rid of fd_set stuff.
     time_start := get_time();
@@ -472,74 +472,74 @@ get_selection :: (display: *X11.Display, from: X11.Window, prop: X11.Atom, inser
     return true;
 }
 
-maybe_handle_xdnd_drop_events :: (display: *X11.Display, xevent: *X11.XEvent, drop_info: *X11.Drop_Info) -> bool {
-    assert(xevent.type == X11.ClientMessage);
-    assert(xevent.xclient.message_type == X11.XdndEnter);
+maybe_handle_xdnd_drop_events :: (display: *Display, xevent: *XEvent, drop_info: *Drop_Info) -> bool {
+    assert(xevent.type == ClientMessage);
+    assert(xevent.xclient.message_type == XdndEnter);
 
-    dnd := X11.x_global_xdnd_context;
-    dnd.root_window = X11.DefaultRootWindow(display);
+    dnd := x_global_xdnd_context;
+    dnd.root_window = DefaultRootWindow(display);
 
     while true {
-        if xevent.type == X11.ClientMessage {
-            if xevent.xclient.message_type == X11.XdndEnter {
+        if xevent.type == ClientMessage {
+            if xevent.xclient.message_type == XdndEnter {
                 version := xevent.xclient.data.l[1] >> 24;
                 if version < 3  return false;
 
-                X11.xdnd_context_reset(*dnd);
-                dnd.dragger_window = cast(X11.Window) xevent.xclient.data.l[0];
+                xdnd_context_reset(*dnd);
+                dnd.dragger_window = cast(Window) xevent.xclient.data.l[0];
                 dnd.dropper_toplevel = xevent.xany.window;
                 dnd.dropper_window = 0;  // Enter goes to the top level window only, so we don't really know what the sub window is yet.
 
                 support_more_than_three_types := xevent.xclient.data.l[1] & 0x1;
                 if !support_more_than_three_types {
                     for 0..2 {
-                        atom := cast(X11.Atom) xevent.xclient.data.l[2 + it];
+                        atom := cast(Atom) xevent.xclient.data.l[2 + it];
                         array_add(*dnd.dragger_typelist, atom);
                     }
                 } else {
                     array_reset(*dnd.dragger_typelist);
 
-                    type: X11.Atom;
+                    type: Atom;
                     format: s32;
                     count, remaining: u64;
                     data: *u8 = null;
-                    X11.XGetWindowProperty(display, dnd.dragger_window, X11.XdndTypeList, 0, 0x8000000, X11.False, X11.XA_ATOM, *type, *format, *count, *remaining, *data);
+                    XGetWindowProperty(display, dnd.dragger_window, XdndTypeList, 0, 0x8000000, False, XA_ATOM, *type, *format, *count, *remaining, *data);
 
-                    if type != X11.XA_ATOM || format != 32 || count == 0 || data == null {
+                    if type != XA_ATOM || format != 32 || count == 0 || data == null {
                         print("XGetWindowProperty failed in get type list\n");
                     }
 
-                    atom_data: *X11.Atom = cast(*X11.Atom) data;
+                    atom_data: *Atom = cast(*Atom) data;
                     for 0..count {
                         array_add(*dnd.dragger_typelist, atom_data[it]);
                     }
 
-                    X11.XFree(data);
+                    XFree(data);
                 }
 
                 if dnd.dragger_typelist {
-                    dnd.stage = X11.Xdnd_Stage.DROP_ENTERED;
+                    dnd.stage = Xdnd_Stage.DROP_ENTERED;
                 } else {
                     print("      typelist returned as zero!\n");
                 }
-            } else if xevent.xclient.message_type == X11.XdndLeave {
+            } else if xevent.xclient.message_type == XdndLeave {
                 source_window := cast(u64) xevent.xclient.data.l[0];
-                if dnd.dragger_window == source_window && dnd.stage == X11.Xdnd_Stage.DROP_ENTERED {
-                    dnd.stage = X11.Xdnd_Stage.DROP_IDLE;
+                if dnd.dragger_window == source_window && dnd.stage == Xdnd_Stage.DROP_ENTERED {
+                    dnd.stage = Xdnd_Stage.DROP_IDLE;
                     array_reset(*dnd.dragger_typelist);
                     dnd.dropper_toplevel = 0;
                     dnd.dropper_window = 0;
                 } else {
                     print("    wrong stage or from wrong window\n");
                 }
-            } else if xevent.xclient.message_type == X11.XdndPosition {
-                action: X11.Atom;
-                rectangle: X11.XRectangle;
+            } else if xevent.xclient.message_type == XdndPosition {
+                action: Atom;
+                rectangle: XRectangle;
                 want_position: bool;
-                last_window: X11.Window;
+                last_window: Window;
 
                 source_window := cast(u64) xevent.xclient.data.l[0];
-                if dnd.dragger_window == source_window && dnd.stage == X11.Xdnd_Stage.DROP_ENTERED {
+                if dnd.dragger_window == source_window && dnd.stage == Xdnd_Stage.DROP_ENTERED {
                     last_window = dnd.dropper_window;
 
                     if xevent.xany.window != dnd.dropper_toplevel || !dnd.dropper_window {
@@ -552,8 +552,8 @@ maybe_handle_xdnd_drop_events :: (display: *X11.Display, xevent: *X11.XEvent, dr
                         while true {
                             xd: s32;
                             yd: s32;
-                            new_child: X11.Window;
-                            if !X11.XTranslateCoordinates(display, parent, child, root_x, root_y, *xd, *yd, *new_child)  break;
+                            new_child: Window;
+                            if !XTranslateCoordinates(display, parent, child, root_x, root_y, *xd, *yd, *new_child)  break;
                             if !new_child  break;
 
                             child = new_child;
@@ -565,67 +565,67 @@ maybe_handle_xdnd_drop_events :: (display: *X11.Display, xevent: *X11.XEvent, dr
                         xevent.xany.window = dnd.dropper_window;
                     }
 
-                    action := X11.XdndActionCopy;
-                    dnd.supported_action = X11.XdndActionCopy;
+                    action := XdndActionCopy;
+                    dnd.supported_action = XdndActionCopy;
                     dnd.x = get_position_root_x(xevent);
                     dnd.y = get_position_root_y(xevent);
-                    dnd.time = X11.CurrentTime;
+                    dnd.time = CurrentTime;
 
                     dnd.will_accept = apply_position(*dnd, xevent.xany.window, dnd.dragger_window, action, dnd.x, dnd.y, dnd.time, dnd.dragger_typelist, *want_position, *dnd.supported_action, *dnd.desired_type, *rectangle);
                     send_status(display, dnd.dragger_window, dnd.dropper_toplevel, dnd.will_accept, want_position, rectangle.x, rectangle.y, rectangle.width, rectangle.height, dnd.supported_action);
                 } else {
                     print("    wrong stage or from wrong window\n");
                 }
-            } else if xevent.xclient.message_type == X11.XdndDrop {
+            } else if xevent.xclient.message_type == XdndDrop {
                 if xevent.xany.window == dnd.dropper_toplevel && dnd.dropper_window {
                     xevent.xany.window = dnd.dropper_window;
                 }
 
                 source_window := cast(u64) xevent.xclient.data.l[0];
-                if dnd.dragger_window == source_window && dnd.stage == X11.Xdnd_Stage.DROP_ENTERED {
-                    dnd.time = X11.CurrentTime;
+                if dnd.dragger_window == source_window && dnd.stage == Xdnd_Stage.DROP_ENTERED {
+                    dnd.time = CurrentTime;
                     if dnd.will_accept {
                         // convert selection
                         {
-                            dnd.dragger_window = X11.XGetSelectionOwner(display, X11.XdndSelection);
+                            dnd.dragger_window = XGetSelectionOwner(display, XdndSelection);
                             if !dnd.dragger_window {
                                 print(" XGetSelectionOwner failed\n");
                             } else {
-                                X11.XConvertSelection(display, X11.XdndSelection, dnd.desired_type, X11.x_global_non_protocol_atom, dnd.dropper_window, X11.CurrentTime);
+                                XConvertSelection(display, XdndSelection, dnd.desired_type, x_global_non_protocol_atom, dnd.dropper_window, CurrentTime);
                             }
                         }
 
-                        dnd.stage = X11.Xdnd_Stage.DROP_CONVERTING;
+                        dnd.stage = Xdnd_Stage.DROP_CONVERTING;
                     } else {
                         print("    will_accept is false - sending finished\n");
                         send_finished(display, dnd.dragger_window, dnd.dropper_toplevel);
 
                         array_reset(*dnd.dragger_typelist);
-                        X11.xdnd_context_reset(*dnd);
-                        dnd.stage = X11.Xdnd_Stage.DROP_IDLE;
+                        xdnd_context_reset(*dnd);
+                        dnd.stage = Xdnd_Stage.DROP_IDLE;
                     }
                 } else {
                     print("    wrong stage or from wrong window\n");
                 }
             }
-        } else if xevent.type == X11.SelectionNotify {
-            if xevent.xselection.property == X11.x_global_non_protocol_atom && dnd.stage == X11.Xdnd_Stage.DROP_CONVERTING {
+        } else if xevent.type == SelectionNotify {
+            if xevent.xselection.property == x_global_non_protocol_atom && dnd.stage == Xdnd_Stage.DROP_CONVERTING {
                 error := get_selection(display, dnd.dragger_window, xevent.xselection.property, xevent.xany.window);
                 // Error is not actually used, I think future versions of the protocol maybe should return an error status to the calling window with the XdndFinished client message.
 
                 send_finished(display, dnd.dragger_window, dnd.dropper_toplevel);
 
                 array_reset(*dnd.dragger_typelist);
-                X11.xdnd_context_reset(*dnd);
-                dnd.stage = X11.Xdnd_Stage.DROP_IDLE;
+                xdnd_context_reset(*dnd);
+                dnd.stage = Xdnd_Stage.DROP_IDLE;
             } else {
                 print("  property is not Xdnd_NON_PROTOCOL_ATOM - ignoring\n");
             }
         }
 
-        if dnd.stage == X11.Xdnd_Stage.DROP_IDLE  break;
+        if dnd.stage == Xdnd_Stage.DROP_IDLE  break;
 
-        X11.XNextEvent(display, xevent);
+        XNextEvent(display, xevent);
     }
 
     if drop_info.data.count > 0 {

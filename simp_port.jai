@@ -31,14 +31,14 @@ main :: () {
 
     render_target_a = Simp.texture_create_render_target(render_texture_width, render_texture_height, .RGBA8);
     render_target_b = Simp.texture_create_render_target(render_texture_width, render_texture_height, .RGBA8);
-    
+
     quit := false;
     while !quit {
         Input.update_window_events();
 
         for Input.get_window_resizes() {
             Simp.update_window(my_window);  // Simp will do nothing if it doesn't care about this window.
-            
+
             if it.window == my_window {
                 window_width  = it.width;
                 window_height = it.height;
@@ -57,7 +57,7 @@ main :: () {
         }
 
         draw_one_frame();
-        
+
         sleep_milliseconds(10);
         reset_temporary_storage();
     }
@@ -70,22 +70,22 @@ render_texture_1 :: () {
     Simp.set_shader_for_color();
 
     time := get_time();
-    
+
     // Ye ole rotating square:
     {
         rw := cast(float) render_texture_width;
         rh := cast(float) render_texture_height;
-        
+
         b := cast(float)rh / 3;
         p: Vector2;
         p.x = cast(float)(rw  / 2);
         p.y = cast(float)(rh / 2);
 
-        theta := cast(float) fmod_cycling(time, TAU);    
+        theta := cast(float) fmod_cycling(time, TAU);
 
         ct := cos(theta);
         st := sin(theta);
-        
+
         w := make_vector2(b*ct, b*st);
         h := make_vector2(b*st, -b*ct);
 
@@ -99,7 +99,7 @@ render_texture_1 :: () {
         c1 := Vector4.{0, 1, 0, a};
         c2 := Vector4.{0, 0, 1, a};
         c3 := Vector4.{1, 1, 1, a};
-        
+
         Simp.immediate_quad(p0, p1, p2, p3, c0, c1, c2, c3);
     }
 }
@@ -124,20 +124,20 @@ render_texture_2 :: () {
         time := get_time();
         b0 := rh / 10.0;
         b1 := rh / 1.0;
-        theta := cast(float) fmod_cycling(time, TAU);    
+        theta := cast(float) fmod_cycling(time, TAU);
         factor := cos(theta);
         factor *= factor;
         b := lerp(b0, b1, factor);
-        
+
         p: Vector3;
         p.x = rw / 2.0;
         p.y = rh / 2.0;
-        
+
         c_in  := color;
         c_out := color;
         c_in .w = 0;
         c_out.w = 1;
-        
+
         for i: 0..NUM_SEGMENTS {
             theta0 := (i     / cast(float) NUM_SEGMENTS) * TAU;
             theta1 := ((i+1) / cast(float) NUM_SEGMENTS) * TAU;
@@ -179,12 +179,12 @@ draw_one_frame :: () {
     offset := make_vector3(margin_x, margin_y, 0);
 
     time := get_time();
-    theta := cast(float) fmod_cycling(time * .13, TAU); 
+    theta := cast(float) fmod_cycling(time * .13, TAU);
     offset.xy = rotate(offset.xy, theta);
-    
+
     x0 := (window_width - rt_width)   * .5 - offset.x;
     y0 := (window_height - rt_height) * .5 - offset.y;
-    
+
     {
         Simp.set_shader_for_images(render_target_a);
         c0 := Vector4.{1, 1, 1, 1};
@@ -193,13 +193,13 @@ draw_one_frame :: () {
 
     x0 += 2*offset.x;
     y0 += 2*offset.y;
-    
+
     {
         Simp.set_shader_for_images(render_target_b);
         c0 := Vector4.{1, 1, 1, 1};
         Simp.immediate_quad(x0, y0, x0 + rt_width, y0 + rt_height, c0);
     }
-    
+
     Simp.swap_buffers(my_window);
 }
 

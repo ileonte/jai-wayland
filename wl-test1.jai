@@ -297,7 +297,7 @@ display_destroy :: (display: *Display) {
 }
 
 window_init :: (d: *Display, w: *Window, width: s32, height: s32, use_gl := true) -> bool {
-    x_window_listener :: xdg_surface_listener.{
+    window_listener :: xdg_surface_listener.{
         configure = (data: *void, surface: *xdg_surface, serial: u32) -> void #c_call {
             w: *Window = data;
             xdg_surface.ack_configure(surface, serial);
@@ -315,7 +315,7 @@ window_init :: (d: *Display, w: *Window, width: s32, height: s32, use_gl := true
         }
     };
 
-    x_toplevel_listener :: xdg_toplevel_listener.{
+    toplevel_listener :: xdg_toplevel_listener.{
         configure = (data: *void, toplevel: *xdg_toplevel, width: s32, height: s32, states: *wl_array) -> void #c_call {
             w: *Window = data;
             w.gl.w = width;
@@ -370,10 +370,10 @@ window_init :: (d: *Display, w: *Window, width: s32, height: s32, use_gl := true
     w.surface = wl_compositor.create_surface(d.compositor);
 
     w.x_surface = xdg_wm_base.get_xdg_surface(d.wm_base, w.surface);
-    xdg_surface.add_listener(w.x_surface, *x_window_listener, w);
+    xdg_surface.add_listener(w.x_surface, *window_listener, w);
 
     w.x_toplevel = xdg_surface.get_toplevel(w.x_surface);
-    xdg_toplevel.add_listener(w.x_toplevel, *x_toplevel_listener, w);
+    xdg_toplevel.add_listener(w.x_toplevel, *toplevel_listener, w);
     xdg_toplevel.set_title(w.x_toplevel, "Jai :: Wayland");
     xdg_toplevel.set_app_id(w.x_toplevel, "com.ileonte.jai.wayland-1");
 

@@ -26,7 +26,7 @@ backend_init :: (info: *Window_Info) {
             info.specific.hdc = hdc;
         }
         #if OS == .LINUX {
-            LD.create_gl_context();
+            LD.create_gl_context(MINIMUM_GL_MAJOR_VERSION, MINIMUM_GL_MINOR_VERSION);
             the_gl_context = LD.get_gl_context();
         }
         #if OS == .MACOS {

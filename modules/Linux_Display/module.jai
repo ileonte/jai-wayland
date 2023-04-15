@@ -1,54 +1,54 @@
 Saved_Window_Info :: struct {}
 
-Display :: *_Display;
-global_display : Display : *_global_display;
+LDDisplay :: *_Display;
+global_display : LDDisplay : *_global_display;
 
-Window  :: *_Window;
-INVALID_WINDOW : Window : null;
+LDWindow  :: *_Window;
+INVALID_WINDOW : LDWindow : null;
 
 init_display :: () -> bool {
     if global_display.tag != X11Display && global_display.tag != WLDisplay {
-        wd: WLDisplay;
-        if wl_init_display(*wd) {
-            set(global_display, wd);
-            // @TODO: set global function pointers
-            return true;
-        }
-        xd: X11Display;
-        if x11_init_display(*xd) {
-            set(global_display, xd);
-            return true;
-        }
+        if wl_init_display(global_display) return true;
+        if x11_init_display(global_display) return true;
     }
     return false;
 }
 
 /*
- * Window functions
+ * LDWindow functions
  */
-create_window :: (width: int, height: int, window_name: string, window_x := 0, window_y := 0, parent: Window = INVALID_WINDOW, background_color_rgb: [3]float) -> Window {
+create_window :: (width: int, height: int, window_name: string, window_x := 0, window_y := 0, parent: LDWindow = INVALID_WINDOW, background_color_rgb: [3]float) -> LDWindow {
     if (!init_display()) return INVALID_WINDOW;
     if global_display.tag == {
         case X11Display; {
             if parent != INVALID_WINDOW assert(parent.tag == X11Window);
-            xw := x11_create_window(
-                isa(global_display, X11Display),
-                width, height,
-                window_name,
-                window_x, window_y,
-                ifx parent then isa(parent, X11Window) else null,
-                background_color_rgb);
-            if !xw.handle return INVALID_WINDOW;
             ret := array_add(*global_windows);
-            set(ret, xw);
+            <<ret = .{};
+            if !x11_create_window(isa(global_display, X11Display), ret, width, height, window_name,
+                window_x, window_y, ifx parent then isa(parent, X11Window) else null, background_color_rgb)
+            {
+                pop(*global_windows);
+                return INVALID_WINDOW;
+            }
             return ret;
         }
-        case WLDisplay; #through;
+        case WLDisplay; {
+            if parent != INVALID_WINDOW assert(parent.tag == WLWindow);
+            ret := array_add(*global_windows);
+            <<ret = .{};
+            if !wl_create_window(isa(global_display, WLDisplay), ret, width, height, window_name,
+                window_x, window_y, ifx parent then isa(parent, WLWindow) else null, background_color_rgb)
+            {
+                pop(*global_windows);
+                return INVALID_WINDOW;
+            }
+            return ret;
+        }
         case; return INVALID_WINDOW;
     }
 }
 
-toggle_fullscreen :: (win: Window, desire_fullscreen: bool, saved: *Saved_Window_Info) -> success: bool, width: s32, height: s32 {
+toggle_fullscreen :: (win: LDWindow, desire_fullscreen: bool, saved: *Saved_Window_Info) -> success: bool, width: s32, height: s32 {
     w, h: s32;
     s := false;
     if global_display.tag == {
@@ -58,33 +58,33 @@ toggle_fullscreen :: (win: Window, desire_fullscreen: bool, saved: *Saved_Window
     return s, w, h;
 }
 
-get_by_native_handle :: (native_handle: *void) -> Window {
+get_by_native_handle :: (native_handle: *void) -> LDWindow {
     for * global_windows {
         if has_native_handle(it, native_handle) return it;
     }
     return INVALID_WINDOW;
 }
 
-has_native_handle :: (win: Window, native_handle: *void) -> bool {
+has_native_handle :: (win: LDWindow, native_handle: *void) -> bool {
     if !win return false;
     if win.tag == {
         case X11Window; return x11_has_native_handle(isa(win, X11Window), xx native_handle);
-        case WLWindow; #through;
+        case WLWindow; return wl_has_native_handle(isa(win, WLWindow), xx native_handle);
         case; return false;
     }
 }
 
-get_dimensions :: (win: Window, right_handed: bool) -> (x: s32, y: s32, width: s32, height: s32, success := true) {
+get_dimensions :: (win: LDWindow, right_handed: bool) -> (x: s32, y: s32, width: s32, height: s32, success := true) {
     x, y, w, h: s32;
     ok := false;
     if win.tag == {
         case X11Window; x, y, w, h, ok = x11_get_dimensions(isa(win, X11Window), right_handed);
-        case WLDisplay;
+        case WLWindow; w, y, w, h, ok = wl_get_dimensions(isa(win, WLWindow), right_handed);
     }
     return x, y, w, h, ok;
 }
 
-get_mouse_pointer_position :: (display: Display, win: Window, right_handed: bool) -> x: int, y: int, success: bool {
+get_mouse_pointer_position :: (display: LDDisplay, win: LDWindow, right_handed: bool) -> x: int, y: int, success: bool {
     x, y: int;
     ok := false;
     if display.tag == {
@@ -92,12 +92,15 @@ get_mouse_pointer_position :: (display: Display, win: Window, right_handed: bool
             assert(win.tag == X11Window);
             x, y, ok = x11_get_mouse_pointer_position(isa(display, X11Display), isa(win, X11Window), right_handed);
         }
-        case WLDisplay;
+        case WLDisplay; {
+            assert(win.tag == WLWindow);
+            x, y, ok = wl_get_mouse_pointer_position(isa(win, WLWindow), right_handed);
+        }
     }
     return x, y, ok;
 }
 
-get_mouse_pointer_position :: (win: Window, right_handed: bool) -> x: int, y: int, success: bool {
+get_mouse_pointer_position :: (win: LDWindow, right_handed: bool) -> x: int, y: int, success: bool {
     x, y: int;
     ok := false;
     if global_display.tag == {
@@ -105,7 +108,10 @@ get_mouse_pointer_position :: (win: Window, right_handed: bool) -> x: int, y: in
             assert(win.tag == X11Window);
             x, y, ok = x11_get_mouse_pointer_position(isa(win, X11Window), right_handed);
         }
-        case WLDisplay;
+        case WLDisplay; {
+            assert(win.tag == WLWindow);
+            x, y, ok = wl_get_mouse_pointer_position(isa(win, WLWindow), right_handed);
+        }
     }
     return x, y, ok;
 }
@@ -115,7 +121,7 @@ get_mouse_pointer_position :: (right_handed := false) -> x: int, y: int, success
     ok := false;
     if global_display.tag == {
         case X11Display; x, y, ok = x11_get_mouse_pointer_position(right_handed);
-        case WLDisplay;
+        case WLDisplay; x, y, ok = wl_get_mouse_pointer_position(right_handed);
     }
     return x, y, ok;
 }
@@ -123,7 +129,7 @@ get_mouse_pointer_position :: (right_handed := false) -> x: int, y: int, success
 /*
  * Input functions
  */
-translate_key_code :: (display: Display, key: u64) -> Key_Code {
+translate_key_code :: (display: LDDisplay, key: u64) -> Key_Code {
     if display.tag == {
         case X11Display; return x11_translate_key_code(key);
         case WLDisplay;
@@ -138,15 +144,15 @@ translate_key_code :: (key: u64) -> Key_Code {
 update_window_events :: () {
     if global_display.tag == {
         case X11Display; x11_update_window_events(isa(global_display, X11Display));
-        case WLDisplay;
+        case WLDisplay; wl_update_window_events(isa(global_display, WLDisplay));
     }
 }
 
 #scope_module;
 
-X11 :: #import "X11";
-EGL :: #import "EGL";
-WL  :: #import "Wayland";
+#import "X11";
+#import "EGL";
+#import "Wayland";
 #import "Input";
 #import "Tagged_Union";
 #import "Basic";
@@ -159,7 +165,7 @@ WL  :: #import "Wayland";
 
 _Display        :: Tagged_Union(X11Display, WLDisplay);
 _Window         :: Tagged_Union(X11Window, WLWindow);
-_INVALID_WINDOW : Window;
+_INVALID_WINDOW : LDWindow;
 
 _global_display: _Display;
 global_windows: [..] _Window;

@@ -12,7 +12,7 @@ get_dimensions :: (win: Window_Type, right_handed: bool) -> (x: s32, y: s32, wid
     return x, y, w, h, s;
 }
 
-get_mouse_pointer_position :: (dpy: LD.Display, win: Window_Type, right_handed: bool) -> x: int, y: int, success: bool {
+get_mouse_pointer_position :: (dpy: LD.LDDisplay, win: Window_Type, right_handed: bool) -> x: int, y: int, success: bool {
     x, y, s := LD.get_mouse_pointer_position(dpy, win, right_handed);
     return x, y, s;
 }
