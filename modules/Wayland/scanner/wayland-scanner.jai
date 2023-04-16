@@ -158,6 +158,7 @@ is_nullable_type :: (arg: Arg) -> bool {
 
 create_message :: (loc: Location, name: string) -> *Message {
     message : *Message = alloc(size_of(Message));
+    <<message = .{};
     message.loc = loc;
     message.name = strdup(name);
     message.uppercase_name = uppercase_dup(name);
@@ -167,6 +168,7 @@ create_message :: (loc: Location, name: string) -> *Message {
 
 create_arg :: (name: string) -> *Arg {
     ret : *Arg = alloc(size_of(Arg));
+    <<ret = .{};
     ret.name = strdup(name);
     ret.has_interface_name = false;  // ??
     wl_list_init(*ret.link);
@@ -199,6 +201,7 @@ create_enumeration :: (name: string) -> *Enumeration {
 
 create_entry :: (name: string, value: string) -> *Entry {
     entry : *Entry = alloc(size_of(Entry));
+    <<entry = .{};
     entry.name = strdup(name);
     entry.uppercase_name = uppercase_dup(name);
     entry.value = strdup(value);
@@ -207,6 +210,7 @@ create_entry :: (name: string, value: string) -> *Entry {
 
 create_interface :: (loc: Location, name: string, version: int) -> *Interface {
     intf : *Interface = alloc(size_of(Interface));
+    <<intf = .{};
     intf.loc = loc;
     intf.name = strdup(name);
     intf.uppercase_name = uppercase_dup(name);
