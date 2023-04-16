@@ -317,6 +317,13 @@ zxdg_toplevel_v6 :: struct {
             parent);
     }
 
+    set_title :: inline (self: *zxdg_toplevel_v6, title: *u8) #c_call {
+        wl_proxy.marshal_flags(
+            self, ZXDG_TOPLEVEL_V6_SET_TITLE,
+            null, wl_proxy.get_version(self), 0,
+            title);
+    }
+
     set_app_id :: inline (self: *zxdg_toplevel_v6, app_id: *u8) #c_call {
         wl_proxy.marshal_flags(
             self, ZXDG_TOPLEVEL_V6_SET_APP_ID,

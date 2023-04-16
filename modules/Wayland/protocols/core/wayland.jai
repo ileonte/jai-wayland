@@ -490,6 +490,13 @@ wl_data_offer :: struct {
         return wl_proxy.get_version(self);
     }
 
+    accept :: inline (self: *wl_data_offer, serial: u32, mime_type: *u8) #c_call {
+        wl_proxy.marshal_flags(
+            self, WL_DATA_OFFER_ACCEPT,
+            null, wl_proxy.get_version(self), 0,
+            serial, mime_type);
+    }
+
     receive :: inline (self: *wl_data_offer, mime_type: *u8, fd: s32) #c_call {
         wl_proxy.marshal_flags(
             self, WL_DATA_OFFER_RECEIVE,
