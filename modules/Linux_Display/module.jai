@@ -8,8 +8,8 @@ INVALID_WINDOW : LDWindow : null;
 
 init_display :: () -> bool {
     if global_display.tag != X11Display && global_display.tag != WLDisplay {
-        if x11_init_display(global_display) return true;
         if wl_init_display(global_display) return true;
+        if x11_init_display(global_display) return true;
     }
     return true;
 }
