@@ -11,7 +11,7 @@ init_display :: () -> bool {
         if wl_init_display(global_display) return true;
         if x11_init_display(global_display) return true;
     }
-    return false;
+    return true;
 }
 
 /*
@@ -79,7 +79,7 @@ get_dimensions :: (win: LDWindow, right_handed: bool) -> (x: s32, y: s32, width:
     ok := false;
     if win.tag == {
         case X11Window; x, y, w, h, ok = x11_get_dimensions(isa(win, X11Window), right_handed);
-        case WLWindow; w, y, w, h, ok = wl_get_dimensions(isa(win, WLWindow), right_handed);
+        case WLWindow; x, y, w, h, ok = wl_get_dimensions(isa(win, WLWindow), right_handed);
     }
     return x, y, w, h, ok;
 }
@@ -152,6 +152,7 @@ update_window_events :: () {
 
 #import "X11";
 #import "EGL";
+#import "GL";
 #import "Wayland";
 #import "Input";
 #import "Tagged_Union";

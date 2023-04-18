@@ -31,6 +31,11 @@ get_gl_proc_address_function :: (win: LDWindow) -> GL.GetProcAddressFunction {
 }
 
 create_gl_context :: (display: LDDisplay, major_version := 0, minor_version := 0, compatibility := false, debug := false) {
+    if gl_initialized(display) {
+        log_error("WARNING: OpenGL has already been initialized for display %!\n", display);
+        return;
+    }
+
     if display.tag == {
         case X11Display; {
             xd := isa(display, X11Display);
@@ -40,6 +45,16 @@ create_gl_context :: (display: LDDisplay, major_version := 0, minor_version := 0
             wld := isa(display, WLDisplay);
             wld.egl_dpy, wld.egl_ctx, wld.egl_cnf = egl_create_context(
                 wld.handle, major_version, minor_version, compatibility, debug);
+
+            wls := wl_compositor.create_surface(wld.compositor);
+            wln := wl_egl_window.create(wls, 1, 1);
+            egs := eglCreateWindowSurface(wld.egl_dpy, wld.egl_cnf, wln, null);
+            eglMakeCurrent(wld.egl_dpy, egs, egs, wld.egl_ctx);
+            gl_load(*gl, eglGetProcAddress);
+            eglMakeCurrent(wld.egl_dpy, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
+            eglDestroySurface(wld.egl_dpy, egs);
+            wl_egl_window.destroy(wln);
+            wl_surface.destroy(wls);
         }
     }
 }
@@ -49,6 +64,11 @@ create_gl_context :: inline (major_version := 0, minor_version := 0, compatibili
 }
 
 create_gl_surface :: (win: LDWindow) {
+    if gl_initialized(win) {
+        log_error("WARNING: window % already has an associated EGL surface!\n", win);
+        return;
+    }
+
     if win.tag == {
         case X11Window; {
             w := isa(win, X11Window);
@@ -58,6 +78,9 @@ create_gl_surface :: (win: LDWindow) {
             w := isa(win, WLWindow);
             w.egl_native = wl_egl_window.create(w.handle, w.width, w.height);
             w.egl_surface = eglCreateWindowSurface(w.display.egl_dpy, w.display.egl_cnf, w.egl_native, null);
+            eglMakeCurrent(w.display.egl_dpy, w.egl_surface, w.egl_surface, w.display.egl_ctx);
+            wl_surface.damage(w.handle, 0, 0, w.width, w.height);
+            wl_surface.commit(w.handle);
             wl_setup_frame_updates(w);
         }
     }
@@ -94,6 +117,22 @@ swap_buffers :: (win: LDWindow) {
 
 #scope_file
 GL :: #import "GL";
+
+gl_initialized :: (display: LDDisplay) -> bool {
+    if display.tag == {
+        case X11Display; return isa(display, X11Display).glx_ctx != null;
+        case WLDisplay; return isa(display, WLDisplay).egl_ctx != null;
+        case; return false;
+    }
+}
+
+gl_initialized :: (win: LDWindow) -> bool {
+    if win.tag == {
+        case X11Window; return isa(win, X11Window).glx_win != None;
+        case WLWindow; return isa(win, WLWindow).egl_surface != null;
+        case; return false;
+    }
+}
 
 egl_create_context :: (native_display: EGLNativeDisplayType, major_version := 0, minor_version := 0,
     compatibility := false, debug := false) -> EGLDisplay, EGLContext, EGLConfig
