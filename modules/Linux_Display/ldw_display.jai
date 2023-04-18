@@ -430,6 +430,13 @@ wl_get_dimensions :: (w: *WLWindow, right_handed: bool) -> (x: s32, y: s32, widt
     return 0, 0, w.width, w.height, true;
 }
 
+wl_toggle_fullscreen :: (w: *WLWindow, desire_fullscreen: bool, _unused: *void) -> bool, s32, s32 {
+    if desire_fullscreen xdg_toplevel.set_fullscreen(w.x_toplevel, null);
+    else xdg_toplevel.unset_fullscreen(w.x_toplevel);
+    wl_display.roundtrip(w.display.handle);
+    return true, w.width, w.height;
+}
+
 #scope_file
 
 DATA_OFFER_READ_SIZE :: 2048;

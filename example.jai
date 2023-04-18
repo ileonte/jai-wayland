@@ -211,6 +211,7 @@ main :: () {
 
 
     quit := false;
+    fullscreen := false;
     while !quit {
         current_time = get_time();
         dt := cast(float)(current_time - last_time);
@@ -241,6 +242,11 @@ main :: () {
               case .KEYBOARD;
                 if event.key_pressed && event.key_code == .ESCAPE {
                     active_widget_deactivate_all();
+                }
+
+                if event.key_pressed && event.key_code == .F11 {
+                    ok, w, h := toggle_fullscreen(my_window, !fullscreen, null);
+                    fullscreen = (ok && !fullscreen);
                 }
 
               case .DRAG_AND_DROP_FILES;

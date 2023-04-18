@@ -57,7 +57,7 @@ toggle_fullscreen :: (win: LDWindow, desire_fullscreen: bool, saved: *Saved_Wind
     s := false;
     if global_display.tag == {
         case X11Display; s, w, h = x11_toggle_fullscreen(isa(win, X11Window), desire_fullscreen, saved);
-        case WLDisplay;
+        case WLDisplay; s, w, h = wl_toggle_fullscreen(isa(win, WLWindow), desire_fullscreen, saved);
     }
     return s, w, h;
 }
