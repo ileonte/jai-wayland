@@ -82,3 +82,8 @@ wl_min :: (a: $T, b: T) -> T #c_call {
     if a < b return a;
     return b;
 }
+
+wl_max :: (a: $T, b: T) -> T #c_call {
+    if a > b return a;
+    return b;
+}
