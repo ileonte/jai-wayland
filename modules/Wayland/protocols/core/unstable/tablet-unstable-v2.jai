@@ -6,6 +6,7 @@
 zwp_tablet_manager_v2_interface: wl_interface;
 zwp_tablet_manager_v2 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_tablet_manager_v2_interface;
 
     set_user_data :: inline (self: *zwp_tablet_manager_v2, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -42,6 +43,7 @@ ZWP_TABLET_MANAGER_V2_DESTROY_SINCE         : u32 : 1;
 zwp_tablet_seat_v2_interface: wl_interface;
 zwp_tablet_seat_v2 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_tablet_seat_v2_interface;
 
     set_user_data :: inline (self: *zwp_tablet_seat_v2, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -93,6 +95,7 @@ zwp_tablet_seat_v2_listener :: struct {
 zwp_tablet_tool_v2_interface: wl_interface;
 zwp_tablet_tool_v2 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_tablet_tool_v2_interface;
 
     /* ENUM: zwp_tablet_tool_v2::type */
     type_pen      : u32 : 0x140;
@@ -263,6 +266,7 @@ zwp_tablet_tool_v2_listener :: struct {
 zwp_tablet_v2_interface: wl_interface;
 zwp_tablet_v2 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_tablet_v2_interface;
 
     set_user_data :: inline (self: *zwp_tablet_v2, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -323,6 +327,7 @@ zwp_tablet_v2_listener :: struct {
 zwp_tablet_pad_ring_v2_interface: wl_interface;
 zwp_tablet_pad_ring_v2 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_tablet_pad_ring_v2_interface;
 
     /* ENUM: zwp_tablet_pad_ring_v2::source */
     source_finger : u32 : 1;
@@ -390,6 +395,7 @@ zwp_tablet_pad_ring_v2_listener :: struct {
 zwp_tablet_pad_strip_v2_interface: wl_interface;
 zwp_tablet_pad_strip_v2 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_tablet_pad_strip_v2_interface;
 
     /* ENUM: zwp_tablet_pad_strip_v2::source */
     source_finger : u32 : 1;
@@ -457,6 +463,7 @@ zwp_tablet_pad_strip_v2_listener :: struct {
 zwp_tablet_pad_group_v2_interface: wl_interface;
 zwp_tablet_pad_group_v2 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_tablet_pad_group_v2_interface;
 
     set_user_data :: inline (self: *zwp_tablet_pad_group_v2, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -524,6 +531,7 @@ zwp_tablet_pad_group_v2_listener :: struct {
 zwp_tablet_pad_v2_interface: wl_interface;
 zwp_tablet_pad_v2 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_tablet_pad_v2_interface;
 
     /* ENUM: zwp_tablet_pad_v2::button_state */
     button_state_released : u32 : 0;

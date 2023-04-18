@@ -6,6 +6,7 @@
 zwp_fullscreen_shell_v1_interface: wl_interface;
 zwp_fullscreen_shell_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_fullscreen_shell_v1_interface;
 
     /* ENUM: zwp_fullscreen_shell_v1::capability */
     capability_arbitrary_modes : u32 : 1;
@@ -85,6 +86,7 @@ zwp_fullscreen_shell_v1_listener :: struct {
 zwp_fullscreen_shell_mode_feedback_v1_interface: wl_interface;
 zwp_fullscreen_shell_mode_feedback_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_fullscreen_shell_mode_feedback_v1_interface;
 
     set_user_data :: inline (self: *zwp_fullscreen_shell_mode_feedback_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

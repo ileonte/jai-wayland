@@ -6,6 +6,7 @@
 wp_drm_lease_device_v1_interface: wl_interface;
 wp_drm_lease_device_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wp_drm_lease_device_v1_interface;
 
     set_user_data :: inline (self: *wp_drm_lease_device_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -74,6 +75,7 @@ wp_drm_lease_device_v1_listener :: struct {
 wp_drm_lease_connector_v1_interface: wl_interface;
 wp_drm_lease_connector_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wp_drm_lease_connector_v1_interface;
 
     set_user_data :: inline (self: *wp_drm_lease_connector_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -133,6 +135,7 @@ wp_drm_lease_connector_v1_listener :: struct {
 wp_drm_lease_request_v1_interface: wl_interface;
 wp_drm_lease_request_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wp_drm_lease_request_v1_interface;
 
     /* ENUM: wp_drm_lease_request_v1::error */
     error_wrong_device        : u32 : 0;
@@ -179,6 +182,7 @@ WP_DRM_LEASE_REQUEST_V1_SUBMIT_SINCE            : u32 : 1;
 wp_drm_lease_v1_interface: wl_interface;
 wp_drm_lease_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wp_drm_lease_v1_interface;
 
     set_user_data :: inline (self: *wp_drm_lease_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

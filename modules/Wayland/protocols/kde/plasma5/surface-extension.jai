@@ -6,6 +6,7 @@
 qt_surface_extension_interface: wl_interface;
 qt_surface_extension :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *qt_surface_extension_interface;
 
     set_user_data :: inline (self: *qt_surface_extension, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -38,6 +39,7 @@ QT_SURFACE_EXTENSION_GET_EXTENDED_SURFACE_SINCE : u32 : 1;
 qt_extended_surface_interface: wl_interface;
 qt_extended_surface :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *qt_extended_surface_interface;
 
     /* ENUM: qt_extended_surface::orientation */
     orientation_PrimaryOrientation           : u32 : 0;

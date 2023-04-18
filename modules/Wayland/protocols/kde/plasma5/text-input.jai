@@ -6,6 +6,7 @@
 wl_text_input_interface: wl_interface;
 wl_text_input :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_text_input_interface;
 
     /* ENUM: wl_text_input::content_hint */
     content_hint_none                : u32 : 0x0;
@@ -256,6 +257,7 @@ wl_text_input_listener :: struct {
 wl_text_input_manager_interface: wl_interface;
 wl_text_input_manager :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_text_input_manager_interface;
 
     set_user_data :: inline (self: *wl_text_input_manager, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

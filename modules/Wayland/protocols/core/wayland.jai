@@ -6,6 +6,7 @@
 wl_display_interface: wl_interface;
 wl_display :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_display_interface;
 
     connect                :: wl_display_connect;
     connect_to_fd          :: wl_display_connect_to_fd;
@@ -91,6 +92,7 @@ wl_display_listener :: struct {
 wl_registry_interface: wl_interface;
 wl_registry :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_registry_interface;
 
     set_user_data :: inline (self: *wl_registry, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -145,6 +147,7 @@ wl_registry_listener :: struct {
 wl_callback_interface: wl_interface;
 wl_callback :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_callback_interface;
 
     set_user_data :: inline (self: *wl_callback, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -182,6 +185,7 @@ wl_callback_listener :: struct {
 wl_compositor_interface: wl_interface;
 wl_compositor :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_compositor_interface;
 
     set_user_data :: inline (self: *wl_compositor, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -224,6 +228,7 @@ WL_COMPOSITOR_CREATE_REGION_SINCE  : u32 : 1;
 wl_shm_pool_interface: wl_interface;
 wl_shm_pool :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_shm_pool_interface;
 
     set_user_data :: inline (self: *wl_shm_pool, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -269,6 +274,7 @@ WL_SHM_POOL_RESIZE_SINCE        : u32 : 1;
 wl_shm_interface: wl_interface;
 wl_shm :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_shm_interface;
 
     /* ENUM: wl_shm::error */
     error_invalid_format : u32 : 0;
@@ -431,6 +437,7 @@ wl_shm_listener :: struct {
 wl_buffer_interface: wl_interface;
 wl_buffer :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_buffer_interface;
 
     set_user_data :: inline (self: *wl_buffer, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -471,6 +478,7 @@ wl_buffer_listener :: struct {
 wl_data_offer_interface: wl_interface;
 wl_data_offer :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_data_offer_interface;
 
     /* ENUM: wl_data_offer::error */
     error_invalid_finish      : u32 : 0;
@@ -563,6 +571,7 @@ wl_data_offer_listener :: struct {
 wl_data_source_interface: wl_interface;
 wl_data_source :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_data_source_interface;
 
     /* ENUM: wl_data_source::error */
     error_invalid_action_mask : u32 : 0;
@@ -649,6 +658,7 @@ wl_data_source_listener :: struct {
 wl_data_device_interface: wl_interface;
 wl_data_device :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_data_device_interface;
 
     /* ENUM: wl_data_device::error */
     error_role : u32 : 0;
@@ -744,6 +754,7 @@ wl_data_device_listener :: struct {
 wl_data_device_manager_interface: wl_interface;
 wl_data_device_manager :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_data_device_manager_interface;
 
     /* ENUM: wl_data_device_manager::dnd_action */
     dnd_action_none : u32 : 0;
@@ -792,6 +803,7 @@ WL_DATA_DEVICE_MANAGER_GET_DATA_DEVICE_SINCE    : u32 : 1;
 wl_shell_interface: wl_interface;
 wl_shell :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_shell_interface;
 
     /* ENUM: wl_shell::error */
     error_role : u32 : 0;
@@ -827,6 +839,7 @@ WL_SHELL_GET_SHELL_SURFACE_SINCE : u32 : 1;
 wl_shell_surface_interface: wl_interface;
 wl_shell_surface :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_shell_surface_interface;
 
     /* ENUM: wl_shell_surface::resize */
     resize_none         : u32 : 0;
@@ -984,6 +997,7 @@ wl_shell_surface_listener :: struct {
 wl_surface_interface: wl_interface;
 wl_surface :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_surface_interface;
 
     /* ENUM: wl_surface::error */
     error_invalid_scale       : u32 : 0;
@@ -1137,6 +1151,7 @@ wl_surface_listener :: struct {
 wl_seat_interface: wl_interface;
 wl_seat :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_seat_interface;
 
     /* ENUM: wl_seat::capability */
     capability_pointer  : u32 : 1;
@@ -1225,6 +1240,7 @@ wl_seat_listener :: struct {
 wl_pointer_interface: wl_interface;
 wl_pointer :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_pointer_interface;
 
     /* ENUM: wl_pointer::error */
     error_role : u32 : 0;
@@ -1364,6 +1380,7 @@ wl_pointer_listener :: struct {
 wl_keyboard_interface: wl_interface;
 wl_keyboard :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_keyboard_interface;
 
     /* ENUM: wl_keyboard::keymap_format */
     keymap_format_no_keymap : u32 : 0;
@@ -1455,6 +1472,7 @@ wl_keyboard_listener :: struct {
 wl_touch_interface: wl_interface;
 wl_touch :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_touch_interface;
 
     set_user_data :: inline (self: *wl_touch, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -1541,6 +1559,7 @@ wl_touch_listener :: struct {
 wl_output_interface: wl_interface;
 wl_output :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_output_interface;
 
     /* ENUM: wl_output::subpixel */
     subpixel_unknown        : u32 : 0;
@@ -1642,6 +1661,7 @@ wl_output_listener :: struct {
 wl_region_interface: wl_interface;
 wl_region :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_region_interface;
 
     set_user_data :: inline (self: *wl_region, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -1686,6 +1706,7 @@ WL_REGION_SUBTRACT_SINCE : u32 : 1;
 wl_subcompositor_interface: wl_interface;
 wl_subcompositor :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_subcompositor_interface;
 
     /* ENUM: wl_subcompositor::error */
     error_bad_surface : u32 : 0;
@@ -1726,6 +1747,7 @@ WL_SUBCOMPOSITOR_GET_SUBSURFACE_SINCE : u32 : 1;
 wl_subsurface_interface: wl_interface;
 wl_subsurface :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_subsurface_interface;
 
     /* ENUM: wl_subsurface::error */
     error_bad_surface : u32 : 0;

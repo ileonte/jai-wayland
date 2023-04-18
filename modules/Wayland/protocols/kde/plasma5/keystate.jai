@@ -6,6 +6,7 @@
 org_kde_kwin_keystate_interface: wl_interface;
 org_kde_kwin_keystate :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_kwin_keystate_interface;
 
     /* ENUM: org_kde_kwin_keystate::key */
     key_capslock   : u32 : 0;

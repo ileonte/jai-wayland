@@ -6,6 +6,7 @@
 xdg_shell_interface: wl_interface;
 xdg_shell :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *xdg_shell_interface;
 
     /* ENUM: xdg_shell::version */
     version_current : u32 : 5;
@@ -94,6 +95,7 @@ xdg_shell_listener :: struct {
 xdg_surface_interface: wl_interface;
 xdg_surface :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *xdg_surface_interface;
 
     /* ENUM: xdg_surface::resize_edge */
     resize_edge_none         : u32 : 0;
@@ -272,6 +274,7 @@ xdg_surface_listener :: struct {
 xdg_popup_interface: wl_interface;
 xdg_popup :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *xdg_popup_interface;
 
     set_user_data :: inline (self: *xdg_popup, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

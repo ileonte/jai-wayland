@@ -6,6 +6,7 @@
 zwp_tablet_manager_v1_interface: wl_interface;
 zwp_tablet_manager_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_tablet_manager_v1_interface;
 
     set_user_data :: inline (self: *zwp_tablet_manager_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -42,6 +43,7 @@ ZWP_TABLET_MANAGER_V1_DESTROY_SINCE         : u32 : 1;
 zwp_tablet_seat_v1_interface: wl_interface;
 zwp_tablet_seat_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_tablet_seat_v1_interface;
 
     set_user_data :: inline (self: *zwp_tablet_seat_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -88,6 +90,7 @@ zwp_tablet_seat_v1_listener :: struct {
 zwp_tablet_tool_v1_interface: wl_interface;
 zwp_tablet_tool_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_tablet_tool_v1_interface;
 
     /* ENUM: zwp_tablet_tool_v1::type */
     type_pen      : u32 : 0x140;
@@ -258,6 +261,7 @@ zwp_tablet_tool_v1_listener :: struct {
 zwp_tablet_v1_interface: wl_interface;
 zwp_tablet_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_tablet_v1_interface;
 
     set_user_data :: inline (self: *zwp_tablet_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

@@ -6,6 +6,7 @@
 xdg_activation_v1_interface: wl_interface;
 xdg_activation_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *xdg_activation_v1_interface;
 
     set_user_data :: inline (self: *xdg_activation_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -51,6 +52,7 @@ XDG_ACTIVATION_V1_ACTIVATE_SINCE             : u32 : 1;
 xdg_activation_token_v1_interface: wl_interface;
 xdg_activation_token_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *xdg_activation_token_v1_interface;
 
     /* ENUM: xdg_activation_token_v1::error */
     error_already_used : u32 : 0;

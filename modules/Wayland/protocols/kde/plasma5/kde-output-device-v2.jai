@@ -6,6 +6,7 @@
 kde_output_device_v2_interface: wl_interface;
 kde_output_device_v2 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *kde_output_device_v2_interface;
 
     /* ENUM: kde_output_device_v2::subpixel */
     subpixel_unknown        : u32 : 0;
@@ -152,6 +153,7 @@ kde_output_device_v2_listener :: struct {
 kde_output_device_mode_v2_interface: wl_interface;
 kde_output_device_mode_v2 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *kde_output_device_mode_v2_interface;
 
     set_user_data :: inline (self: *kde_output_device_mode_v2, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

@@ -6,6 +6,7 @@
 zwp_primary_selection_device_manager_v1_interface: wl_interface;
 zwp_primary_selection_device_manager_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_primary_selection_device_manager_v1_interface;
 
     set_user_data :: inline (self: *zwp_primary_selection_device_manager_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -52,6 +53,7 @@ ZWP_PRIMARY_SELECTION_DEVICE_MANAGER_V1_DESTROY_SINCE       : u32 : 1;
 zwp_primary_selection_device_v1_interface: wl_interface;
 zwp_primary_selection_device_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_primary_selection_device_v1_interface;
 
     set_user_data :: inline (self: *zwp_primary_selection_device_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -107,6 +109,7 @@ zwp_primary_selection_device_v1_listener :: struct {
 zwp_primary_selection_offer_v1_interface: wl_interface;
 zwp_primary_selection_offer_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_primary_selection_offer_v1_interface;
 
     set_user_data :: inline (self: *zwp_primary_selection_offer_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -157,6 +160,7 @@ zwp_primary_selection_offer_v1_listener :: struct {
 zwp_primary_selection_source_v1_interface: wl_interface;
 zwp_primary_selection_source_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_primary_selection_source_v1_interface;
 
     set_user_data :: inline (self: *zwp_primary_selection_source_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

@@ -6,6 +6,7 @@
 org_kde_kwin_fake_input_interface: wl_interface;
 org_kde_kwin_fake_input :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_kwin_fake_input_interface;
 
     set_user_data :: inline (self: *org_kde_kwin_fake_input, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

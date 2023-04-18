@@ -6,6 +6,7 @@
 zwp_idle_inhibit_manager_v1_interface: wl_interface;
 zwp_idle_inhibit_manager_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_idle_inhibit_manager_v1_interface;
 
     set_user_data :: inline (self: *zwp_idle_inhibit_manager_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -42,6 +43,7 @@ ZWP_IDLE_INHIBIT_MANAGER_V1_CREATE_INHIBITOR_SINCE : u32 : 1;
 zwp_idle_inhibitor_v1_interface: wl_interface;
 zwp_idle_inhibitor_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_idle_inhibitor_v1_interface;
 
     set_user_data :: inline (self: *zwp_idle_inhibitor_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

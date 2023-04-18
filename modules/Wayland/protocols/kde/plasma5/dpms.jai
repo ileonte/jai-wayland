@@ -6,6 +6,7 @@
 org_kde_kwin_dpms_manager_interface: wl_interface;
 org_kde_kwin_dpms_manager :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_kwin_dpms_manager_interface;
 
     set_user_data :: inline (self: *org_kde_kwin_dpms_manager, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -38,6 +39,7 @@ ORG_KDE_KWIN_DPMS_MANAGER_GET_SINCE : u32 : 1;
 org_kde_kwin_dpms_interface: wl_interface;
 org_kde_kwin_dpms :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_kwin_dpms_interface;
 
     /* ENUM: org_kde_kwin_dpms::mode */
     mode_On      : u32 : 0;

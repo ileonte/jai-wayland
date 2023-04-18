@@ -6,6 +6,7 @@
 org_kde_kwin_idle_interface: wl_interface;
 org_kde_kwin_idle :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_kwin_idle_interface;
 
     set_user_data :: inline (self: *org_kde_kwin_idle, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -38,6 +39,7 @@ ORG_KDE_KWIN_IDLE_GET_IDLE_TIMEOUT_SINCE : u32 : 1;
 org_kde_kwin_idle_timeout_interface: wl_interface;
 org_kde_kwin_idle_timeout :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_kwin_idle_timeout_interface;
 
     set_user_data :: inline (self: *org_kde_kwin_idle_timeout, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

@@ -6,6 +6,7 @@
 org_kde_plasma_virtual_desktop_management_interface: wl_interface;
 org_kde_plasma_virtual_desktop_management :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_plasma_virtual_desktop_management_interface;
 
     set_user_data :: inline (self: *org_kde_plasma_virtual_desktop_management, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -86,6 +87,7 @@ org_kde_plasma_virtual_desktop_management_listener :: struct {
 org_kde_plasma_virtual_desktop_interface: wl_interface;
 org_kde_plasma_virtual_desktop :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_plasma_virtual_desktop_interface;
 
     set_user_data :: inline (self: *org_kde_plasma_virtual_desktop, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

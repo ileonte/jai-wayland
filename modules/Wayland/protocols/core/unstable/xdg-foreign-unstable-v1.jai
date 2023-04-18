@@ -6,6 +6,7 @@
 zxdg_exporter_v1_interface: wl_interface;
 zxdg_exporter_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zxdg_exporter_v1_interface;
 
     set_user_data :: inline (self: *zxdg_exporter_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -42,6 +43,7 @@ ZXDG_EXPORTER_V1_EXPORT_SINCE  : u32 : 1;
 zxdg_importer_v1_interface: wl_interface;
 zxdg_importer_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zxdg_importer_v1_interface;
 
     set_user_data :: inline (self: *zxdg_importer_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -78,6 +80,7 @@ ZXDG_IMPORTER_V1_IMPORT_SINCE  : u32 : 1;
 zxdg_exported_v1_interface: wl_interface;
 zxdg_exported_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zxdg_exported_v1_interface;
 
     set_user_data :: inline (self: *zxdg_exported_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -119,6 +122,7 @@ zxdg_exported_v1_listener :: struct {
 zxdg_imported_v1_interface: wl_interface;
 zxdg_imported_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zxdg_imported_v1_interface;
 
     set_user_data :: inline (self: *zxdg_imported_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

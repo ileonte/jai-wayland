@@ -6,6 +6,7 @@
 wp_fractional_scale_manager_v1_interface: wl_interface;
 wp_fractional_scale_manager_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wp_fractional_scale_manager_v1_interface;
 
     /* ENUM: wp_fractional_scale_manager_v1::error */
     error_fractional_scale_exists : u32 : 0;
@@ -45,6 +46,7 @@ WP_FRACTIONAL_SCALE_MANAGER_V1_GET_FRACTIONAL_SCALE_SINCE : u32 : 1;
 wp_fractional_scale_v1_interface: wl_interface;
 wp_fractional_scale_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wp_fractional_scale_v1_interface;
 
     set_user_data :: inline (self: *wp_fractional_scale_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

@@ -6,6 +6,7 @@
 org_kde_kwin_blur_manager_interface: wl_interface;
 org_kde_kwin_blur_manager :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_kwin_blur_manager_interface;
 
     set_user_data :: inline (self: *org_kde_kwin_blur_manager, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -47,6 +48,7 @@ ORG_KDE_KWIN_BLUR_MANAGER_UNSET_SINCE  : u32 : 1;
 org_kde_kwin_blur_interface: wl_interface;
 org_kde_kwin_blur :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_kwin_blur_interface;
 
     set_user_data :: inline (self: *org_kde_kwin_blur, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

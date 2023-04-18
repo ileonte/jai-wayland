@@ -6,6 +6,7 @@
 kde_primary_output_v1_interface: wl_interface;
 kde_primary_output_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *kde_primary_output_v1_interface;
 
     set_user_data :: inline (self: *kde_primary_output_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

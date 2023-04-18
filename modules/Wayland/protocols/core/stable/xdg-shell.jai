@@ -6,6 +6,7 @@
 xdg_wm_base_interface: wl_interface;
 xdg_wm_base :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *xdg_wm_base_interface;
 
     /* ENUM: xdg_wm_base::error */
     error_role                  : u32 : 0;
@@ -85,6 +86,7 @@ xdg_wm_base_listener :: struct {
 xdg_positioner_interface: wl_interface;
 xdg_positioner :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *xdg_positioner_interface;
 
     /* ENUM: xdg_positioner::error */
     error_invalid_input : u32 : 0;
@@ -225,6 +227,7 @@ XDG_POSITIONER_SET_PARENT_CONFIGURE_SINCE      : u32 : 3;
 xdg_surface_interface: wl_interface;
 xdg_surface :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *xdg_surface_interface;
 
     /* ENUM: xdg_surface::error */
     error_not_constructed     : u32 : 1;
@@ -312,6 +315,7 @@ xdg_surface_listener :: struct {
 xdg_toplevel_interface: wl_interface;
 xdg_toplevel :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *xdg_toplevel_interface;
 
     /* ENUM: xdg_toplevel::error */
     error_invalid_resize_edge : u32 : 0;
@@ -515,6 +519,7 @@ xdg_toplevel_listener :: struct {
 xdg_popup_interface: wl_interface;
 xdg_popup :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *xdg_popup_interface;
 
     /* ENUM: xdg_popup::error */
     error_invalid_grab : u32 : 0;

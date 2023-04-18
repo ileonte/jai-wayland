@@ -6,6 +6,7 @@
 wp_content_type_manager_v1_interface: wl_interface;
 wp_content_type_manager_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wp_content_type_manager_v1_interface;
 
     /* ENUM: wp_content_type_manager_v1::error */
     error_already_constructed : u32 : 0;
@@ -45,6 +46,7 @@ WP_CONTENT_TYPE_MANAGER_V1_GET_SURFACE_CONTENT_TYPE_SINCE : u32 : 1;
 wp_content_type_v1_interface: wl_interface;
 wp_content_type_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wp_content_type_v1_interface;
 
     /* ENUM: wp_content_type_v1::type */
     type_none  : u32 : 0;

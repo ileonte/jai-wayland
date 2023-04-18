@@ -6,6 +6,7 @@
 org_kde_kwin_remote_access_manager_interface: wl_interface;
 org_kde_kwin_remote_access_manager :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_kwin_remote_access_manager_interface;
 
     set_user_data :: inline (self: *org_kde_kwin_remote_access_manager, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -62,6 +63,7 @@ org_kde_kwin_remote_access_manager_listener :: struct {
 org_kde_kwin_remote_buffer_interface: wl_interface;
 org_kde_kwin_remote_buffer :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_kwin_remote_buffer_interface;
 
     set_user_data :: inline (self: *org_kde_kwin_remote_buffer, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

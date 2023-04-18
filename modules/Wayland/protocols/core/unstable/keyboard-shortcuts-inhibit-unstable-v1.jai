@@ -6,6 +6,7 @@
 zwp_keyboard_shortcuts_inhibit_manager_v1_interface: wl_interface;
 zwp_keyboard_shortcuts_inhibit_manager_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_keyboard_shortcuts_inhibit_manager_v1_interface;
 
     /* ENUM: zwp_keyboard_shortcuts_inhibit_manager_v1::error */
     error_already_inhibited : u32 : 0;
@@ -45,6 +46,7 @@ ZWP_KEYBOARD_SHORTCUTS_INHIBIT_MANAGER_V1_INHIBIT_SHORTCUTS_SINCE : u32 : 1;
 zwp_keyboard_shortcuts_inhibitor_v1_interface: wl_interface;
 zwp_keyboard_shortcuts_inhibitor_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_keyboard_shortcuts_inhibitor_v1_interface;
 
     set_user_data :: inline (self: *zwp_keyboard_shortcuts_inhibitor_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

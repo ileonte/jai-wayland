@@ -6,6 +6,7 @@
 org_kde_kwin_outputdevice_interface: wl_interface;
 org_kde_kwin_outputdevice :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_kwin_outputdevice_interface;
 
     /* ENUM: org_kde_kwin_outputdevice::subpixel */
     subpixel_unknown        : u32 : 0;

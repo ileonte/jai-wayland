@@ -6,6 +6,7 @@
 ext_session_lock_manager_v1_interface: wl_interface;
 ext_session_lock_manager_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *ext_session_lock_manager_v1_interface;
 
     set_user_data :: inline (self: *ext_session_lock_manager_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -42,6 +43,7 @@ EXT_SESSION_LOCK_MANAGER_V1_LOCK_SINCE    : u32 : 1;
 ext_session_lock_v1_interface: wl_interface;
 ext_session_lock_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *ext_session_lock_v1_interface;
 
     /* ENUM: ext_session_lock_v1::error */
     error_invalid_destroy     : u32 : 0;
@@ -111,6 +113,7 @@ ext_session_lock_v1_listener :: struct {
 ext_session_lock_surface_v1_interface: wl_interface;
 ext_session_lock_surface_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *ext_session_lock_surface_v1_interface;
 
     /* ENUM: ext_session_lock_surface_v1::error */
     error_commit_before_first_ack : u32 : 0;

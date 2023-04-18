@@ -6,6 +6,7 @@
 org_kde_kwin_shadow_manager_interface: wl_interface;
 org_kde_kwin_shadow_manager :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_kwin_shadow_manager_interface;
 
     set_user_data :: inline (self: *org_kde_kwin_shadow_manager, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -51,6 +52,7 @@ ORG_KDE_KWIN_SHADOW_MANAGER_DESTROY_SINCE : u32 : 2;
 org_kde_kwin_shadow_interface: wl_interface;
 org_kde_kwin_shadow :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_kwin_shadow_interface;
 
     set_user_data :: inline (self: *org_kde_kwin_shadow, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

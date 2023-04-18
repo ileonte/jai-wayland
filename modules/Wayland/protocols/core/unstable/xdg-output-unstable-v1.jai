@@ -6,6 +6,7 @@
 zxdg_output_manager_v1_interface: wl_interface;
 zxdg_output_manager_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zxdg_output_manager_v1_interface;
 
     set_user_data :: inline (self: *zxdg_output_manager_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -42,6 +43,7 @@ ZXDG_OUTPUT_MANAGER_V1_GET_XDG_OUTPUT_SINCE : u32 : 1;
 zxdg_output_v1_interface: wl_interface;
 zxdg_output_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zxdg_output_v1_interface;
 
     set_user_data :: inline (self: *zxdg_output_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

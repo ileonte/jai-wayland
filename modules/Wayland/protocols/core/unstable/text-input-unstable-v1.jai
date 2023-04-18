@@ -6,6 +6,7 @@
 zwp_text_input_v1_interface: wl_interface;
 zwp_text_input_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_text_input_v1_interface;
 
     /* ENUM: zwp_text_input_v1::content_hint */
     content_hint_none                : u32 : 0x0;
@@ -256,6 +257,7 @@ zwp_text_input_v1_listener :: struct {
 zwp_text_input_manager_v1_interface: wl_interface;
 zwp_text_input_manager_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_text_input_manager_v1_interface;
 
     set_user_data :: inline (self: *zwp_text_input_manager_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

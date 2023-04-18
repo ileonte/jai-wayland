@@ -6,6 +6,7 @@
 zwp_relative_pointer_manager_v1_interface: wl_interface;
 zwp_relative_pointer_manager_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_relative_pointer_manager_v1_interface;
 
     set_user_data :: inline (self: *zwp_relative_pointer_manager_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -42,6 +43,7 @@ ZWP_RELATIVE_POINTER_MANAGER_V1_GET_RELATIVE_POINTER_SINCE : u32 : 1;
 zwp_relative_pointer_v1_interface: wl_interface;
 zwp_relative_pointer_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_relative_pointer_v1_interface;
 
     set_user_data :: inline (self: *zwp_relative_pointer_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

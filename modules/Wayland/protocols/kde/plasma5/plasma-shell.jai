@@ -6,6 +6,7 @@
 org_kde_plasma_shell_interface: wl_interface;
 org_kde_plasma_shell :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_plasma_shell_interface;
 
     set_user_data :: inline (self: *org_kde_plasma_shell, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -38,6 +39,7 @@ ORG_KDE_PLASMA_SHELL_GET_SURFACE_SINCE : u32 : 1;
 org_kde_plasma_surface_interface: wl_interface;
 org_kde_plasma_surface :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_plasma_surface_interface;
 
     /* ENUM: org_kde_plasma_surface::role */
     role_normal               : u32 : 0;

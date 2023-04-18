@@ -6,6 +6,7 @@
 wp_tearing_control_manager_v1_interface: wl_interface;
 wp_tearing_control_manager_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wp_tearing_control_manager_v1_interface;
 
     /* ENUM: wp_tearing_control_manager_v1::error */
     error_tearing_control_exists : u32 : 0;
@@ -45,6 +46,7 @@ WP_TEARING_CONTROL_MANAGER_V1_GET_TEARING_CONTROL_SINCE : u32 : 1;
 wp_tearing_control_v1_interface: wl_interface;
 wp_tearing_control_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wp_tearing_control_v1_interface;
 
     /* ENUM: wp_tearing_control_v1::presentation_hint */
     presentation_hint_vsync : u32 : 0;

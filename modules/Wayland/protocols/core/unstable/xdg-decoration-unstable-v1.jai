@@ -6,6 +6,7 @@
 zxdg_decoration_manager_v1_interface: wl_interface;
 zxdg_decoration_manager_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zxdg_decoration_manager_v1_interface;
 
     set_user_data :: inline (self: *zxdg_decoration_manager_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -42,6 +43,7 @@ ZXDG_DECORATION_MANAGER_V1_GET_TOPLEVEL_DECORATION_SINCE : u32 : 1;
 zxdg_toplevel_decoration_v1_interface: wl_interface;
 zxdg_toplevel_decoration_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zxdg_toplevel_decoration_v1_interface;
 
     /* ENUM: zxdg_toplevel_decoration_v1::error */
     error_unconfigured_buffer : u32 : 0;

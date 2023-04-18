@@ -6,6 +6,7 @@
 wp_presentation_interface: wl_interface;
 wp_presentation :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wp_presentation_interface;
 
     /* ENUM: wp_presentation::error */
     error_invalid_timestamp : u32 : 0;
@@ -61,6 +62,7 @@ wp_presentation_listener :: struct {
 wp_presentation_feedback_interface: wl_interface;
 wp_presentation_feedback :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wp_presentation_feedback_interface;
 
     /* ENUM: wp_presentation_feedback::kind */
     kind_vsync         : u32 : 0x1;

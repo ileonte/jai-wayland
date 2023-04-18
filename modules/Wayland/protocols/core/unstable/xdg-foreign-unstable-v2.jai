@@ -6,6 +6,7 @@
 zxdg_exporter_v2_interface: wl_interface;
 zxdg_exporter_v2 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zxdg_exporter_v2_interface;
 
     /* ENUM: zxdg_exporter_v2::error */
     error_invalid_surface : u32 : 0;
@@ -45,6 +46,7 @@ ZXDG_EXPORTER_V2_EXPORT_TOPLEVEL_SINCE : u32 : 1;
 zxdg_importer_v2_interface: wl_interface;
 zxdg_importer_v2 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zxdg_importer_v2_interface;
 
     set_user_data :: inline (self: *zxdg_importer_v2, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -81,6 +83,7 @@ ZXDG_IMPORTER_V2_IMPORT_TOPLEVEL_SINCE : u32 : 1;
 zxdg_exported_v2_interface: wl_interface;
 zxdg_exported_v2 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zxdg_exported_v2_interface;
 
     set_user_data :: inline (self: *zxdg_exported_v2, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -122,6 +125,7 @@ zxdg_exported_v2_listener :: struct {
 zxdg_imported_v2_interface: wl_interface;
 zxdg_imported_v2 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zxdg_imported_v2_interface;
 
     /* ENUM: zxdg_imported_v2::error */
     error_invalid_surface : u32 : 0;

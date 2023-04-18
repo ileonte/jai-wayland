@@ -6,6 +6,7 @@
 zwp_input_timestamps_manager_v1_interface: wl_interface;
 zwp_input_timestamps_manager_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_input_timestamps_manager_v1_interface;
 
     set_user_data :: inline (self: *zwp_input_timestamps_manager_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -62,6 +63,7 @@ ZWP_INPUT_TIMESTAMPS_MANAGER_V1_GET_TOUCH_TIMESTAMPS_SINCE    : u32 : 1;
 zwp_input_timestamps_v1_interface: wl_interface;
 zwp_input_timestamps_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_input_timestamps_v1_interface;
 
     set_user_data :: inline (self: *zwp_input_timestamps_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

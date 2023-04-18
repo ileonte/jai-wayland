@@ -6,6 +6,7 @@
 org_kde_kwin_server_decoration_manager_interface: wl_interface;
 org_kde_kwin_server_decoration_manager :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_kwin_server_decoration_manager_interface;
 
     /* ENUM: org_kde_kwin_server_decoration_manager::mode */
     mode_None   : u32 : 0;
@@ -58,6 +59,7 @@ org_kde_kwin_server_decoration_manager_listener :: struct {
 org_kde_kwin_server_decoration_interface: wl_interface;
 org_kde_kwin_server_decoration :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_kwin_server_decoration_interface;
 
     /* ENUM: org_kde_kwin_server_decoration::mode */
     mode_None   : u32 : 0;

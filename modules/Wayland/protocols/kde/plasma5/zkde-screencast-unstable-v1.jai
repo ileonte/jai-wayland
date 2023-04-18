@@ -6,6 +6,7 @@
 zkde_screencast_unstable_v1_interface: wl_interface;
 zkde_screencast_unstable_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zkde_screencast_unstable_v1_interface;
 
     /* ENUM: zkde_screencast_unstable_v1::pointer */
     pointer_hidden   : u32 : 1;
@@ -77,6 +78,7 @@ ZKDE_SCREENCAST_UNSTABLE_V1_STREAM_REGION_SINCE         : u32 : 3;
 zkde_screencast_stream_unstable_v1_interface: wl_interface;
 zkde_screencast_stream_unstable_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zkde_screencast_stream_unstable_v1_interface;
 
     set_user_data :: inline (self: *zkde_screencast_stream_unstable_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

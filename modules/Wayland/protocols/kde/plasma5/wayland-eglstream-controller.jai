@@ -6,6 +6,7 @@
 wl_eglstream_controller_interface: wl_interface;
 wl_eglstream_controller :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wl_eglstream_controller_interface;
 
     /* ENUM: wl_eglstream_controller::present_mode */
     present_mode_dont_care : u32 : 0;

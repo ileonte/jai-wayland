@@ -6,6 +6,7 @@
 xwayland_shell_v1_interface: wl_interface;
 xwayland_shell_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *xwayland_shell_v1_interface;
 
     /* ENUM: xwayland_shell_v1::error */
     error_role : u32 : 0;
@@ -45,6 +46,7 @@ XWAYLAND_SHELL_V1_GET_XWAYLAND_SURFACE_SINCE : u32 : 1;
 xwayland_surface_v1_interface: wl_interface;
 xwayland_surface_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *xwayland_surface_v1_interface;
 
     /* ENUM: xwayland_surface_v1::error */
     error_already_associated : u32 : 0;

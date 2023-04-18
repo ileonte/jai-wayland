@@ -6,6 +6,7 @@
 kde_lockscreen_overlay_v1_interface: wl_interface;
 kde_lockscreen_overlay_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *kde_lockscreen_overlay_v1_interface;
 
     /* ENUM: kde_lockscreen_overlay_v1::error */
     error_invalid_surface_state : u32 : 0;

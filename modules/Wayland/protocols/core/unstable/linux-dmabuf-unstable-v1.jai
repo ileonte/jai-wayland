@@ -6,6 +6,7 @@
 zwp_linux_dmabuf_v1_interface: wl_interface;
 zwp_linux_dmabuf_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_linux_dmabuf_v1_interface;
 
     set_user_data :: inline (self: *zwp_linux_dmabuf_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -84,6 +85,7 @@ zwp_linux_dmabuf_v1_listener :: struct {
 zwp_linux_buffer_params_v1_interface: wl_interface;
 zwp_linux_buffer_params_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_linux_buffer_params_v1_interface;
 
     /* ENUM: zwp_linux_buffer_params_v1::error */
     error_already_used       : u32 : 0;
@@ -172,6 +174,7 @@ zwp_linux_buffer_params_v1_listener :: struct {
 zwp_linux_dmabuf_feedback_v1_interface: wl_interface;
 zwp_linux_dmabuf_feedback_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_linux_dmabuf_feedback_v1_interface;
 
     /* ENUM: zwp_linux_dmabuf_feedback_v1::tranche_flags */
     tranche_flags_scanout : u32 : 1;

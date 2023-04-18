@@ -6,6 +6,7 @@
 org_kde_kwin_outputmanagement_interface: wl_interface;
 org_kde_kwin_outputmanagement :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_kwin_outputmanagement_interface;
 
     set_user_data :: inline (self: *org_kde_kwin_outputmanagement, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -38,6 +39,7 @@ ORG_KDE_KWIN_OUTPUTMANAGEMENT_CREATE_CONFIGURATION_SINCE : u32 : 1;
 org_kde_kwin_outputconfiguration_interface: wl_interface;
 org_kde_kwin_outputconfiguration :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_kwin_outputconfiguration_interface;
 
     /* ENUM: org_kde_kwin_outputconfiguration::vrr_policy */
     vrr_policy_never     : u32 : 0;

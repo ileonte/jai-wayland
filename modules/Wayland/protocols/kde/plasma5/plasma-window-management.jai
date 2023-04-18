@@ -6,6 +6,7 @@
 org_kde_plasma_window_management_interface: wl_interface;
 org_kde_plasma_window_management :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_plasma_window_management_interface;
 
     /* ENUM: org_kde_plasma_window_management::state */
     state_active                     : u32 : 1 << 0;
@@ -118,6 +119,7 @@ org_kde_plasma_window_management_listener :: struct {
 org_kde_plasma_window_interface: wl_interface;
 org_kde_plasma_window :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_plasma_window_interface;
 
     set_user_data :: inline (self: *org_kde_plasma_window, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -362,6 +364,7 @@ org_kde_plasma_window_listener :: struct {
 org_kde_plasma_activation_feedback_interface: wl_interface;
 org_kde_plasma_activation_feedback :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_plasma_activation_feedback_interface;
 
     set_user_data :: inline (self: *org_kde_plasma_activation_feedback, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -403,6 +406,7 @@ org_kde_plasma_activation_feedback_listener :: struct {
 org_kde_plasma_activation_interface: wl_interface;
 org_kde_plasma_activation :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *org_kde_plasma_activation_interface;
 
     set_user_data :: inline (self: *org_kde_plasma_activation, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

@@ -6,6 +6,7 @@
 wp_viewporter_interface: wl_interface;
 wp_viewporter :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wp_viewporter_interface;
 
     /* ENUM: wp_viewporter::error */
     error_viewport_exists : u32 : 0;
@@ -45,6 +46,7 @@ WP_VIEWPORTER_GET_VIEWPORT_SINCE : u32 : 1;
 wp_viewport_interface: wl_interface;
 wp_viewport :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wp_viewport_interface;
 
     /* ENUM: wp_viewport::error */
     error_bad_value     : u32 : 0;

@@ -6,6 +6,7 @@
 zwp_linux_explicit_synchronization_v1_interface: wl_interface;
 zwp_linux_explicit_synchronization_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_linux_explicit_synchronization_v1_interface;
 
     /* ENUM: zwp_linux_explicit_synchronization_v1::error */
     error_synchronization_exists : u32 : 0;
@@ -45,6 +46,7 @@ ZWP_LINUX_EXPLICIT_SYNCHRONIZATION_V1_GET_SYNCHRONIZATION_SINCE : u32 : 1;
 zwp_linux_surface_synchronization_v1_interface: wl_interface;
 zwp_linux_surface_synchronization_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_linux_surface_synchronization_v1_interface;
 
     /* ENUM: zwp_linux_surface_synchronization_v1::error */
     error_invalid_fence      : u32 : 0;
@@ -98,6 +100,7 @@ ZWP_LINUX_SURFACE_SYNCHRONIZATION_V1_GET_RELEASE_SINCE       : u32 : 1;
 zwp_linux_buffer_release_v1_interface: wl_interface;
 zwp_linux_buffer_release_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_linux_buffer_release_v1_interface;
 
     set_user_data :: inline (self: *zwp_linux_buffer_release_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

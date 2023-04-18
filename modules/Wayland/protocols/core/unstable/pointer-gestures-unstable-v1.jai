@@ -6,6 +6,7 @@
 zwp_pointer_gestures_v1_interface: wl_interface;
 zwp_pointer_gestures_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_pointer_gestures_v1_interface;
 
     set_user_data :: inline (self: *zwp_pointer_gestures_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -66,6 +67,7 @@ ZWP_POINTER_GESTURES_V1_GET_HOLD_GESTURE_SINCE  : u32 : 3;
 zwp_pointer_gesture_swipe_v1_interface: wl_interface;
 zwp_pointer_gesture_swipe_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_pointer_gesture_swipe_v1_interface;
 
     set_user_data :: inline (self: *zwp_pointer_gesture_swipe_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -124,6 +126,7 @@ zwp_pointer_gesture_swipe_v1_listener :: struct {
 zwp_pointer_gesture_pinch_v1_interface: wl_interface;
 zwp_pointer_gesture_pinch_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_pointer_gesture_pinch_v1_interface;
 
     set_user_data :: inline (self: *zwp_pointer_gesture_pinch_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -184,6 +187,7 @@ zwp_pointer_gesture_pinch_v1_listener :: struct {
 zwp_pointer_gesture_hold_v1_interface: wl_interface;
 zwp_pointer_gesture_hold_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zwp_pointer_gesture_hold_v1_interface;
 
     set_user_data :: inline (self: *zwp_pointer_gesture_hold_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

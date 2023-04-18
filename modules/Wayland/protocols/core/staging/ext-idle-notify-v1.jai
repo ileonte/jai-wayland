@@ -6,6 +6,7 @@
 ext_idle_notifier_v1_interface: wl_interface;
 ext_idle_notifier_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *ext_idle_notifier_v1_interface;
 
     set_user_data :: inline (self: *ext_idle_notifier_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -42,6 +43,7 @@ EXT_IDLE_NOTIFIER_V1_GET_IDLE_NOTIFICATION_SINCE : u32 : 1;
 ext_idle_notification_v1_interface: wl_interface;
 ext_idle_notification_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *ext_idle_notification_v1_interface;
 
     set_user_data :: inline (self: *ext_idle_notification_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

@@ -6,6 +6,7 @@
 kde_output_management_v2_interface: wl_interface;
 kde_output_management_v2 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *kde_output_management_v2_interface;
 
     set_user_data :: inline (self: *kde_output_management_v2, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);
@@ -38,6 +39,7 @@ KDE_OUTPUT_MANAGEMENT_V2_CREATE_CONFIGURATION_SINCE : u32 : 1;
 kde_output_configuration_v2_interface: wl_interface;
 kde_output_configuration_v2 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *kde_output_configuration_v2_interface;
 
     /* ENUM: kde_output_configuration_v2::error */
     error_already_applied : u32 : 0;

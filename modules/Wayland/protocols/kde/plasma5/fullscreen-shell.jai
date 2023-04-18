@@ -6,6 +6,7 @@
 _wl_fullscreen_shell_interface: wl_interface;
 _wl_fullscreen_shell :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *_wl_fullscreen_shell_interface;
 
     /* ENUM: _wl_fullscreen_shell::capability */
     capability_arbitrary_modes : u32 : 1;
@@ -84,6 +85,7 @@ _wl_fullscreen_shell_listener :: struct {
 _wl_fullscreen_shell_mode_feedback_interface: wl_interface;
 _wl_fullscreen_shell_mode_feedback :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *_wl_fullscreen_shell_mode_feedback_interface;
 
     set_user_data :: inline (self: *_wl_fullscreen_shell_mode_feedback, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

@@ -6,6 +6,7 @@
 wp_single_pixel_buffer_manager_v1_interface: wl_interface;
 wp_single_pixel_buffer_manager_v1 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *wp_single_pixel_buffer_manager_v1_interface;
 
     set_user_data :: inline (self: *wp_single_pixel_buffer_manager_v1, user_data: *void) #c_call {
         wl_proxy.set_user_data(self, user_data);

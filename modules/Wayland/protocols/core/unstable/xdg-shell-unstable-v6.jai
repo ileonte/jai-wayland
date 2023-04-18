@@ -6,6 +6,7 @@
 zxdg_shell_v6_interface: wl_interface;
 zxdg_shell_v6 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zxdg_shell_v6_interface;
 
     /* ENUM: zxdg_shell_v6::error */
     error_role                  : u32 : 0;
@@ -84,6 +85,7 @@ zxdg_shell_v6_listener :: struct {
 zxdg_positioner_v6_interface: wl_interface;
 zxdg_positioner_v6 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zxdg_positioner_v6_interface;
 
     /* ENUM: zxdg_positioner_v6::error */
     error_invalid_input : u32 : 0;
@@ -190,6 +192,7 @@ ZXDG_POSITIONER_V6_SET_OFFSET_SINCE                : u32 : 1;
 zxdg_surface_v6_interface: wl_interface;
 zxdg_surface_v6 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zxdg_surface_v6_interface;
 
     /* ENUM: zxdg_surface_v6::error */
     error_not_constructed     : u32 : 1;
@@ -274,6 +277,7 @@ zxdg_surface_v6_listener :: struct {
 zxdg_toplevel_v6_interface: wl_interface;
 zxdg_toplevel_v6 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zxdg_toplevel_v6_interface;
 
     /* ENUM: zxdg_toplevel_v6::resize_edge */
     resize_edge_none         : u32 : 0;
@@ -451,6 +455,7 @@ zxdg_toplevel_v6_listener :: struct {
 zxdg_popup_v6_interface: wl_interface;
 zxdg_popup_v6 :: struct {
     #as _proxy: wl_proxy;
+    _interface_ :: *zxdg_popup_v6_interface;
 
     /* ENUM: zxdg_popup_v6::error */
     error_invalid_grab : u32 : 0;
