@@ -242,6 +242,7 @@ main :: () {
                 if event.key_pressed && event.key_code == .ESCAPE {
                     active_widget_deactivate_all();
                 }
+
               case .DRAG_AND_DROP_FILES;
                 for dropped_files free(it);
                 array_reset(*dropped_files);
@@ -531,8 +532,6 @@ draw_one_frame :: (dt: float) {
             subwindow_info_text.rect = r;
             subwindow_info_text.draw                 = draw_subwindow_text;
             subwindow_info_text.title_text           = "Text";
-
-            print("%\n", subwindow_info_text);
 
             r = get_rect(9.5*k, 3*k, 3*k, 3.7*k);
             subwindow_info_circle.rect = r;
