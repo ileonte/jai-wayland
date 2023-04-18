@@ -51,15 +51,10 @@ backend_init :: (info: *Window_Info) {
 
     if do_first_time_init {
         proc : GetProcAddressFunction = null;
-        #if OS == .LINUX {
-            LD.make_current(info.window);
-            proc = LD.get_gl_proc_address_function(info.window);
-        }
-        #if OS == .MACOS {
-            NSOpenGLContext.makeCurrentContext(the_gl_context);
-        }
+        #if OS == .LINUX LD.make_current(info.window);
+        #if OS == .MACOS NSOpenGLContext.makeCurrentContext(the_gl_context);
 
-        gl_load(*gl, proc);
+        gl_load(*gl);
         gl_enable_debug_output(break_on_error = true);
 
         glGenVertexArrays(1, *opengl_is_stupid_vao);
@@ -589,7 +584,7 @@ backend_set_render_target :: (info: *Window_Info) {
             success := wglMakeCurrent(info.specific.hdc, the_gl_context);
             errno := GetLastError();
         } else #if OS == .LINUX {
-            LD.swap_buffers(info.window);
+            LD.make_current(info.window);
         } else #if OS == .MACOS {
             // Get the GL view from the window.
             // This relies on this window having a content view with OpenGL support (eg. as created by Window_Creation).
