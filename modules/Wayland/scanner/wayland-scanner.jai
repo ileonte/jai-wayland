@@ -899,7 +899,7 @@ emit_module_scope :: (ctx: *Parse_Context) {
     }
     print("    ];\n\n");
 
-    map := storage_map.data;
+    map := storage_map.data + 1;
     last := *ctx.protocol.interface_list;
     has_display_intf := false;
     for intf: wl_list_each(Interface, *ctx.protocol.interface_list) {
