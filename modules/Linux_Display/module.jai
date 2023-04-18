@@ -8,8 +8,8 @@ INVALID_WINDOW : LDWindow : null;
 
 init_display :: () -> bool {
     if global_display.tag != X11Display && global_display.tag != WLDisplay {
-        if wl_init_display(global_display) return true;
         if x11_init_display(global_display) return true;
+        if wl_init_display(global_display) return true;
     }
     return true;
 }
@@ -17,7 +17,9 @@ init_display :: () -> bool {
 /*
  * LDWindow functions
  */
-create_window :: (width: int, height: int, window_name: string, window_x := 0, window_y := 0, parent: LDWindow = INVALID_WINDOW, background_color_rgb: [3]float) -> LDWindow {
+create_window :: (width: int, height: int, window_name: string, window_x := 0, window_y := 0,
+    parent: LDWindow = INVALID_WINDOW, background_color_rgb: [3]float) -> LDWindow
+{
     if (!init_display()) return INVALID_WINDOW;
     if global_display.tag == {
         case X11Display; {
@@ -48,7 +50,9 @@ create_window :: (width: int, height: int, window_name: string, window_x := 0, w
     }
 }
 
-toggle_fullscreen :: (win: LDWindow, desire_fullscreen: bool, saved: *Saved_Window_Info) -> success: bool, width: s32, height: s32 {
+toggle_fullscreen :: (win: LDWindow, desire_fullscreen: bool, saved: *Saved_Window_Info)
+    -> success: bool, width: s32, height: s32
+{
     w, h: s32;
     s := false;
     if global_display.tag == {
@@ -145,6 +149,22 @@ update_window_events :: () {
     if global_display.tag == {
         case X11Display; x11_update_window_events(isa(global_display, X11Display));
         case WLDisplay; wl_update_window_events(isa(global_display, WLDisplay));
+    }
+}
+
+clipboard_get_text :: () -> string {
+    if global_display.tag == {
+        case X11Display; return x11_clipboard_get_text();
+        case WLDisplay; return wl_clipboard_get_text(isa(global_display, WLDisplay));
+        case; return copy_string("");
+    }
+}
+
+clipboard_set_text :: (text: string) {
+    if global_display.tag == {
+        case X11Display; x11_clipboard_set_text(text);
+        case WLDisplay; wl_clipboard_set_text(isa(global_display, WLDisplay), text);
+        case;
     }
 }
 

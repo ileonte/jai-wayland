@@ -280,6 +280,100 @@ x11_update_window_events :: (x11_display: *X11Display) {
     XUnlockDisplay(display);
 }
 
+x11_clipboard_get_text :: (win: Window) -> string {  // Allocated via alloc; should be manually freed.
+    text: string;
+    display := x_global_display;
+    selection_owner := XGetSelectionOwner(display, x_global_xa_clipboard);
+
+    // if we created the window then we pull directly from our own locat clipbuffer
+    if x_window_is_ours(display, selection_owner) {
+        return copy_string(x_global_clipboard_buffer.text_data);
+    } else if selection_owner != None {
+        property := XInternAtom(display, "JAI_SELECTION", False);
+        XConvertSelection(display, x_global_xa_clipboard, x_global_xa_utf8, property, win, CurrentTime);
+        xev: XEvent;
+
+        sleep_milliseconds(1);
+
+        // @Warning this will block until we recive a notification back from the selection owner
+        XIfEvent(display, xx *xev, x_selection_notify_predicate, *win);
+
+
+        if (cast(*XSelectionEvent) *xev).property == None then return text;
+
+        nitems, rem: u64;
+        format: s32;
+        data: *u8;
+        type: Atom;
+        if XGetWindowProperty(display, win, property, 0, 32, True, AnyPropertyType, *type, *format, *nitems, *rem, *data) == 0 {
+            temp: string;
+            temp.data = data;
+            temp.count = xx nitems;
+            text = copy_string(temp);
+            XFree(data);
+            return text;
+        }
+    }
+
+    return text;
+}
+
+x11_clipboard_get_text :: () -> string {
+    dpy := x_global_display;
+    if !dpy return "";
+    win: Window;
+    revert: s32;
+    XGetInputFocus(dpy, *win, *revert);
+    return x11_clipboard_get_text(win);
+}
+
+x11_clipboard_set_text :: (win: Window, text: string) {
+    XSetSelectionOwner(x_global_display, x_global_xa_clipboard, win, CurrentTime);
+    owner := XGetSelectionOwner(x_global_display, x_global_xa_clipboard);
+    if owner != win return;
+
+    x_release_clipboard_data();
+    x_global_clipboard_buffer.text_data = copy_string(text);
+}
+
+x11_clipboard_set_text :: (text: string) {
+    dpy := x_global_display;
+    if !dpy return;
+    win: Window;
+    revert: s32;
+    XGetInputFocus(dpy, *win, *revert);
+    x11_clipboard_set_text(win, text);
+}
+
+x11_clipboard_set_bitmap :: (win: Window, width: s32, height: s32, rgb: *u8) {
+    XSetSelectionOwner(x_global_display, x_global_xa_clipboard, win, CurrentTime);
+    owner := XGetSelectionOwner(x_global_display, x_global_xa_clipboard);
+    if owner != win return;
+
+    XLockDisplay(x_global_display);
+
+    src := rgb;
+    dst := cast(*u8) alloc(width * height * 3);
+    memcpy(dst, src, width * height * 3);
+
+    x_release_clipboard_data();
+    x_global_clipboard_buffer.rgb_data = dst;
+    x_global_clipboard_buffer.width    = width;
+    x_global_clipboard_buffer.height   = height;
+    x_global_clipboard_buffer.pitch    = width * 3;
+
+    XUnlockDisplay(x_global_display);
+}
+
+x11_clipboard_set_bitmap :: (width: s32, height: s32, rgb: *u8) {
+    dpy := x_global_display;
+    if !dpy return;
+    win: Window;
+    revert: s32;
+    XGetInputFocus(dpy, *win, *revert);
+    x11_clipboard_set_bitmap(win, width, height, rgb);
+}
+
 #scope_file
 // Xdnd support by Jens Frederich. Send questions his way. Licensed under the MIT license; see copyright at the end
 // of the file.
