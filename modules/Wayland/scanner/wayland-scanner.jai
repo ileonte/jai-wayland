@@ -533,6 +533,8 @@ get_sig :: (msg: *Message) -> string {
     ret: [..]u8;
     array_reserve(*ret, 16);
     for arg: wl_list_each(Arg, *msg.arg_list) {
+        if (arg.type == .OBJECT || arg.type == .STRING) && arg.nullable  array_add(*ret, #char "?");
+
         if arg.type == {
             case .INT; array_add(*ret, #char "i");
             case .NEW_ID; {
