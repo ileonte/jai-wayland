@@ -631,7 +631,8 @@ emit_export_scope :: (ctx: *Parse_Context) {
     for intf: wl_list_each(Interface, *ctx.protocol.interface_list) {
         print("%_interface: wl_interface;\n", intf.name);
         print("% :: struct {\n", intf.name);
-        print("    #as _proxy: wl_proxy;\n\n");
+        print("    #as _proxy: wl_proxy;\n");
+        print("    _interface_ :: *%1_interface;\n\n", intf.name);
 
         display_tpl :: #string DONE
     connect                :: wl_display_connect;
