@@ -358,37 +358,37 @@ text_protocol_init :: () {
         *wl_text_input_interface,   // 42
     ];
 
-    wl_text_input_requests[0] = .{"activate", "oo", text_types_storage.data + 0};
-    wl_text_input_requests[1] = .{"deactivate", "o", text_types_storage.data + 1};
+    wl_text_input_requests[0] = .{"activate", "oo", text_types_storage.data + 1};
+    wl_text_input_requests[1] = .{"deactivate", "o", text_types_storage.data + 3};
     wl_text_input_requests[2] = .{"show_input_panel", "", text_types_storage.data + 0};
     wl_text_input_requests[3] = .{"hide_input_panel", "", text_types_storage.data + 0};
     wl_text_input_requests[4] = .{"reset", "", text_types_storage.data + 0};
-    wl_text_input_requests[5] = .{"set_surrounding_text", "suu", text_types_storage.data + 3};
-    wl_text_input_requests[6] = .{"set_content_type", "uu", text_types_storage.data + 4};
-    wl_text_input_requests[7] = .{"set_cursor_rectangle", "iiii", text_types_storage.data + 7};
-    wl_text_input_requests[8] = .{"set_preferred_language", "s", text_types_storage.data + 9};
-    wl_text_input_requests[9] = .{"commit_state", "u", text_types_storage.data + 13};
-    wl_text_input_requests[10] = .{"invoke_action", "uu", text_types_storage.data + 14};
-    wl_text_input_events[0] = .{"enter", "o", text_types_storage.data + 15};
+    wl_text_input_requests[5] = .{"set_surrounding_text", "suu", text_types_storage.data + 4};
+    wl_text_input_requests[6] = .{"set_content_type", "uu", text_types_storage.data + 7};
+    wl_text_input_requests[7] = .{"set_cursor_rectangle", "iiii", text_types_storage.data + 9};
+    wl_text_input_requests[8] = .{"set_preferred_language", "s", text_types_storage.data + 13};
+    wl_text_input_requests[9] = .{"commit_state", "u", text_types_storage.data + 14};
+    wl_text_input_requests[10] = .{"invoke_action", "uu", text_types_storage.data + 15};
+    wl_text_input_events[0] = .{"enter", "o", text_types_storage.data + 17};
     wl_text_input_events[1] = .{"leave", "", text_types_storage.data + 0};
-    wl_text_input_events[2] = .{"modifiers_map", "a", text_types_storage.data + 17};
-    wl_text_input_events[3] = .{"input_panel_state", "u", text_types_storage.data + 18};
-    wl_text_input_events[4] = .{"preedit_string", "uss", text_types_storage.data + 19};
-    wl_text_input_events[5] = .{"preedit_styling", "uuu", text_types_storage.data + 20};
-    wl_text_input_events[6] = .{"preedit_cursor", "i", text_types_storage.data + 23};
-    wl_text_input_events[7] = .{"commit_string", "us", text_types_storage.data + 26};
-    wl_text_input_events[8] = .{"cursor_position", "ii", text_types_storage.data + 27};
-    wl_text_input_events[9] = .{"delete_surrounding_text", "iu", text_types_storage.data + 29};
-    wl_text_input_events[10] = .{"keysym", "uuuuu", text_types_storage.data + 31};
-    wl_text_input_events[11] = .{"language", "us", text_types_storage.data + 33};
-    wl_text_input_events[12] = .{"text_direction", "uu", text_types_storage.data + 38};
+    wl_text_input_events[2] = .{"modifiers_map", "a", text_types_storage.data + 18};
+    wl_text_input_events[3] = .{"input_panel_state", "u", text_types_storage.data + 19};
+    wl_text_input_events[4] = .{"preedit_string", "uss", text_types_storage.data + 20};
+    wl_text_input_events[5] = .{"preedit_styling", "uuu", text_types_storage.data + 23};
+    wl_text_input_events[6] = .{"preedit_cursor", "i", text_types_storage.data + 26};
+    wl_text_input_events[7] = .{"commit_string", "us", text_types_storage.data + 27};
+    wl_text_input_events[8] = .{"cursor_position", "ii", text_types_storage.data + 29};
+    wl_text_input_events[9] = .{"delete_surrounding_text", "iu", text_types_storage.data + 31};
+    wl_text_input_events[10] = .{"keysym", "uuuuu", text_types_storage.data + 33};
+    wl_text_input_events[11] = .{"language", "us", text_types_storage.data + 38};
+    wl_text_input_events[12] = .{"text_direction", "uu", text_types_storage.data + 40};
     wl_text_input_interface = .{
         "wl_text_input", 1,
         wl_text_input_requests.count, wl_text_input_requests.data,
         wl_text_input_events.count, wl_text_input_events.data,
     };
 
-    wl_text_input_manager_requests[0] = .{"create_text_input", "n", text_types_storage.data + 40};
+    wl_text_input_manager_requests[0] = .{"create_text_input", "n", text_types_storage.data + 42};
     wl_text_input_manager_interface = .{
         "wl_text_input_manager", 1,
         wl_text_input_manager_requests.count, wl_text_input_manager_requests.data,

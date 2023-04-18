@@ -290,10 +290,10 @@ pointer_gestures_unstable_v1_protocol_init :: () {
         null,  // 35
     ];
 
-    zwp_pointer_gestures_v1_requests[0] = .{"get_swipe_gesture", "no", pointer_gestures_unstable_v1_types_storage.data + 0};
-    zwp_pointer_gestures_v1_requests[1] = .{"get_pinch_gesture", "no", pointer_gestures_unstable_v1_types_storage.data + 1};
+    zwp_pointer_gestures_v1_requests[0] = .{"get_swipe_gesture", "no", pointer_gestures_unstable_v1_types_storage.data + 1};
+    zwp_pointer_gestures_v1_requests[1] = .{"get_pinch_gesture", "no", pointer_gestures_unstable_v1_types_storage.data + 3};
     zwp_pointer_gestures_v1_requests[2] = .{"release", "", pointer_gestures_unstable_v1_types_storage.data + 0};
-    zwp_pointer_gestures_v1_requests[3] = .{"get_hold_gesture", "no", pointer_gestures_unstable_v1_types_storage.data + 3};
+    zwp_pointer_gestures_v1_requests[3] = .{"get_hold_gesture", "no", pointer_gestures_unstable_v1_types_storage.data + 5};
     zwp_pointer_gestures_v1_interface = .{
         "zwp_pointer_gestures_v1", 3,
         zwp_pointer_gestures_v1_requests.count, zwp_pointer_gestures_v1_requests.data,
@@ -301,9 +301,9 @@ pointer_gestures_unstable_v1_protocol_init :: () {
     };
 
     zwp_pointer_gesture_swipe_v1_requests[0] = .{"destroy", "", pointer_gestures_unstable_v1_types_storage.data + 0};
-    zwp_pointer_gesture_swipe_v1_events[0] = .{"begin", "uuou", pointer_gestures_unstable_v1_types_storage.data + 5};
-    zwp_pointer_gesture_swipe_v1_events[1] = .{"update", "uff", pointer_gestures_unstable_v1_types_storage.data + 7};
-    zwp_pointer_gesture_swipe_v1_events[2] = .{"end", "uui", pointer_gestures_unstable_v1_types_storage.data + 11};
+    zwp_pointer_gesture_swipe_v1_events[0] = .{"begin", "uuou", pointer_gestures_unstable_v1_types_storage.data + 7};
+    zwp_pointer_gesture_swipe_v1_events[1] = .{"update", "uff", pointer_gestures_unstable_v1_types_storage.data + 11};
+    zwp_pointer_gesture_swipe_v1_events[2] = .{"end", "uui", pointer_gestures_unstable_v1_types_storage.data + 14};
     zwp_pointer_gesture_swipe_v1_interface = .{
         "zwp_pointer_gesture_swipe_v1", 2,
         zwp_pointer_gesture_swipe_v1_requests.count, zwp_pointer_gesture_swipe_v1_requests.data,
@@ -311,9 +311,9 @@ pointer_gestures_unstable_v1_protocol_init :: () {
     };
 
     zwp_pointer_gesture_pinch_v1_requests[0] = .{"destroy", "", pointer_gestures_unstable_v1_types_storage.data + 0};
-    zwp_pointer_gesture_pinch_v1_events[0] = .{"begin", "uuou", pointer_gestures_unstable_v1_types_storage.data + 14};
-    zwp_pointer_gesture_pinch_v1_events[1] = .{"update", "uffff", pointer_gestures_unstable_v1_types_storage.data + 17};
-    zwp_pointer_gesture_pinch_v1_events[2] = .{"end", "uui", pointer_gestures_unstable_v1_types_storage.data + 21};
+    zwp_pointer_gesture_pinch_v1_events[0] = .{"begin", "uuou", pointer_gestures_unstable_v1_types_storage.data + 17};
+    zwp_pointer_gesture_pinch_v1_events[1] = .{"update", "uffff", pointer_gestures_unstable_v1_types_storage.data + 21};
+    zwp_pointer_gesture_pinch_v1_events[2] = .{"end", "uui", pointer_gestures_unstable_v1_types_storage.data + 26};
     zwp_pointer_gesture_pinch_v1_interface = .{
         "zwp_pointer_gesture_pinch_v1", 2,
         zwp_pointer_gesture_pinch_v1_requests.count, zwp_pointer_gesture_pinch_v1_requests.data,
@@ -321,8 +321,8 @@ pointer_gestures_unstable_v1_protocol_init :: () {
     };
 
     zwp_pointer_gesture_hold_v1_requests[0] = .{"destroy", "", pointer_gestures_unstable_v1_types_storage.data + 0};
-    zwp_pointer_gesture_hold_v1_events[0] = .{"begin", "uuou", pointer_gestures_unstable_v1_types_storage.data + 26};
-    zwp_pointer_gesture_hold_v1_events[1] = .{"end", "uui", pointer_gestures_unstable_v1_types_storage.data + 29};
+    zwp_pointer_gesture_hold_v1_events[0] = .{"begin", "uuou", pointer_gestures_unstable_v1_types_storage.data + 29};
+    zwp_pointer_gesture_hold_v1_events[1] = .{"end", "uui", pointer_gestures_unstable_v1_types_storage.data + 33};
     zwp_pointer_gesture_hold_v1_interface = .{
         "zwp_pointer_gesture_hold_v1", 3,
         zwp_pointer_gesture_hold_v1_requests.count, zwp_pointer_gesture_hold_v1_requests.data,

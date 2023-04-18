@@ -249,29 +249,29 @@ kde_output_device_v2_protocol_init :: () {
         null,  // 24
     ];
 
-    kde_output_device_v2_events[0] = .{"geometry", "iiiiissi", kde_output_device_v2_types_storage.data + 0};
-    kde_output_device_v2_events[1] = .{"current_mode", "o", kde_output_device_v2_types_storage.data + 1};
-    kde_output_device_v2_events[2] = .{"mode", "n", kde_output_device_v2_types_storage.data + 9};
+    kde_output_device_v2_events[0] = .{"geometry", "iiiiissi", kde_output_device_v2_types_storage.data + 1};
+    kde_output_device_v2_events[1] = .{"current_mode", "o", kde_output_device_v2_types_storage.data + 9};
+    kde_output_device_v2_events[2] = .{"mode", "n", kde_output_device_v2_types_storage.data + 10};
     kde_output_device_v2_events[3] = .{"done", "", kde_output_device_v2_types_storage.data + 0};
-    kde_output_device_v2_events[4] = .{"scale", "f", kde_output_device_v2_types_storage.data + 10};
-    kde_output_device_v2_events[5] = .{"edid", "s", kde_output_device_v2_types_storage.data + 11};
-    kde_output_device_v2_events[6] = .{"enabled", "i", kde_output_device_v2_types_storage.data + 12};
-    kde_output_device_v2_events[7] = .{"uuid", "s", kde_output_device_v2_types_storage.data + 13};
-    kde_output_device_v2_events[8] = .{"serial_number", "s", kde_output_device_v2_types_storage.data + 14};
-    kde_output_device_v2_events[9] = .{"eisa_id", "s", kde_output_device_v2_types_storage.data + 15};
-    kde_output_device_v2_events[10] = .{"capabilities", "u", kde_output_device_v2_types_storage.data + 16};
-    kde_output_device_v2_events[11] = .{"overscan", "u", kde_output_device_v2_types_storage.data + 17};
-    kde_output_device_v2_events[12] = .{"vrr_policy", "u", kde_output_device_v2_types_storage.data + 18};
-    kde_output_device_v2_events[13] = .{"rgb_range", "u", kde_output_device_v2_types_storage.data + 19};
-    kde_output_device_v2_events[14] = .{"name", "s", kde_output_device_v2_types_storage.data + 20};
+    kde_output_device_v2_events[4] = .{"scale", "f", kde_output_device_v2_types_storage.data + 11};
+    kde_output_device_v2_events[5] = .{"edid", "s", kde_output_device_v2_types_storage.data + 12};
+    kde_output_device_v2_events[6] = .{"enabled", "i", kde_output_device_v2_types_storage.data + 13};
+    kde_output_device_v2_events[7] = .{"uuid", "s", kde_output_device_v2_types_storage.data + 14};
+    kde_output_device_v2_events[8] = .{"serial_number", "s", kde_output_device_v2_types_storage.data + 15};
+    kde_output_device_v2_events[9] = .{"eisa_id", "s", kde_output_device_v2_types_storage.data + 16};
+    kde_output_device_v2_events[10] = .{"capabilities", "u", kde_output_device_v2_types_storage.data + 17};
+    kde_output_device_v2_events[11] = .{"overscan", "u", kde_output_device_v2_types_storage.data + 18};
+    kde_output_device_v2_events[12] = .{"vrr_policy", "u", kde_output_device_v2_types_storage.data + 19};
+    kde_output_device_v2_events[13] = .{"rgb_range", "u", kde_output_device_v2_types_storage.data + 20};
+    kde_output_device_v2_events[14] = .{"name", "s", kde_output_device_v2_types_storage.data + 21};
     kde_output_device_v2_interface = .{
         "kde_output_device_v2", 2,
         0, null,
         kde_output_device_v2_events.count, kde_output_device_v2_events.data,
     };
 
-    kde_output_device_mode_v2_events[0] = .{"size", "ii", kde_output_device_v2_types_storage.data + 21};
-    kde_output_device_mode_v2_events[1] = .{"refresh", "i", kde_output_device_v2_types_storage.data + 22};
+    kde_output_device_mode_v2_events[0] = .{"size", "ii", kde_output_device_v2_types_storage.data + 22};
+    kde_output_device_mode_v2_events[1] = .{"refresh", "i", kde_output_device_v2_types_storage.data + 24};
     kde_output_device_mode_v2_events[2] = .{"preferred", "", kde_output_device_v2_types_storage.data + 0};
     kde_output_device_mode_v2_events[3] = .{"removed", "", kde_output_device_v2_types_storage.data + 0};
     kde_output_device_mode_v2_interface = .{

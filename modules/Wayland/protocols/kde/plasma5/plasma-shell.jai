@@ -213,7 +213,7 @@ plasma_shell_protocol_init :: () {
         null,  // 10
     ];
 
-    org_kde_plasma_shell_requests[0] = .{"get_surface", "no", plasma_shell_types_storage.data + 0};
+    org_kde_plasma_shell_requests[0] = .{"get_surface", "no", plasma_shell_types_storage.data + 1};
     org_kde_plasma_shell_interface = .{
         "org_kde_plasma_shell", 8,
         org_kde_plasma_shell_requests.count, org_kde_plasma_shell_requests.data,
@@ -221,15 +221,15 @@ plasma_shell_protocol_init :: () {
     };
 
     org_kde_plasma_surface_requests[0] = .{"destroy", "", plasma_shell_types_storage.data + 0};
-    org_kde_plasma_surface_requests[1] = .{"set_output", "o", plasma_shell_types_storage.data + 1};
-    org_kde_plasma_surface_requests[2] = .{"set_position", "ii", plasma_shell_types_storage.data + 3};
-    org_kde_plasma_surface_requests[3] = .{"set_role", "u", plasma_shell_types_storage.data + 4};
-    org_kde_plasma_surface_requests[4] = .{"set_panel_behavior", "u", plasma_shell_types_storage.data + 6};
-    org_kde_plasma_surface_requests[5] = .{"set_skip_taskbar", "u", plasma_shell_types_storage.data + 7};
+    org_kde_plasma_surface_requests[1] = .{"set_output", "o", plasma_shell_types_storage.data + 3};
+    org_kde_plasma_surface_requests[2] = .{"set_position", "ii", plasma_shell_types_storage.data + 4};
+    org_kde_plasma_surface_requests[3] = .{"set_role", "u", plasma_shell_types_storage.data + 6};
+    org_kde_plasma_surface_requests[4] = .{"set_panel_behavior", "u", plasma_shell_types_storage.data + 7};
+    org_kde_plasma_surface_requests[5] = .{"set_skip_taskbar", "u", plasma_shell_types_storage.data + 8};
     org_kde_plasma_surface_requests[6] = .{"panel_auto_hide_hide", "", plasma_shell_types_storage.data + 0};
     org_kde_plasma_surface_requests[7] = .{"panel_auto_hide_show", "", plasma_shell_types_storage.data + 0};
-    org_kde_plasma_surface_requests[8] = .{"set_panel_takes_focus", "u", plasma_shell_types_storage.data + 8};
-    org_kde_plasma_surface_requests[9] = .{"set_skip_switcher", "u", plasma_shell_types_storage.data + 9};
+    org_kde_plasma_surface_requests[8] = .{"set_panel_takes_focus", "u", plasma_shell_types_storage.data + 9};
+    org_kde_plasma_surface_requests[9] = .{"set_skip_switcher", "u", plasma_shell_types_storage.data + 10};
     org_kde_plasma_surface_requests[10] = .{"open_under_cursor", "", plasma_shell_types_storage.data + 0};
     org_kde_plasma_surface_events[0] = .{"auto_hidden_panel_hidden", "", plasma_shell_types_storage.data + 0};
     org_kde_plasma_surface_events[1] = .{"auto_hidden_panel_shown", "", plasma_shell_types_storage.data + 0};

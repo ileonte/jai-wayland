@@ -385,7 +385,7 @@ tablet_unstable_v1_protocol_init :: () {
         null,  // 36
     ];
 
-    zwp_tablet_manager_v1_requests[0] = .{"get_tablet_seat", "no", tablet_unstable_v1_types_storage.data + 0};
+    zwp_tablet_manager_v1_requests[0] = .{"get_tablet_seat", "no", tablet_unstable_v1_types_storage.data + 1};
     zwp_tablet_manager_v1_requests[1] = .{"destroy", "", tablet_unstable_v1_types_storage.data + 0};
     zwp_tablet_manager_v1_interface = .{
         "zwp_tablet_manager_v1", 1,
@@ -394,35 +394,35 @@ tablet_unstable_v1_protocol_init :: () {
     };
 
     zwp_tablet_seat_v1_requests[0] = .{"destroy", "", tablet_unstable_v1_types_storage.data + 0};
-    zwp_tablet_seat_v1_events[0] = .{"tablet_added", "n", tablet_unstable_v1_types_storage.data + 1};
-    zwp_tablet_seat_v1_events[1] = .{"tool_added", "n", tablet_unstable_v1_types_storage.data + 3};
+    zwp_tablet_seat_v1_events[0] = .{"tablet_added", "n", tablet_unstable_v1_types_storage.data + 3};
+    zwp_tablet_seat_v1_events[1] = .{"tool_added", "n", tablet_unstable_v1_types_storage.data + 4};
     zwp_tablet_seat_v1_interface = .{
         "zwp_tablet_seat_v1", 1,
         zwp_tablet_seat_v1_requests.count, zwp_tablet_seat_v1_requests.data,
         zwp_tablet_seat_v1_events.count, zwp_tablet_seat_v1_events.data,
     };
 
-    zwp_tablet_tool_v1_requests[0] = .{"set_cursor", "uoii", tablet_unstable_v1_types_storage.data + 4};
+    zwp_tablet_tool_v1_requests[0] = .{"set_cursor", "u?oii", tablet_unstable_v1_types_storage.data + 5};
     zwp_tablet_tool_v1_requests[1] = .{"destroy", "", tablet_unstable_v1_types_storage.data + 0};
-    zwp_tablet_tool_v1_events[0] = .{"type", "u", tablet_unstable_v1_types_storage.data + 5};
-    zwp_tablet_tool_v1_events[1] = .{"hardware_serial", "uu", tablet_unstable_v1_types_storage.data + 9};
-    zwp_tablet_tool_v1_events[2] = .{"hardware_id_wacom", "uu", tablet_unstable_v1_types_storage.data + 10};
-    zwp_tablet_tool_v1_events[3] = .{"capability", "u", tablet_unstable_v1_types_storage.data + 12};
+    zwp_tablet_tool_v1_events[0] = .{"type", "u", tablet_unstable_v1_types_storage.data + 9};
+    zwp_tablet_tool_v1_events[1] = .{"hardware_serial", "uu", tablet_unstable_v1_types_storage.data + 10};
+    zwp_tablet_tool_v1_events[2] = .{"hardware_id_wacom", "uu", tablet_unstable_v1_types_storage.data + 12};
+    zwp_tablet_tool_v1_events[3] = .{"capability", "u", tablet_unstable_v1_types_storage.data + 14};
     zwp_tablet_tool_v1_events[4] = .{"done", "", tablet_unstable_v1_types_storage.data + 0};
     zwp_tablet_tool_v1_events[5] = .{"removed", "", tablet_unstable_v1_types_storage.data + 0};
-    zwp_tablet_tool_v1_events[6] = .{"proximity_in", "uoo", tablet_unstable_v1_types_storage.data + 14};
+    zwp_tablet_tool_v1_events[6] = .{"proximity_in", "uoo", tablet_unstable_v1_types_storage.data + 15};
     zwp_tablet_tool_v1_events[7] = .{"proximity_out", "", tablet_unstable_v1_types_storage.data + 0};
-    zwp_tablet_tool_v1_events[8] = .{"down", "u", tablet_unstable_v1_types_storage.data + 15};
+    zwp_tablet_tool_v1_events[8] = .{"down", "u", tablet_unstable_v1_types_storage.data + 18};
     zwp_tablet_tool_v1_events[9] = .{"up", "", tablet_unstable_v1_types_storage.data + 0};
-    zwp_tablet_tool_v1_events[10] = .{"motion", "ff", tablet_unstable_v1_types_storage.data + 18};
-    zwp_tablet_tool_v1_events[11] = .{"pressure", "u", tablet_unstable_v1_types_storage.data + 19};
-    zwp_tablet_tool_v1_events[12] = .{"distance", "u", tablet_unstable_v1_types_storage.data + 21};
-    zwp_tablet_tool_v1_events[13] = .{"tilt", "ii", tablet_unstable_v1_types_storage.data + 22};
-    zwp_tablet_tool_v1_events[14] = .{"rotation", "i", tablet_unstable_v1_types_storage.data + 23};
-    zwp_tablet_tool_v1_events[15] = .{"slider", "i", tablet_unstable_v1_types_storage.data + 25};
-    zwp_tablet_tool_v1_events[16] = .{"wheel", "ii", tablet_unstable_v1_types_storage.data + 26};
-    zwp_tablet_tool_v1_events[17] = .{"button", "uuu", tablet_unstable_v1_types_storage.data + 27};
-    zwp_tablet_tool_v1_events[18] = .{"frame", "u", tablet_unstable_v1_types_storage.data + 29};
+    zwp_tablet_tool_v1_events[10] = .{"motion", "ff", tablet_unstable_v1_types_storage.data + 19};
+    zwp_tablet_tool_v1_events[11] = .{"pressure", "u", tablet_unstable_v1_types_storage.data + 21};
+    zwp_tablet_tool_v1_events[12] = .{"distance", "u", tablet_unstable_v1_types_storage.data + 22};
+    zwp_tablet_tool_v1_events[13] = .{"tilt", "ii", tablet_unstable_v1_types_storage.data + 23};
+    zwp_tablet_tool_v1_events[14] = .{"rotation", "i", tablet_unstable_v1_types_storage.data + 25};
+    zwp_tablet_tool_v1_events[15] = .{"slider", "i", tablet_unstable_v1_types_storage.data + 26};
+    zwp_tablet_tool_v1_events[16] = .{"wheel", "ii", tablet_unstable_v1_types_storage.data + 27};
+    zwp_tablet_tool_v1_events[17] = .{"button", "uuu", tablet_unstable_v1_types_storage.data + 29};
+    zwp_tablet_tool_v1_events[18] = .{"frame", "u", tablet_unstable_v1_types_storage.data + 32};
     zwp_tablet_tool_v1_interface = .{
         "zwp_tablet_tool_v1", 1,
         zwp_tablet_tool_v1_requests.count, zwp_tablet_tool_v1_requests.data,
@@ -430,9 +430,9 @@ tablet_unstable_v1_protocol_init :: () {
     };
 
     zwp_tablet_v1_requests[0] = .{"destroy", "", tablet_unstable_v1_types_storage.data + 0};
-    zwp_tablet_v1_events[0] = .{"name", "s", tablet_unstable_v1_types_storage.data + 32};
-    zwp_tablet_v1_events[1] = .{"id", "uu", tablet_unstable_v1_types_storage.data + 33};
-    zwp_tablet_v1_events[2] = .{"path", "s", tablet_unstable_v1_types_storage.data + 34};
+    zwp_tablet_v1_events[0] = .{"name", "s", tablet_unstable_v1_types_storage.data + 33};
+    zwp_tablet_v1_events[1] = .{"id", "uu", tablet_unstable_v1_types_storage.data + 34};
+    zwp_tablet_v1_events[2] = .{"path", "s", tablet_unstable_v1_types_storage.data + 36};
     zwp_tablet_v1_events[3] = .{"done", "", tablet_unstable_v1_types_storage.data + 0};
     zwp_tablet_v1_events[4] = .{"removed", "", tablet_unstable_v1_types_storage.data + 0};
     zwp_tablet_v1_interface = .{

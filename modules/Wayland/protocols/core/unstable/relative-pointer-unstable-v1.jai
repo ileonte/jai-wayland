@@ -106,7 +106,7 @@ relative_pointer_unstable_v1_protocol_init :: () {
     ];
 
     zwp_relative_pointer_manager_v1_requests[0] = .{"destroy", "", relative_pointer_unstable_v1_types_storage.data + 0};
-    zwp_relative_pointer_manager_v1_requests[1] = .{"get_relative_pointer", "no", relative_pointer_unstable_v1_types_storage.data + 0};
+    zwp_relative_pointer_manager_v1_requests[1] = .{"get_relative_pointer", "no", relative_pointer_unstable_v1_types_storage.data + 1};
     zwp_relative_pointer_manager_v1_interface = .{
         "zwp_relative_pointer_manager_v1", 1,
         zwp_relative_pointer_manager_v1_requests.count, zwp_relative_pointer_manager_v1_requests.data,
@@ -114,7 +114,7 @@ relative_pointer_unstable_v1_protocol_init :: () {
     };
 
     zwp_relative_pointer_v1_requests[0] = .{"destroy", "", relative_pointer_unstable_v1_types_storage.data + 0};
-    zwp_relative_pointer_v1_events[0] = .{"relative_motion", "uuffff", relative_pointer_unstable_v1_types_storage.data + 1};
+    zwp_relative_pointer_v1_events[0] = .{"relative_motion", "uuffff", relative_pointer_unstable_v1_types_storage.data + 3};
     zwp_relative_pointer_v1_interface = .{
         "zwp_relative_pointer_v1", 1,
         zwp_relative_pointer_v1_requests.count, zwp_relative_pointer_v1_requests.data,

@@ -694,10 +694,10 @@ xdg_shell_protocol_init :: () {
     ];
 
     xdg_wm_base_requests[0] = .{"destroy", "", xdg_shell_types_storage.data + 0};
-    xdg_wm_base_requests[1] = .{"create_positioner", "n", xdg_shell_types_storage.data + 0};
-    xdg_wm_base_requests[2] = .{"get_xdg_surface", "no", xdg_shell_types_storage.data + 1};
-    xdg_wm_base_requests[3] = .{"pong", "u", xdg_shell_types_storage.data + 2};
-    xdg_wm_base_events[0] = .{"ping", "u", xdg_shell_types_storage.data + 4};
+    xdg_wm_base_requests[1] = .{"create_positioner", "n", xdg_shell_types_storage.data + 1};
+    xdg_wm_base_requests[2] = .{"get_xdg_surface", "no", xdg_shell_types_storage.data + 2};
+    xdg_wm_base_requests[3] = .{"pong", "u", xdg_shell_types_storage.data + 4};
+    xdg_wm_base_events[0] = .{"ping", "u", xdg_shell_types_storage.data + 5};
     xdg_wm_base_interface = .{
         "xdg_wm_base", 5,
         xdg_wm_base_requests.count, xdg_wm_base_requests.data,
@@ -705,15 +705,15 @@ xdg_shell_protocol_init :: () {
     };
 
     xdg_positioner_requests[0] = .{"destroy", "", xdg_shell_types_storage.data + 0};
-    xdg_positioner_requests[1] = .{"set_size", "ii", xdg_shell_types_storage.data + 5};
-    xdg_positioner_requests[2] = .{"set_anchor_rect", "iiii", xdg_shell_types_storage.data + 6};
-    xdg_positioner_requests[3] = .{"set_anchor", "u", xdg_shell_types_storage.data + 8};
-    xdg_positioner_requests[4] = .{"set_gravity", "u", xdg_shell_types_storage.data + 12};
-    xdg_positioner_requests[5] = .{"set_constraint_adjustment", "u", xdg_shell_types_storage.data + 13};
-    xdg_positioner_requests[6] = .{"set_offset", "ii", xdg_shell_types_storage.data + 14};
+    xdg_positioner_requests[1] = .{"set_size", "ii", xdg_shell_types_storage.data + 6};
+    xdg_positioner_requests[2] = .{"set_anchor_rect", "iiii", xdg_shell_types_storage.data + 8};
+    xdg_positioner_requests[3] = .{"set_anchor", "u", xdg_shell_types_storage.data + 12};
+    xdg_positioner_requests[4] = .{"set_gravity", "u", xdg_shell_types_storage.data + 13};
+    xdg_positioner_requests[5] = .{"set_constraint_adjustment", "u", xdg_shell_types_storage.data + 14};
+    xdg_positioner_requests[6] = .{"set_offset", "ii", xdg_shell_types_storage.data + 15};
     xdg_positioner_requests[7] = .{"set_reactive", "", xdg_shell_types_storage.data + 0};
-    xdg_positioner_requests[8] = .{"set_parent_size", "ii", xdg_shell_types_storage.data + 15};
-    xdg_positioner_requests[9] = .{"set_parent_configure", "u", xdg_shell_types_storage.data + 17};
+    xdg_positioner_requests[8] = .{"set_parent_size", "ii", xdg_shell_types_storage.data + 17};
+    xdg_positioner_requests[9] = .{"set_parent_configure", "u", xdg_shell_types_storage.data + 19};
     xdg_positioner_interface = .{
         "xdg_positioner", 5,
         xdg_positioner_requests.count, xdg_positioner_requests.data,
@@ -721,11 +721,11 @@ xdg_shell_protocol_init :: () {
     };
 
     xdg_surface_requests[0] = .{"destroy", "", xdg_shell_types_storage.data + 0};
-    xdg_surface_requests[1] = .{"get_toplevel", "n", xdg_shell_types_storage.data + 19};
-    xdg_surface_requests[2] = .{"get_popup", "noo", xdg_shell_types_storage.data + 20};
-    xdg_surface_requests[3] = .{"set_window_geometry", "iiii", xdg_shell_types_storage.data + 21};
-    xdg_surface_requests[4] = .{"ack_configure", "u", xdg_shell_types_storage.data + 24};
-    xdg_surface_events[0] = .{"configure", "u", xdg_shell_types_storage.data + 28};
+    xdg_surface_requests[1] = .{"get_toplevel", "n", xdg_shell_types_storage.data + 20};
+    xdg_surface_requests[2] = .{"get_popup", "n?oo", xdg_shell_types_storage.data + 21};
+    xdg_surface_requests[3] = .{"set_window_geometry", "iiii", xdg_shell_types_storage.data + 24};
+    xdg_surface_requests[4] = .{"ack_configure", "u", xdg_shell_types_storage.data + 28};
+    xdg_surface_events[0] = .{"configure", "u", xdg_shell_types_storage.data + 29};
     xdg_surface_interface = .{
         "xdg_surface", 5,
         xdg_surface_requests.count, xdg_surface_requests.data,
@@ -733,23 +733,23 @@ xdg_shell_protocol_init :: () {
     };
 
     xdg_toplevel_requests[0] = .{"destroy", "", xdg_shell_types_storage.data + 0};
-    xdg_toplevel_requests[1] = .{"set_parent", "o", xdg_shell_types_storage.data + 29};
-    xdg_toplevel_requests[2] = .{"set_title", "s", xdg_shell_types_storage.data + 30};
-    xdg_toplevel_requests[3] = .{"set_app_id", "s", xdg_shell_types_storage.data + 31};
-    xdg_toplevel_requests[4] = .{"show_window_menu", "ouii", xdg_shell_types_storage.data + 32};
-    xdg_toplevel_requests[5] = .{"move", "ou", xdg_shell_types_storage.data + 33};
-    xdg_toplevel_requests[6] = .{"resize", "ouu", xdg_shell_types_storage.data + 37};
-    xdg_toplevel_requests[7] = .{"set_max_size", "ii", xdg_shell_types_storage.data + 39};
-    xdg_toplevel_requests[8] = .{"set_min_size", "ii", xdg_shell_types_storage.data + 42};
+    xdg_toplevel_requests[1] = .{"set_parent", "?o", xdg_shell_types_storage.data + 30};
+    xdg_toplevel_requests[2] = .{"set_title", "s", xdg_shell_types_storage.data + 31};
+    xdg_toplevel_requests[3] = .{"set_app_id", "s", xdg_shell_types_storage.data + 32};
+    xdg_toplevel_requests[4] = .{"show_window_menu", "ouii", xdg_shell_types_storage.data + 33};
+    xdg_toplevel_requests[5] = .{"move", "ou", xdg_shell_types_storage.data + 37};
+    xdg_toplevel_requests[6] = .{"resize", "ouu", xdg_shell_types_storage.data + 39};
+    xdg_toplevel_requests[7] = .{"set_max_size", "ii", xdg_shell_types_storage.data + 42};
+    xdg_toplevel_requests[8] = .{"set_min_size", "ii", xdg_shell_types_storage.data + 44};
     xdg_toplevel_requests[9] = .{"set_maximized", "", xdg_shell_types_storage.data + 0};
     xdg_toplevel_requests[10] = .{"unset_maximized", "", xdg_shell_types_storage.data + 0};
-    xdg_toplevel_requests[11] = .{"set_fullscreen", "o", xdg_shell_types_storage.data + 44};
+    xdg_toplevel_requests[11] = .{"set_fullscreen", "?o", xdg_shell_types_storage.data + 46};
     xdg_toplevel_requests[12] = .{"unset_fullscreen", "", xdg_shell_types_storage.data + 0};
     xdg_toplevel_requests[13] = .{"set_minimized", "", xdg_shell_types_storage.data + 0};
-    xdg_toplevel_events[0] = .{"configure", "iia", xdg_shell_types_storage.data + 46};
+    xdg_toplevel_events[0] = .{"configure", "iia", xdg_shell_types_storage.data + 47};
     xdg_toplevel_events[1] = .{"close", "", xdg_shell_types_storage.data + 0};
-    xdg_toplevel_events[2] = .{"configure_bounds", "ii", xdg_shell_types_storage.data + 47};
-    xdg_toplevel_events[3] = .{"wm_capabilities", "a", xdg_shell_types_storage.data + 50};
+    xdg_toplevel_events[2] = .{"configure_bounds", "ii", xdg_shell_types_storage.data + 50};
+    xdg_toplevel_events[3] = .{"wm_capabilities", "a", xdg_shell_types_storage.data + 52};
     xdg_toplevel_interface = .{
         "xdg_toplevel", 5,
         xdg_toplevel_requests.count, xdg_toplevel_requests.data,
@@ -757,11 +757,11 @@ xdg_shell_protocol_init :: () {
     };
 
     xdg_popup_requests[0] = .{"destroy", "", xdg_shell_types_storage.data + 0};
-    xdg_popup_requests[1] = .{"grab", "ou", xdg_shell_types_storage.data + 52};
-    xdg_popup_requests[2] = .{"reposition", "ou", xdg_shell_types_storage.data + 53};
-    xdg_popup_events[0] = .{"configure", "iiii", xdg_shell_types_storage.data + 55};
+    xdg_popup_requests[1] = .{"grab", "ou", xdg_shell_types_storage.data + 53};
+    xdg_popup_requests[2] = .{"reposition", "ou", xdg_shell_types_storage.data + 55};
+    xdg_popup_events[0] = .{"configure", "iiii", xdg_shell_types_storage.data + 57};
     xdg_popup_events[1] = .{"popup_done", "", xdg_shell_types_storage.data + 0};
-    xdg_popup_events[2] = .{"repositioned", "u", xdg_shell_types_storage.data + 57};
+    xdg_popup_events[2] = .{"repositioned", "u", xdg_shell_types_storage.data + 61};
     xdg_popup_interface = .{
         "xdg_popup", 5,
         xdg_popup_requests.count, xdg_popup_requests.data,

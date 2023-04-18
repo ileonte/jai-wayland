@@ -202,8 +202,8 @@ pointer_constraints_unstable_v1_protocol_init :: () {
     ];
 
     zwp_pointer_constraints_v1_requests[0] = .{"destroy", "", pointer_constraints_unstable_v1_types_storage.data + 0};
-    zwp_pointer_constraints_v1_requests[1] = .{"lock_pointer", "nooou", pointer_constraints_unstable_v1_types_storage.data + 0};
-    zwp_pointer_constraints_v1_requests[2] = .{"confine_pointer", "nooou", pointer_constraints_unstable_v1_types_storage.data + 1};
+    zwp_pointer_constraints_v1_requests[1] = .{"lock_pointer", "noo?ou", pointer_constraints_unstable_v1_types_storage.data + 1};
+    zwp_pointer_constraints_v1_requests[2] = .{"confine_pointer", "noo?ou", pointer_constraints_unstable_v1_types_storage.data + 6};
     zwp_pointer_constraints_v1_interface = .{
         "zwp_pointer_constraints_v1", 1,
         zwp_pointer_constraints_v1_requests.count, zwp_pointer_constraints_v1_requests.data,
@@ -211,8 +211,8 @@ pointer_constraints_unstable_v1_protocol_init :: () {
     };
 
     zwp_locked_pointer_v1_requests[0] = .{"destroy", "", pointer_constraints_unstable_v1_types_storage.data + 0};
-    zwp_locked_pointer_v1_requests[1] = .{"set_cursor_position_hint", "ff", pointer_constraints_unstable_v1_types_storage.data + 6};
-    zwp_locked_pointer_v1_requests[2] = .{"set_region", "o", pointer_constraints_unstable_v1_types_storage.data + 11};
+    zwp_locked_pointer_v1_requests[1] = .{"set_cursor_position_hint", "ff", pointer_constraints_unstable_v1_types_storage.data + 11};
+    zwp_locked_pointer_v1_requests[2] = .{"set_region", "?o", pointer_constraints_unstable_v1_types_storage.data + 13};
     zwp_locked_pointer_v1_events[0] = .{"locked", "", pointer_constraints_unstable_v1_types_storage.data + 0};
     zwp_locked_pointer_v1_events[1] = .{"unlocked", "", pointer_constraints_unstable_v1_types_storage.data + 0};
     zwp_locked_pointer_v1_interface = .{
@@ -222,7 +222,7 @@ pointer_constraints_unstable_v1_protocol_init :: () {
     };
 
     zwp_confined_pointer_v1_requests[0] = .{"destroy", "", pointer_constraints_unstable_v1_types_storage.data + 0};
-    zwp_confined_pointer_v1_requests[1] = .{"set_region", "o", pointer_constraints_unstable_v1_types_storage.data + 13};
+    zwp_confined_pointer_v1_requests[1] = .{"set_region", "?o", pointer_constraints_unstable_v1_types_storage.data + 14};
     zwp_confined_pointer_v1_events[0] = .{"confined", "", pointer_constraints_unstable_v1_types_storage.data + 0};
     zwp_confined_pointer_v1_events[1] = .{"unconfined", "", pointer_constraints_unstable_v1_types_storage.data + 0};
     zwp_confined_pointer_v1_interface = .{

@@ -165,11 +165,11 @@ zkde_screencast_unstable_v1_protocol_init :: () {
         null,  // 21
     ];
 
-    zkde_screencast_unstable_v1_requests[0] = .{"stream_output", "nou", zkde_screencast_unstable_v1_types_storage.data + 0};
-    zkde_screencast_unstable_v1_requests[1] = .{"stream_window", "nsu", zkde_screencast_unstable_v1_types_storage.data + 1};
+    zkde_screencast_unstable_v1_requests[0] = .{"stream_output", "nou", zkde_screencast_unstable_v1_types_storage.data + 1};
+    zkde_screencast_unstable_v1_requests[1] = .{"stream_window", "nsu", zkde_screencast_unstable_v1_types_storage.data + 4};
     zkde_screencast_unstable_v1_requests[2] = .{"destroy", "", zkde_screencast_unstable_v1_types_storage.data + 0};
-    zkde_screencast_unstable_v1_requests[3] = .{"stream_virtual_output", "nsiifu", zkde_screencast_unstable_v1_types_storage.data + 4};
-    zkde_screencast_unstable_v1_requests[4] = .{"stream_region", "niiuufu", zkde_screencast_unstable_v1_types_storage.data + 7};
+    zkde_screencast_unstable_v1_requests[3] = .{"stream_virtual_output", "nsiifu", zkde_screencast_unstable_v1_types_storage.data + 7};
+    zkde_screencast_unstable_v1_requests[4] = .{"stream_region", "niiuufu", zkde_screencast_unstable_v1_types_storage.data + 13};
     zkde_screencast_unstable_v1_interface = .{
         "zkde_screencast_unstable_v1", 3,
         zkde_screencast_unstable_v1_requests.count, zkde_screencast_unstable_v1_requests.data,
@@ -178,8 +178,8 @@ zkde_screencast_unstable_v1_protocol_init :: () {
 
     zkde_screencast_stream_unstable_v1_requests[0] = .{"close", "", zkde_screencast_unstable_v1_types_storage.data + 0};
     zkde_screencast_stream_unstable_v1_events[0] = .{"closed", "", zkde_screencast_unstable_v1_types_storage.data + 0};
-    zkde_screencast_stream_unstable_v1_events[1] = .{"created", "u", zkde_screencast_unstable_v1_types_storage.data + 13};
-    zkde_screencast_stream_unstable_v1_events[2] = .{"failed", "s", zkde_screencast_unstable_v1_types_storage.data + 20};
+    zkde_screencast_stream_unstable_v1_events[1] = .{"created", "u", zkde_screencast_unstable_v1_types_storage.data + 20};
+    zkde_screencast_stream_unstable_v1_events[2] = .{"failed", "s", zkde_screencast_unstable_v1_types_storage.data + 21};
     zkde_screencast_stream_unstable_v1_interface = .{
         "zkde_screencast_stream_unstable_v1", 3,
         zkde_screencast_stream_unstable_v1_requests.count, zkde_screencast_stream_unstable_v1_requests.data,

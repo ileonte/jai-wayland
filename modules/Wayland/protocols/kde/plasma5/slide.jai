@@ -125,8 +125,8 @@ slide_protocol_init :: () {
         null,  // 5
     ];
 
-    org_kde_kwin_slide_manager_requests[0] = .{"create", "no", slide_types_storage.data + 0};
-    org_kde_kwin_slide_manager_requests[1] = .{"unset", "o", slide_types_storage.data + 1};
+    org_kde_kwin_slide_manager_requests[0] = .{"create", "no", slide_types_storage.data + 1};
+    org_kde_kwin_slide_manager_requests[1] = .{"unset", "o", slide_types_storage.data + 3};
     org_kde_kwin_slide_manager_interface = .{
         "org_kde_kwin_slide_manager", 1,
         org_kde_kwin_slide_manager_requests.count, org_kde_kwin_slide_manager_requests.data,
@@ -134,8 +134,8 @@ slide_protocol_init :: () {
     };
 
     org_kde_kwin_slide_requests[0] = .{"commit", "", slide_types_storage.data + 0};
-    org_kde_kwin_slide_requests[1] = .{"set_location", "u", slide_types_storage.data + 3};
-    org_kde_kwin_slide_requests[2] = .{"set_offset", "i", slide_types_storage.data + 4};
+    org_kde_kwin_slide_requests[1] = .{"set_location", "u", slide_types_storage.data + 4};
+    org_kde_kwin_slide_requests[2] = .{"set_offset", "i", slide_types_storage.data + 5};
     org_kde_kwin_slide_requests[3] = .{"release", "", slide_types_storage.data + 0};
     org_kde_kwin_slide_interface = .{
         "org_kde_kwin_slide", 1,

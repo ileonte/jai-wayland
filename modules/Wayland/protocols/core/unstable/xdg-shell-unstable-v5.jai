@@ -370,11 +370,11 @@ xdg_shell_unstable_v5_protocol_init :: () {
     ];
 
     xdg_shell_requests[0] = .{"destroy", "", xdg_shell_unstable_v5_types_storage.data + 0};
-    xdg_shell_requests[1] = .{"use_unstable_version", "i", xdg_shell_unstable_v5_types_storage.data + 0};
-    xdg_shell_requests[2] = .{"get_xdg_surface", "no", xdg_shell_unstable_v5_types_storage.data + 1};
-    xdg_shell_requests[3] = .{"get_xdg_popup", "nooouii", xdg_shell_unstable_v5_types_storage.data + 2};
-    xdg_shell_requests[4] = .{"pong", "u", xdg_shell_unstable_v5_types_storage.data + 4};
-    xdg_shell_events[0] = .{"ping", "u", xdg_shell_unstable_v5_types_storage.data + 11};
+    xdg_shell_requests[1] = .{"use_unstable_version", "i", xdg_shell_unstable_v5_types_storage.data + 1};
+    xdg_shell_requests[2] = .{"get_xdg_surface", "no", xdg_shell_unstable_v5_types_storage.data + 2};
+    xdg_shell_requests[3] = .{"get_xdg_popup", "nooouii", xdg_shell_unstable_v5_types_storage.data + 4};
+    xdg_shell_requests[4] = .{"pong", "u", xdg_shell_unstable_v5_types_storage.data + 11};
+    xdg_shell_events[0] = .{"ping", "u", xdg_shell_unstable_v5_types_storage.data + 12};
     xdg_shell_interface = .{
         "xdg_shell", 1,
         xdg_shell_requests.count, xdg_shell_requests.data,
@@ -382,20 +382,20 @@ xdg_shell_unstable_v5_protocol_init :: () {
     };
 
     xdg_surface_requests[0] = .{"destroy", "", xdg_shell_unstable_v5_types_storage.data + 0};
-    xdg_surface_requests[1] = .{"set_parent", "o", xdg_shell_unstable_v5_types_storage.data + 12};
-    xdg_surface_requests[2] = .{"set_title", "s", xdg_shell_unstable_v5_types_storage.data + 13};
-    xdg_surface_requests[3] = .{"set_app_id", "s", xdg_shell_unstable_v5_types_storage.data + 14};
-    xdg_surface_requests[4] = .{"show_window_menu", "ouii", xdg_shell_unstable_v5_types_storage.data + 15};
-    xdg_surface_requests[5] = .{"move", "ou", xdg_shell_unstable_v5_types_storage.data + 16};
-    xdg_surface_requests[6] = .{"resize", "ouu", xdg_shell_unstable_v5_types_storage.data + 20};
-    xdg_surface_requests[7] = .{"ack_configure", "u", xdg_shell_unstable_v5_types_storage.data + 22};
-    xdg_surface_requests[8] = .{"set_window_geometry", "iiii", xdg_shell_unstable_v5_types_storage.data + 25};
+    xdg_surface_requests[1] = .{"set_parent", "?o", xdg_shell_unstable_v5_types_storage.data + 13};
+    xdg_surface_requests[2] = .{"set_title", "s", xdg_shell_unstable_v5_types_storage.data + 14};
+    xdg_surface_requests[3] = .{"set_app_id", "s", xdg_shell_unstable_v5_types_storage.data + 15};
+    xdg_surface_requests[4] = .{"show_window_menu", "ouii", xdg_shell_unstable_v5_types_storage.data + 16};
+    xdg_surface_requests[5] = .{"move", "ou", xdg_shell_unstable_v5_types_storage.data + 20};
+    xdg_surface_requests[6] = .{"resize", "ouu", xdg_shell_unstable_v5_types_storage.data + 22};
+    xdg_surface_requests[7] = .{"ack_configure", "u", xdg_shell_unstable_v5_types_storage.data + 25};
+    xdg_surface_requests[8] = .{"set_window_geometry", "iiii", xdg_shell_unstable_v5_types_storage.data + 26};
     xdg_surface_requests[9] = .{"set_maximized", "", xdg_shell_unstable_v5_types_storage.data + 0};
     xdg_surface_requests[10] = .{"unset_maximized", "", xdg_shell_unstable_v5_types_storage.data + 0};
-    xdg_surface_requests[11] = .{"set_fullscreen", "o", xdg_shell_unstable_v5_types_storage.data + 26};
+    xdg_surface_requests[11] = .{"set_fullscreen", "?o", xdg_shell_unstable_v5_types_storage.data + 30};
     xdg_surface_requests[12] = .{"unset_fullscreen", "", xdg_shell_unstable_v5_types_storage.data + 0};
     xdg_surface_requests[13] = .{"set_minimized", "", xdg_shell_unstable_v5_types_storage.data + 0};
-    xdg_surface_events[0] = .{"configure", "iiau", xdg_shell_unstable_v5_types_storage.data + 30};
+    xdg_surface_events[0] = .{"configure", "iiau", xdg_shell_unstable_v5_types_storage.data + 31};
     xdg_surface_events[1] = .{"close", "", xdg_shell_unstable_v5_types_storage.data + 0};
     xdg_surface_interface = .{
         "xdg_surface", 1,

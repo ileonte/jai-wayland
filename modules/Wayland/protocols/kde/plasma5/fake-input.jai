@@ -159,17 +159,17 @@ fake_input_protocol_init :: () {
         null,  // 19
     ];
 
-    org_kde_kwin_fake_input_requests[0] = .{"authenticate", "ss", fake_input_types_storage.data + 0};
-    org_kde_kwin_fake_input_requests[1] = .{"pointer_motion", "ff", fake_input_types_storage.data + 1};
-    org_kde_kwin_fake_input_requests[2] = .{"button", "uu", fake_input_types_storage.data + 3};
-    org_kde_kwin_fake_input_requests[3] = .{"axis", "uf", fake_input_types_storage.data + 5};
-    org_kde_kwin_fake_input_requests[4] = .{"touch_down", "uff", fake_input_types_storage.data + 7};
-    org_kde_kwin_fake_input_requests[5] = .{"touch_motion", "uff", fake_input_types_storage.data + 9};
-    org_kde_kwin_fake_input_requests[6] = .{"touch_up", "u", fake_input_types_storage.data + 12};
+    org_kde_kwin_fake_input_requests[0] = .{"authenticate", "ss", fake_input_types_storage.data + 1};
+    org_kde_kwin_fake_input_requests[1] = .{"pointer_motion", "ff", fake_input_types_storage.data + 3};
+    org_kde_kwin_fake_input_requests[2] = .{"button", "uu", fake_input_types_storage.data + 5};
+    org_kde_kwin_fake_input_requests[3] = .{"axis", "uf", fake_input_types_storage.data + 7};
+    org_kde_kwin_fake_input_requests[4] = .{"touch_down", "uff", fake_input_types_storage.data + 9};
+    org_kde_kwin_fake_input_requests[5] = .{"touch_motion", "uff", fake_input_types_storage.data + 12};
+    org_kde_kwin_fake_input_requests[6] = .{"touch_up", "u", fake_input_types_storage.data + 15};
     org_kde_kwin_fake_input_requests[7] = .{"touch_cancel", "", fake_input_types_storage.data + 0};
     org_kde_kwin_fake_input_requests[8] = .{"touch_frame", "", fake_input_types_storage.data + 0};
-    org_kde_kwin_fake_input_requests[9] = .{"pointer_motion_absolute", "ff", fake_input_types_storage.data + 15};
-    org_kde_kwin_fake_input_requests[10] = .{"keyboard_key", "uu", fake_input_types_storage.data + 16};
+    org_kde_kwin_fake_input_requests[9] = .{"pointer_motion_absolute", "ff", fake_input_types_storage.data + 16};
+    org_kde_kwin_fake_input_requests[10] = .{"keyboard_key", "uu", fake_input_types_storage.data + 18};
     org_kde_kwin_fake_input_interface = .{
         "org_kde_kwin_fake_input", 4,
         org_kde_kwin_fake_input_requests.count, org_kde_kwin_fake_input_requests.data,

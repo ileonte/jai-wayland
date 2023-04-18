@@ -105,7 +105,7 @@ idle_protocol_init :: () {
         null,  // 3
     ];
 
-    org_kde_kwin_idle_requests[0] = .{"get_idle_timeout", "nou", idle_types_storage.data + 0};
+    org_kde_kwin_idle_requests[0] = .{"get_idle_timeout", "nou", idle_types_storage.data + 1};
     org_kde_kwin_idle_interface = .{
         "org_kde_kwin_idle", 1,
         org_kde_kwin_idle_requests.count, org_kde_kwin_idle_requests.data,

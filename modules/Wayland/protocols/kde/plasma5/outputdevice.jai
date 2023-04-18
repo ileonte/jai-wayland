@@ -199,20 +199,20 @@ org_kde_kwin_outputdevice_protocol_init :: () {
         null,  // 26
     ];
 
-    org_kde_kwin_outputdevice_events[0] = .{"geometry", "iiiiissi", org_kde_kwin_outputdevice_types_storage.data + 0};
-    org_kde_kwin_outputdevice_events[1] = .{"mode", "uiiii", org_kde_kwin_outputdevice_types_storage.data + 1};
+    org_kde_kwin_outputdevice_events[0] = .{"geometry", "iiiiissi", org_kde_kwin_outputdevice_types_storage.data + 1};
+    org_kde_kwin_outputdevice_events[1] = .{"mode", "uiiii", org_kde_kwin_outputdevice_types_storage.data + 9};
     org_kde_kwin_outputdevice_events[2] = .{"done", "", org_kde_kwin_outputdevice_types_storage.data + 0};
-    org_kde_kwin_outputdevice_events[3] = .{"scale", "i", org_kde_kwin_outputdevice_types_storage.data + 9};
-    org_kde_kwin_outputdevice_events[4] = .{"edid", "s", org_kde_kwin_outputdevice_types_storage.data + 14};
-    org_kde_kwin_outputdevice_events[5] = .{"enabled", "i", org_kde_kwin_outputdevice_types_storage.data + 15};
-    org_kde_kwin_outputdevice_events[6] = .{"uuid", "s", org_kde_kwin_outputdevice_types_storage.data + 16};
-    org_kde_kwin_outputdevice_events[7] = .{"scalef", "f", org_kde_kwin_outputdevice_types_storage.data + 17};
-    org_kde_kwin_outputdevice_events[8] = .{"colorcurves", "aaa", org_kde_kwin_outputdevice_types_storage.data + 18};
-    org_kde_kwin_outputdevice_events[9] = .{"serial_number", "s", org_kde_kwin_outputdevice_types_storage.data + 19};
-    org_kde_kwin_outputdevice_events[10] = .{"eisa_id", "s", org_kde_kwin_outputdevice_types_storage.data + 22};
-    org_kde_kwin_outputdevice_events[11] = .{"capabilities", "u", org_kde_kwin_outputdevice_types_storage.data + 23};
-    org_kde_kwin_outputdevice_events[12] = .{"overscan", "u", org_kde_kwin_outputdevice_types_storage.data + 24};
-    org_kde_kwin_outputdevice_events[13] = .{"vrr_policy", "u", org_kde_kwin_outputdevice_types_storage.data + 25};
+    org_kde_kwin_outputdevice_events[3] = .{"scale", "i", org_kde_kwin_outputdevice_types_storage.data + 14};
+    org_kde_kwin_outputdevice_events[4] = .{"edid", "s", org_kde_kwin_outputdevice_types_storage.data + 15};
+    org_kde_kwin_outputdevice_events[5] = .{"enabled", "i", org_kde_kwin_outputdevice_types_storage.data + 16};
+    org_kde_kwin_outputdevice_events[6] = .{"uuid", "s", org_kde_kwin_outputdevice_types_storage.data + 17};
+    org_kde_kwin_outputdevice_events[7] = .{"scalef", "f", org_kde_kwin_outputdevice_types_storage.data + 18};
+    org_kde_kwin_outputdevice_events[8] = .{"colorcurves", "aaa", org_kde_kwin_outputdevice_types_storage.data + 19};
+    org_kde_kwin_outputdevice_events[9] = .{"serial_number", "s", org_kde_kwin_outputdevice_types_storage.data + 22};
+    org_kde_kwin_outputdevice_events[10] = .{"eisa_id", "s", org_kde_kwin_outputdevice_types_storage.data + 23};
+    org_kde_kwin_outputdevice_events[11] = .{"capabilities", "u", org_kde_kwin_outputdevice_types_storage.data + 24};
+    org_kde_kwin_outputdevice_events[12] = .{"overscan", "u", org_kde_kwin_outputdevice_types_storage.data + 25};
+    org_kde_kwin_outputdevice_events[13] = .{"vrr_policy", "u", org_kde_kwin_outputdevice_types_storage.data + 26};
     org_kde_kwin_outputdevice_interface = .{
         "org_kde_kwin_outputdevice", 4,
         0, null,

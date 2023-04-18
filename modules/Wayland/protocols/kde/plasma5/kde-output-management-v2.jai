@@ -232,25 +232,25 @@ kde_output_management_v2_protocol_init :: () {
         null,  // 21
     ];
 
-    kde_output_management_v2_requests[0] = .{"create_configuration", "n", kde_output_management_v2_types_storage.data + 0};
+    kde_output_management_v2_requests[0] = .{"create_configuration", "n", kde_output_management_v2_types_storage.data + 1};
     kde_output_management_v2_interface = .{
         "kde_output_management_v2", 3,
         kde_output_management_v2_requests.count, kde_output_management_v2_requests.data,
         0, null,
     };
 
-    kde_output_configuration_v2_requests[0] = .{"enable", "oi", kde_output_management_v2_types_storage.data + 1};
-    kde_output_configuration_v2_requests[1] = .{"mode", "oo", kde_output_management_v2_types_storage.data + 2};
-    kde_output_configuration_v2_requests[2] = .{"transform", "oi", kde_output_management_v2_types_storage.data + 4};
-    kde_output_configuration_v2_requests[3] = .{"position", "oii", kde_output_management_v2_types_storage.data + 6};
-    kde_output_configuration_v2_requests[4] = .{"scale", "of", kde_output_management_v2_types_storage.data + 8};
+    kde_output_configuration_v2_requests[0] = .{"enable", "oi", kde_output_management_v2_types_storage.data + 2};
+    kde_output_configuration_v2_requests[1] = .{"mode", "oo", kde_output_management_v2_types_storage.data + 4};
+    kde_output_configuration_v2_requests[2] = .{"transform", "oi", kde_output_management_v2_types_storage.data + 6};
+    kde_output_configuration_v2_requests[3] = .{"position", "oii", kde_output_management_v2_types_storage.data + 8};
+    kde_output_configuration_v2_requests[4] = .{"scale", "of", kde_output_management_v2_types_storage.data + 11};
     kde_output_configuration_v2_requests[5] = .{"apply", "", kde_output_management_v2_types_storage.data + 0};
     kde_output_configuration_v2_requests[6] = .{"destroy", "", kde_output_management_v2_types_storage.data + 0};
-    kde_output_configuration_v2_requests[7] = .{"overscan", "ou", kde_output_management_v2_types_storage.data + 11};
-    kde_output_configuration_v2_requests[8] = .{"set_vrr_policy", "ou", kde_output_management_v2_types_storage.data + 13};
-    kde_output_configuration_v2_requests[9] = .{"set_rgb_range", "ou", kde_output_management_v2_types_storage.data + 15};
-    kde_output_configuration_v2_requests[10] = .{"set_primary_output", "o", kde_output_management_v2_types_storage.data + 17};
-    kde_output_configuration_v2_requests[11] = .{"set_priority", "ou", kde_output_management_v2_types_storage.data + 19};
+    kde_output_configuration_v2_requests[7] = .{"overscan", "ou", kde_output_management_v2_types_storage.data + 13};
+    kde_output_configuration_v2_requests[8] = .{"set_vrr_policy", "ou", kde_output_management_v2_types_storage.data + 15};
+    kde_output_configuration_v2_requests[9] = .{"set_rgb_range", "ou", kde_output_management_v2_types_storage.data + 17};
+    kde_output_configuration_v2_requests[10] = .{"set_primary_output", "o", kde_output_management_v2_types_storage.data + 19};
+    kde_output_configuration_v2_requests[11] = .{"set_priority", "ou", kde_output_management_v2_types_storage.data + 20};
     kde_output_configuration_v2_events[0] = .{"applied", "", kde_output_management_v2_types_storage.data + 0};
     kde_output_configuration_v2_events[1] = .{"failed", "", kde_output_management_v2_types_storage.data + 0};
     kde_output_configuration_v2_interface = .{

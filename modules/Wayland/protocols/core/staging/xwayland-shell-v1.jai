@@ -98,14 +98,14 @@ xwayland_shell_v1_protocol_init :: () {
     ];
 
     xwayland_shell_v1_requests[0] = .{"destroy", "", xwayland_shell_v1_types_storage.data + 0};
-    xwayland_shell_v1_requests[1] = .{"get_xwayland_surface", "no", xwayland_shell_v1_types_storage.data + 0};
+    xwayland_shell_v1_requests[1] = .{"get_xwayland_surface", "no", xwayland_shell_v1_types_storage.data + 1};
     xwayland_shell_v1_interface = .{
         "xwayland_shell_v1", 1,
         xwayland_shell_v1_requests.count, xwayland_shell_v1_requests.data,
         0, null,
     };
 
-    xwayland_surface_v1_requests[0] = .{"set_serial", "uu", xwayland_shell_v1_types_storage.data + 1};
+    xwayland_surface_v1_requests[0] = .{"set_serial", "uu", xwayland_shell_v1_types_storage.data + 3};
     xwayland_surface_v1_requests[1] = .{"destroy", "", xwayland_shell_v1_types_storage.data + 0};
     xwayland_surface_v1_interface = .{
         "xwayland_surface_v1", 1,

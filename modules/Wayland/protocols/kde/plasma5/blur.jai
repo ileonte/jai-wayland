@@ -108,8 +108,8 @@ blur_protocol_init :: () {
         *wl_region_interface,   // 4
     ];
 
-    org_kde_kwin_blur_manager_requests[0] = .{"create", "no", blur_types_storage.data + 0};
-    org_kde_kwin_blur_manager_requests[1] = .{"unset", "o", blur_types_storage.data + 1};
+    org_kde_kwin_blur_manager_requests[0] = .{"create", "no", blur_types_storage.data + 1};
+    org_kde_kwin_blur_manager_requests[1] = .{"unset", "o", blur_types_storage.data + 3};
     org_kde_kwin_blur_manager_interface = .{
         "org_kde_kwin_blur_manager", 1,
         org_kde_kwin_blur_manager_requests.count, org_kde_kwin_blur_manager_requests.data,
@@ -117,7 +117,7 @@ blur_protocol_init :: () {
     };
 
     org_kde_kwin_blur_requests[0] = .{"commit", "", blur_types_storage.data + 0};
-    org_kde_kwin_blur_requests[1] = .{"set_region", "o", blur_types_storage.data + 3};
+    org_kde_kwin_blur_requests[1] = .{"set_region", "?o", blur_types_storage.data + 4};
     org_kde_kwin_blur_requests[2] = .{"release", "", blur_types_storage.data + 0};
     org_kde_kwin_blur_interface = .{
         "org_kde_kwin_blur", 1,

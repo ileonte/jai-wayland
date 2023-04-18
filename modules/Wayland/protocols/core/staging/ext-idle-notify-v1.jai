@@ -98,7 +98,7 @@ ext_idle_notify_v1_protocol_init :: () {
     ];
 
     ext_idle_notifier_v1_requests[0] = .{"destroy", "", ext_idle_notify_v1_types_storage.data + 0};
-    ext_idle_notifier_v1_requests[1] = .{"get_idle_notification", "nuo", ext_idle_notify_v1_types_storage.data + 0};
+    ext_idle_notifier_v1_requests[1] = .{"get_idle_notification", "nuo", ext_idle_notify_v1_types_storage.data + 1};
     ext_idle_notifier_v1_interface = .{
         "ext_idle_notifier_v1", 1,
         ext_idle_notifier_v1_requests.count, ext_idle_notifier_v1_requests.data,

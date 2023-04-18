@@ -243,8 +243,8 @@ wp_primary_selection_unstable_v1_protocol_init :: () {
         null,  // 13
     ];
 
-    zwp_primary_selection_device_manager_v1_requests[0] = .{"create_source", "n", wp_primary_selection_unstable_v1_types_storage.data + 0};
-    zwp_primary_selection_device_manager_v1_requests[1] = .{"get_device", "no", wp_primary_selection_unstable_v1_types_storage.data + 1};
+    zwp_primary_selection_device_manager_v1_requests[0] = .{"create_source", "n", wp_primary_selection_unstable_v1_types_storage.data + 1};
+    zwp_primary_selection_device_manager_v1_requests[1] = .{"get_device", "no", wp_primary_selection_unstable_v1_types_storage.data + 2};
     zwp_primary_selection_device_manager_v1_requests[2] = .{"destroy", "", wp_primary_selection_unstable_v1_types_storage.data + 0};
     zwp_primary_selection_device_manager_v1_interface = .{
         "zwp_primary_selection_device_manager_v1", 1,
@@ -252,28 +252,28 @@ wp_primary_selection_unstable_v1_protocol_init :: () {
         0, null,
     };
 
-    zwp_primary_selection_device_v1_requests[0] = .{"set_selection", "ou", wp_primary_selection_unstable_v1_types_storage.data + 2};
+    zwp_primary_selection_device_v1_requests[0] = .{"set_selection", "?ou", wp_primary_selection_unstable_v1_types_storage.data + 4};
     zwp_primary_selection_device_v1_requests[1] = .{"destroy", "", wp_primary_selection_unstable_v1_types_storage.data + 0};
-    zwp_primary_selection_device_v1_events[0] = .{"data_offer", "n", wp_primary_selection_unstable_v1_types_storage.data + 4};
-    zwp_primary_selection_device_v1_events[1] = .{"selection", "o", wp_primary_selection_unstable_v1_types_storage.data + 6};
+    zwp_primary_selection_device_v1_events[0] = .{"data_offer", "n", wp_primary_selection_unstable_v1_types_storage.data + 6};
+    zwp_primary_selection_device_v1_events[1] = .{"selection", "?o", wp_primary_selection_unstable_v1_types_storage.data + 7};
     zwp_primary_selection_device_v1_interface = .{
         "zwp_primary_selection_device_v1", 1,
         zwp_primary_selection_device_v1_requests.count, zwp_primary_selection_device_v1_requests.data,
         zwp_primary_selection_device_v1_events.count, zwp_primary_selection_device_v1_events.data,
     };
 
-    zwp_primary_selection_offer_v1_requests[0] = .{"receive", "sh", wp_primary_selection_unstable_v1_types_storage.data + 7};
+    zwp_primary_selection_offer_v1_requests[0] = .{"receive", "sh", wp_primary_selection_unstable_v1_types_storage.data + 8};
     zwp_primary_selection_offer_v1_requests[1] = .{"destroy", "", wp_primary_selection_unstable_v1_types_storage.data + 0};
-    zwp_primary_selection_offer_v1_events[0] = .{"offer", "s", wp_primary_selection_unstable_v1_types_storage.data + 8};
+    zwp_primary_selection_offer_v1_events[0] = .{"offer", "s", wp_primary_selection_unstable_v1_types_storage.data + 10};
     zwp_primary_selection_offer_v1_interface = .{
         "zwp_primary_selection_offer_v1", 1,
         zwp_primary_selection_offer_v1_requests.count, zwp_primary_selection_offer_v1_requests.data,
         zwp_primary_selection_offer_v1_events.count, zwp_primary_selection_offer_v1_events.data,
     };
 
-    zwp_primary_selection_source_v1_requests[0] = .{"offer", "s", wp_primary_selection_unstable_v1_types_storage.data + 10};
+    zwp_primary_selection_source_v1_requests[0] = .{"offer", "s", wp_primary_selection_unstable_v1_types_storage.data + 11};
     zwp_primary_selection_source_v1_requests[1] = .{"destroy", "", wp_primary_selection_unstable_v1_types_storage.data + 0};
-    zwp_primary_selection_source_v1_events[0] = .{"send", "sh", wp_primary_selection_unstable_v1_types_storage.data + 11};
+    zwp_primary_selection_source_v1_events[0] = .{"send", "sh", wp_primary_selection_unstable_v1_types_storage.data + 12};
     zwp_primary_selection_source_v1_events[1] = .{"cancelled", "", wp_primary_selection_unstable_v1_types_storage.data + 0};
     zwp_primary_selection_source_v1_interface = .{
         "zwp_primary_selection_source_v1", 1,

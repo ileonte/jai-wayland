@@ -124,7 +124,7 @@ xdg_decoration_unstable_v1_protocol_init :: () {
     ];
 
     zxdg_decoration_manager_v1_requests[0] = .{"destroy", "", xdg_decoration_unstable_v1_types_storage.data + 0};
-    zxdg_decoration_manager_v1_requests[1] = .{"get_toplevel_decoration", "no", xdg_decoration_unstable_v1_types_storage.data + 0};
+    zxdg_decoration_manager_v1_requests[1] = .{"get_toplevel_decoration", "no", xdg_decoration_unstable_v1_types_storage.data + 1};
     zxdg_decoration_manager_v1_interface = .{
         "zxdg_decoration_manager_v1", 1,
         zxdg_decoration_manager_v1_requests.count, zxdg_decoration_manager_v1_requests.data,
@@ -132,9 +132,9 @@ xdg_decoration_unstable_v1_protocol_init :: () {
     };
 
     zxdg_toplevel_decoration_v1_requests[0] = .{"destroy", "", xdg_decoration_unstable_v1_types_storage.data + 0};
-    zxdg_toplevel_decoration_v1_requests[1] = .{"set_mode", "u", xdg_decoration_unstable_v1_types_storage.data + 1};
+    zxdg_toplevel_decoration_v1_requests[1] = .{"set_mode", "u", xdg_decoration_unstable_v1_types_storage.data + 3};
     zxdg_toplevel_decoration_v1_requests[2] = .{"unset_mode", "", xdg_decoration_unstable_v1_types_storage.data + 0};
-    zxdg_toplevel_decoration_v1_events[0] = .{"configure", "u", xdg_decoration_unstable_v1_types_storage.data + 3};
+    zxdg_toplevel_decoration_v1_events[0] = .{"configure", "u", xdg_decoration_unstable_v1_types_storage.data + 4};
     zxdg_toplevel_decoration_v1_interface = .{
         "zxdg_toplevel_decoration_v1", 1,
         zxdg_toplevel_decoration_v1_requests.count, zxdg_toplevel_decoration_v1_requests.data,

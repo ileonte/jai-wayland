@@ -56,7 +56,7 @@ kde_primary_output_v1_protocol_init :: () {
     ];
 
     kde_primary_output_v1_requests[0] = .{"destroy", "", kde_primary_output_v1_types_storage.data + 0};
-    kde_primary_output_v1_events[0] = .{"primary_output", "s", kde_primary_output_v1_types_storage.data + 0};
+    kde_primary_output_v1_events[0] = .{"primary_output", "s", kde_primary_output_v1_types_storage.data + 1};
     kde_primary_output_v1_interface = .{
         "kde_primary_output_v1", 2,
         kde_primary_output_v1_requests.count, kde_primary_output_v1_requests.data,

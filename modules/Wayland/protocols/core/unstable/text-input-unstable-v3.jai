@@ -246,17 +246,17 @@ text_input_unstable_v3_protocol_init :: () {
     zwp_text_input_v3_requests[0] = .{"destroy", "", text_input_unstable_v3_types_storage.data + 0};
     zwp_text_input_v3_requests[1] = .{"enable", "", text_input_unstable_v3_types_storage.data + 0};
     zwp_text_input_v3_requests[2] = .{"disable", "", text_input_unstable_v3_types_storage.data + 0};
-    zwp_text_input_v3_requests[3] = .{"set_surrounding_text", "sii", text_input_unstable_v3_types_storage.data + 0};
-    zwp_text_input_v3_requests[4] = .{"set_text_change_cause", "u", text_input_unstable_v3_types_storage.data + 1};
-    zwp_text_input_v3_requests[5] = .{"set_content_type", "uu", text_input_unstable_v3_types_storage.data + 4};
-    zwp_text_input_v3_requests[6] = .{"set_cursor_rectangle", "iiii", text_input_unstable_v3_types_storage.data + 5};
+    zwp_text_input_v3_requests[3] = .{"set_surrounding_text", "sii", text_input_unstable_v3_types_storage.data + 1};
+    zwp_text_input_v3_requests[4] = .{"set_text_change_cause", "u", text_input_unstable_v3_types_storage.data + 4};
+    zwp_text_input_v3_requests[5] = .{"set_content_type", "uu", text_input_unstable_v3_types_storage.data + 5};
+    zwp_text_input_v3_requests[6] = .{"set_cursor_rectangle", "iiii", text_input_unstable_v3_types_storage.data + 7};
     zwp_text_input_v3_requests[7] = .{"commit", "", text_input_unstable_v3_types_storage.data + 0};
-    zwp_text_input_v3_events[0] = .{"enter", "o", text_input_unstable_v3_types_storage.data + 7};
-    zwp_text_input_v3_events[1] = .{"leave", "o", text_input_unstable_v3_types_storage.data + 11};
-    zwp_text_input_v3_events[2] = .{"preedit_string", "sii", text_input_unstable_v3_types_storage.data + 12};
-    zwp_text_input_v3_events[3] = .{"commit_string", "s", text_input_unstable_v3_types_storage.data + 13};
-    zwp_text_input_v3_events[4] = .{"delete_surrounding_text", "uu", text_input_unstable_v3_types_storage.data + 16};
-    zwp_text_input_v3_events[5] = .{"done", "u", text_input_unstable_v3_types_storage.data + 17};
+    zwp_text_input_v3_events[0] = .{"enter", "o", text_input_unstable_v3_types_storage.data + 11};
+    zwp_text_input_v3_events[1] = .{"leave", "o", text_input_unstable_v3_types_storage.data + 12};
+    zwp_text_input_v3_events[2] = .{"preedit_string", "?sii", text_input_unstable_v3_types_storage.data + 13};
+    zwp_text_input_v3_events[3] = .{"commit_string", "?s", text_input_unstable_v3_types_storage.data + 16};
+    zwp_text_input_v3_events[4] = .{"delete_surrounding_text", "uu", text_input_unstable_v3_types_storage.data + 17};
+    zwp_text_input_v3_events[5] = .{"done", "u", text_input_unstable_v3_types_storage.data + 19};
     zwp_text_input_v3_interface = .{
         "zwp_text_input_v3", 1,
         zwp_text_input_v3_requests.count, zwp_text_input_v3_requests.data,
@@ -264,7 +264,7 @@ text_input_unstable_v3_protocol_init :: () {
     };
 
     zwp_text_input_manager_v3_requests[0] = .{"destroy", "", text_input_unstable_v3_types_storage.data + 0};
-    zwp_text_input_manager_v3_requests[1] = .{"get_text_input", "no", text_input_unstable_v3_types_storage.data + 19};
+    zwp_text_input_manager_v3_requests[1] = .{"get_text_input", "no", text_input_unstable_v3_types_storage.data + 20};
     zwp_text_input_manager_v3_interface = .{
         "zwp_text_input_manager_v3", 1,
         zwp_text_input_manager_v3_requests.count, zwp_text_input_manager_v3_requests.data,

@@ -537,52 +537,52 @@ plasma_window_management_protocol_init :: () {
         null,  // 46
     ];
 
-    org_kde_plasma_window_management_requests[0] = .{"show_desktop", "u", plasma_window_management_types_storage.data + 0};
-    org_kde_plasma_window_management_requests[1] = .{"get_window", "nu", plasma_window_management_types_storage.data + 1};
-    org_kde_plasma_window_management_requests[2] = .{"get_window_by_uuid", "ns", plasma_window_management_types_storage.data + 2};
-    org_kde_plasma_window_management_events[0] = .{"show_desktop_changed", "u", plasma_window_management_types_storage.data + 4};
-    org_kde_plasma_window_management_events[1] = .{"window", "u", plasma_window_management_types_storage.data + 6};
-    org_kde_plasma_window_management_events[2] = .{"stacking_order_changed", "a", plasma_window_management_types_storage.data + 7};
-    org_kde_plasma_window_management_events[3] = .{"stacking_order_uuid_changed", "s", plasma_window_management_types_storage.data + 8};
-    org_kde_plasma_window_management_events[4] = .{"window_with_uuid", "us", plasma_window_management_types_storage.data + 9};
+    org_kde_plasma_window_management_requests[0] = .{"show_desktop", "u", plasma_window_management_types_storage.data + 1};
+    org_kde_plasma_window_management_requests[1] = .{"get_window", "nu", plasma_window_management_types_storage.data + 2};
+    org_kde_plasma_window_management_requests[2] = .{"get_window_by_uuid", "ns", plasma_window_management_types_storage.data + 4};
+    org_kde_plasma_window_management_events[0] = .{"show_desktop_changed", "u", plasma_window_management_types_storage.data + 6};
+    org_kde_plasma_window_management_events[1] = .{"window", "u", plasma_window_management_types_storage.data + 7};
+    org_kde_plasma_window_management_events[2] = .{"stacking_order_changed", "a", plasma_window_management_types_storage.data + 8};
+    org_kde_plasma_window_management_events[3] = .{"stacking_order_uuid_changed", "s", plasma_window_management_types_storage.data + 9};
+    org_kde_plasma_window_management_events[4] = .{"window_with_uuid", "us", plasma_window_management_types_storage.data + 10};
     org_kde_plasma_window_management_interface = .{
         "org_kde_plasma_window_management", 16,
         org_kde_plasma_window_management_requests.count, org_kde_plasma_window_management_requests.data,
         org_kde_plasma_window_management_events.count, org_kde_plasma_window_management_events.data,
     };
 
-    org_kde_plasma_window_requests[0] = .{"set_state", "uu", plasma_window_management_types_storage.data + 10};
-    org_kde_plasma_window_requests[1] = .{"set_virtual_desktop", "u", plasma_window_management_types_storage.data + 12};
-    org_kde_plasma_window_requests[2] = .{"set_minimized_geometry", "ouuuu", plasma_window_management_types_storage.data + 14};
-    org_kde_plasma_window_requests[3] = .{"unset_minimized_geometry", "o", plasma_window_management_types_storage.data + 15};
+    org_kde_plasma_window_requests[0] = .{"set_state", "uu", plasma_window_management_types_storage.data + 12};
+    org_kde_plasma_window_requests[1] = .{"set_virtual_desktop", "u", plasma_window_management_types_storage.data + 14};
+    org_kde_plasma_window_requests[2] = .{"set_minimized_geometry", "ouuuu", plasma_window_management_types_storage.data + 15};
+    org_kde_plasma_window_requests[3] = .{"unset_minimized_geometry", "o", plasma_window_management_types_storage.data + 20};
     org_kde_plasma_window_requests[4] = .{"close", "", plasma_window_management_types_storage.data + 0};
     org_kde_plasma_window_requests[5] = .{"request_move", "", plasma_window_management_types_storage.data + 0};
     org_kde_plasma_window_requests[6] = .{"request_resize", "", plasma_window_management_types_storage.data + 0};
     org_kde_plasma_window_requests[7] = .{"destroy", "", plasma_window_management_types_storage.data + 0};
-    org_kde_plasma_window_requests[8] = .{"get_icon", "h", plasma_window_management_types_storage.data + 20};
-    org_kde_plasma_window_requests[9] = .{"request_enter_virtual_desktop", "s", plasma_window_management_types_storage.data + 21};
+    org_kde_plasma_window_requests[8] = .{"get_icon", "h", plasma_window_management_types_storage.data + 21};
+    org_kde_plasma_window_requests[9] = .{"request_enter_virtual_desktop", "s", plasma_window_management_types_storage.data + 22};
     org_kde_plasma_window_requests[10] = .{"request_enter_new_virtual_desktop", "", plasma_window_management_types_storage.data + 0};
-    org_kde_plasma_window_requests[11] = .{"request_leave_virtual_desktop", "s", plasma_window_management_types_storage.data + 22};
-    org_kde_plasma_window_requests[12] = .{"request_enter_activity", "s", plasma_window_management_types_storage.data + 23};
-    org_kde_plasma_window_requests[13] = .{"request_leave_activity", "s", plasma_window_management_types_storage.data + 24};
-    org_kde_plasma_window_requests[14] = .{"send_to_output", "o", plasma_window_management_types_storage.data + 25};
-    org_kde_plasma_window_events[0] = .{"title_changed", "s", plasma_window_management_types_storage.data + 26};
-    org_kde_plasma_window_events[1] = .{"app_id_changed", "s", plasma_window_management_types_storage.data + 27};
-    org_kde_plasma_window_events[2] = .{"state_changed", "u", plasma_window_management_types_storage.data + 28};
-    org_kde_plasma_window_events[3] = .{"virtual_desktop_changed", "i", plasma_window_management_types_storage.data + 29};
-    org_kde_plasma_window_events[4] = .{"themed_icon_name_changed", "s", plasma_window_management_types_storage.data + 30};
+    org_kde_plasma_window_requests[11] = .{"request_leave_virtual_desktop", "s", plasma_window_management_types_storage.data + 23};
+    org_kde_plasma_window_requests[12] = .{"request_enter_activity", "s", plasma_window_management_types_storage.data + 24};
+    org_kde_plasma_window_requests[13] = .{"request_leave_activity", "s", plasma_window_management_types_storage.data + 25};
+    org_kde_plasma_window_requests[14] = .{"send_to_output", "o", plasma_window_management_types_storage.data + 26};
+    org_kde_plasma_window_events[0] = .{"title_changed", "s", plasma_window_management_types_storage.data + 27};
+    org_kde_plasma_window_events[1] = .{"app_id_changed", "s", plasma_window_management_types_storage.data + 28};
+    org_kde_plasma_window_events[2] = .{"state_changed", "u", plasma_window_management_types_storage.data + 29};
+    org_kde_plasma_window_events[3] = .{"virtual_desktop_changed", "i", plasma_window_management_types_storage.data + 30};
+    org_kde_plasma_window_events[4] = .{"themed_icon_name_changed", "s", plasma_window_management_types_storage.data + 31};
     org_kde_plasma_window_events[5] = .{"unmapped", "", plasma_window_management_types_storage.data + 0};
     org_kde_plasma_window_events[6] = .{"initial_state", "", plasma_window_management_types_storage.data + 0};
-    org_kde_plasma_window_events[7] = .{"parent_window", "o", plasma_window_management_types_storage.data + 31};
-    org_kde_plasma_window_events[8] = .{"geometry", "iiuu", plasma_window_management_types_storage.data + 32};
+    org_kde_plasma_window_events[7] = .{"parent_window", "?o", plasma_window_management_types_storage.data + 32};
+    org_kde_plasma_window_events[8] = .{"geometry", "iiuu", plasma_window_management_types_storage.data + 33};
     org_kde_plasma_window_events[9] = .{"icon_changed", "", plasma_window_management_types_storage.data + 0};
-    org_kde_plasma_window_events[10] = .{"pid_changed", "u", plasma_window_management_types_storage.data + 33};
-    org_kde_plasma_window_events[11] = .{"virtual_desktop_entered", "s", plasma_window_management_types_storage.data + 37};
-    org_kde_plasma_window_events[12] = .{"virtual_desktop_left", "s", plasma_window_management_types_storage.data + 38};
-    org_kde_plasma_window_events[13] = .{"application_menu", "ss", plasma_window_management_types_storage.data + 39};
-    org_kde_plasma_window_events[14] = .{"activity_entered", "s", plasma_window_management_types_storage.data + 40};
-    org_kde_plasma_window_events[15] = .{"activity_left", "s", plasma_window_management_types_storage.data + 42};
-    org_kde_plasma_window_events[16] = .{"resource_name_changed", "s", plasma_window_management_types_storage.data + 43};
+    org_kde_plasma_window_events[10] = .{"pid_changed", "u", plasma_window_management_types_storage.data + 37};
+    org_kde_plasma_window_events[11] = .{"virtual_desktop_entered", "s", plasma_window_management_types_storage.data + 38};
+    org_kde_plasma_window_events[12] = .{"virtual_desktop_left", "s", plasma_window_management_types_storage.data + 39};
+    org_kde_plasma_window_events[13] = .{"application_menu", "ss", plasma_window_management_types_storage.data + 40};
+    org_kde_plasma_window_events[14] = .{"activity_entered", "s", plasma_window_management_types_storage.data + 42};
+    org_kde_plasma_window_events[15] = .{"activity_left", "s", plasma_window_management_types_storage.data + 43};
+    org_kde_plasma_window_events[16] = .{"resource_name_changed", "s", plasma_window_management_types_storage.data + 44};
     org_kde_plasma_window_interface = .{
         "org_kde_plasma_window", 16,
         org_kde_plasma_window_requests.count, org_kde_plasma_window_requests.data,
@@ -590,7 +590,7 @@ plasma_window_management_protocol_init :: () {
     };
 
     org_kde_plasma_activation_feedback_requests[0] = .{"destroy", "", plasma_window_management_types_storage.data + 0};
-    org_kde_plasma_activation_feedback_events[0] = .{"activation", "n", plasma_window_management_types_storage.data + 44};
+    org_kde_plasma_activation_feedback_events[0] = .{"activation", "n", plasma_window_management_types_storage.data + 45};
     org_kde_plasma_activation_feedback_interface = .{
         "org_kde_plasma_activation_feedback", 1,
         org_kde_plasma_activation_feedback_requests.count, org_kde_plasma_activation_feedback_requests.data,
@@ -598,7 +598,7 @@ plasma_window_management_protocol_init :: () {
     };
 
     org_kde_plasma_activation_requests[0] = .{"destroy", "", plasma_window_management_types_storage.data + 0};
-    org_kde_plasma_activation_events[0] = .{"app_id", "s", plasma_window_management_types_storage.data + 45};
+    org_kde_plasma_activation_events[0] = .{"app_id", "s", plasma_window_management_types_storage.data + 46};
     org_kde_plasma_activation_events[1] = .{"finished", "", plasma_window_management_types_storage.data + 0};
     org_kde_plasma_activation_interface = .{
         "org_kde_plasma_activation", 1,

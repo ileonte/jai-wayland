@@ -114,7 +114,7 @@ viewporter_protocol_init :: () {
     ];
 
     wp_viewporter_requests[0] = .{"destroy", "", viewporter_types_storage.data + 0};
-    wp_viewporter_requests[1] = .{"get_viewport", "no", viewporter_types_storage.data + 0};
+    wp_viewporter_requests[1] = .{"get_viewport", "no", viewporter_types_storage.data + 1};
     wp_viewporter_interface = .{
         "wp_viewporter", 1,
         wp_viewporter_requests.count, wp_viewporter_requests.data,
@@ -122,8 +122,8 @@ viewporter_protocol_init :: () {
     };
 
     wp_viewport_requests[0] = .{"destroy", "", viewporter_types_storage.data + 0};
-    wp_viewport_requests[1] = .{"set_source", "ffff", viewporter_types_storage.data + 1};
-    wp_viewport_requests[2] = .{"set_destination", "ii", viewporter_types_storage.data + 3};
+    wp_viewport_requests[1] = .{"set_source", "ffff", viewporter_types_storage.data + 3};
+    wp_viewport_requests[2] = .{"set_destination", "ii", viewporter_types_storage.data + 7};
     wp_viewport_interface = .{
         "wp_viewport", 1,
         wp_viewport_requests.count, wp_viewport_requests.data,

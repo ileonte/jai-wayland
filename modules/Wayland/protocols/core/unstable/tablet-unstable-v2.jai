@@ -740,7 +740,7 @@ tablet_unstable_v2_protocol_init :: () {
         *wl_surface_interface,  // 68
     ];
 
-    zwp_tablet_manager_v2_requests[0] = .{"get_tablet_seat", "no", tablet_unstable_v2_types_storage.data + 0};
+    zwp_tablet_manager_v2_requests[0] = .{"get_tablet_seat", "no", tablet_unstable_v2_types_storage.data + 1};
     zwp_tablet_manager_v2_requests[1] = .{"destroy", "", tablet_unstable_v2_types_storage.data + 0};
     zwp_tablet_manager_v2_interface = .{
         "zwp_tablet_manager_v2", 1,
@@ -749,36 +749,36 @@ tablet_unstable_v2_protocol_init :: () {
     };
 
     zwp_tablet_seat_v2_requests[0] = .{"destroy", "", tablet_unstable_v2_types_storage.data + 0};
-    zwp_tablet_seat_v2_events[0] = .{"tablet_added", "n", tablet_unstable_v2_types_storage.data + 1};
-    zwp_tablet_seat_v2_events[1] = .{"tool_added", "n", tablet_unstable_v2_types_storage.data + 3};
-    zwp_tablet_seat_v2_events[2] = .{"pad_added", "n", tablet_unstable_v2_types_storage.data + 4};
+    zwp_tablet_seat_v2_events[0] = .{"tablet_added", "n", tablet_unstable_v2_types_storage.data + 3};
+    zwp_tablet_seat_v2_events[1] = .{"tool_added", "n", tablet_unstable_v2_types_storage.data + 4};
+    zwp_tablet_seat_v2_events[2] = .{"pad_added", "n", tablet_unstable_v2_types_storage.data + 5};
     zwp_tablet_seat_v2_interface = .{
         "zwp_tablet_seat_v2", 1,
         zwp_tablet_seat_v2_requests.count, zwp_tablet_seat_v2_requests.data,
         zwp_tablet_seat_v2_events.count, zwp_tablet_seat_v2_events.data,
     };
 
-    zwp_tablet_tool_v2_requests[0] = .{"set_cursor", "uoii", tablet_unstable_v2_types_storage.data + 5};
+    zwp_tablet_tool_v2_requests[0] = .{"set_cursor", "u?oii", tablet_unstable_v2_types_storage.data + 6};
     zwp_tablet_tool_v2_requests[1] = .{"destroy", "", tablet_unstable_v2_types_storage.data + 0};
-    zwp_tablet_tool_v2_events[0] = .{"type", "u", tablet_unstable_v2_types_storage.data + 6};
-    zwp_tablet_tool_v2_events[1] = .{"hardware_serial", "uu", tablet_unstable_v2_types_storage.data + 10};
-    zwp_tablet_tool_v2_events[2] = .{"hardware_id_wacom", "uu", tablet_unstable_v2_types_storage.data + 11};
-    zwp_tablet_tool_v2_events[3] = .{"capability", "u", tablet_unstable_v2_types_storage.data + 13};
+    zwp_tablet_tool_v2_events[0] = .{"type", "u", tablet_unstable_v2_types_storage.data + 10};
+    zwp_tablet_tool_v2_events[1] = .{"hardware_serial", "uu", tablet_unstable_v2_types_storage.data + 11};
+    zwp_tablet_tool_v2_events[2] = .{"hardware_id_wacom", "uu", tablet_unstable_v2_types_storage.data + 13};
+    zwp_tablet_tool_v2_events[3] = .{"capability", "u", tablet_unstable_v2_types_storage.data + 15};
     zwp_tablet_tool_v2_events[4] = .{"done", "", tablet_unstable_v2_types_storage.data + 0};
     zwp_tablet_tool_v2_events[5] = .{"removed", "", tablet_unstable_v2_types_storage.data + 0};
-    zwp_tablet_tool_v2_events[6] = .{"proximity_in", "uoo", tablet_unstable_v2_types_storage.data + 15};
+    zwp_tablet_tool_v2_events[6] = .{"proximity_in", "uoo", tablet_unstable_v2_types_storage.data + 16};
     zwp_tablet_tool_v2_events[7] = .{"proximity_out", "", tablet_unstable_v2_types_storage.data + 0};
-    zwp_tablet_tool_v2_events[8] = .{"down", "u", tablet_unstable_v2_types_storage.data + 16};
+    zwp_tablet_tool_v2_events[8] = .{"down", "u", tablet_unstable_v2_types_storage.data + 19};
     zwp_tablet_tool_v2_events[9] = .{"up", "", tablet_unstable_v2_types_storage.data + 0};
-    zwp_tablet_tool_v2_events[10] = .{"motion", "ff", tablet_unstable_v2_types_storage.data + 19};
-    zwp_tablet_tool_v2_events[11] = .{"pressure", "u", tablet_unstable_v2_types_storage.data + 20};
-    zwp_tablet_tool_v2_events[12] = .{"distance", "u", tablet_unstable_v2_types_storage.data + 22};
-    zwp_tablet_tool_v2_events[13] = .{"tilt", "ff", tablet_unstable_v2_types_storage.data + 23};
-    zwp_tablet_tool_v2_events[14] = .{"rotation", "f", tablet_unstable_v2_types_storage.data + 24};
-    zwp_tablet_tool_v2_events[15] = .{"slider", "i", tablet_unstable_v2_types_storage.data + 26};
-    zwp_tablet_tool_v2_events[16] = .{"wheel", "fi", tablet_unstable_v2_types_storage.data + 27};
-    zwp_tablet_tool_v2_events[17] = .{"button", "uuu", tablet_unstable_v2_types_storage.data + 28};
-    zwp_tablet_tool_v2_events[18] = .{"frame", "u", tablet_unstable_v2_types_storage.data + 30};
+    zwp_tablet_tool_v2_events[10] = .{"motion", "ff", tablet_unstable_v2_types_storage.data + 20};
+    zwp_tablet_tool_v2_events[11] = .{"pressure", "u", tablet_unstable_v2_types_storage.data + 22};
+    zwp_tablet_tool_v2_events[12] = .{"distance", "u", tablet_unstable_v2_types_storage.data + 23};
+    zwp_tablet_tool_v2_events[13] = .{"tilt", "ff", tablet_unstable_v2_types_storage.data + 24};
+    zwp_tablet_tool_v2_events[14] = .{"rotation", "f", tablet_unstable_v2_types_storage.data + 26};
+    zwp_tablet_tool_v2_events[15] = .{"slider", "i", tablet_unstable_v2_types_storage.data + 27};
+    zwp_tablet_tool_v2_events[16] = .{"wheel", "fi", tablet_unstable_v2_types_storage.data + 28};
+    zwp_tablet_tool_v2_events[17] = .{"button", "uuu", tablet_unstable_v2_types_storage.data + 30};
+    zwp_tablet_tool_v2_events[18] = .{"frame", "u", tablet_unstable_v2_types_storage.data + 33};
     zwp_tablet_tool_v2_interface = .{
         "zwp_tablet_tool_v2", 1,
         zwp_tablet_tool_v2_requests.count, zwp_tablet_tool_v2_requests.data,
@@ -786,9 +786,9 @@ tablet_unstable_v2_protocol_init :: () {
     };
 
     zwp_tablet_v2_requests[0] = .{"destroy", "", tablet_unstable_v2_types_storage.data + 0};
-    zwp_tablet_v2_events[0] = .{"name", "s", tablet_unstable_v2_types_storage.data + 33};
-    zwp_tablet_v2_events[1] = .{"id", "uu", tablet_unstable_v2_types_storage.data + 34};
-    zwp_tablet_v2_events[2] = .{"path", "s", tablet_unstable_v2_types_storage.data + 35};
+    zwp_tablet_v2_events[0] = .{"name", "s", tablet_unstable_v2_types_storage.data + 34};
+    zwp_tablet_v2_events[1] = .{"id", "uu", tablet_unstable_v2_types_storage.data + 35};
+    zwp_tablet_v2_events[2] = .{"path", "s", tablet_unstable_v2_types_storage.data + 37};
     zwp_tablet_v2_events[3] = .{"done", "", tablet_unstable_v2_types_storage.data + 0};
     zwp_tablet_v2_events[4] = .{"removed", "", tablet_unstable_v2_types_storage.data + 0};
     zwp_tablet_v2_interface = .{
@@ -797,24 +797,24 @@ tablet_unstable_v2_protocol_init :: () {
         zwp_tablet_v2_events.count, zwp_tablet_v2_events.data,
     };
 
-    zwp_tablet_pad_ring_v2_requests[0] = .{"set_feedback", "su", tablet_unstable_v2_types_storage.data + 37};
+    zwp_tablet_pad_ring_v2_requests[0] = .{"set_feedback", "su", tablet_unstable_v2_types_storage.data + 38};
     zwp_tablet_pad_ring_v2_requests[1] = .{"destroy", "", tablet_unstable_v2_types_storage.data + 0};
-    zwp_tablet_pad_ring_v2_events[0] = .{"source", "u", tablet_unstable_v2_types_storage.data + 38};
-    zwp_tablet_pad_ring_v2_events[1] = .{"angle", "f", tablet_unstable_v2_types_storage.data + 40};
+    zwp_tablet_pad_ring_v2_events[0] = .{"source", "u", tablet_unstable_v2_types_storage.data + 40};
+    zwp_tablet_pad_ring_v2_events[1] = .{"angle", "f", tablet_unstable_v2_types_storage.data + 41};
     zwp_tablet_pad_ring_v2_events[2] = .{"stop", "", tablet_unstable_v2_types_storage.data + 0};
-    zwp_tablet_pad_ring_v2_events[3] = .{"frame", "u", tablet_unstable_v2_types_storage.data + 41};
+    zwp_tablet_pad_ring_v2_events[3] = .{"frame", "u", tablet_unstable_v2_types_storage.data + 42};
     zwp_tablet_pad_ring_v2_interface = .{
         "zwp_tablet_pad_ring_v2", 1,
         zwp_tablet_pad_ring_v2_requests.count, zwp_tablet_pad_ring_v2_requests.data,
         zwp_tablet_pad_ring_v2_events.count, zwp_tablet_pad_ring_v2_events.data,
     };
 
-    zwp_tablet_pad_strip_v2_requests[0] = .{"set_feedback", "su", tablet_unstable_v2_types_storage.data + 42};
+    zwp_tablet_pad_strip_v2_requests[0] = .{"set_feedback", "su", tablet_unstable_v2_types_storage.data + 43};
     zwp_tablet_pad_strip_v2_requests[1] = .{"destroy", "", tablet_unstable_v2_types_storage.data + 0};
-    zwp_tablet_pad_strip_v2_events[0] = .{"source", "u", tablet_unstable_v2_types_storage.data + 43};
-    zwp_tablet_pad_strip_v2_events[1] = .{"position", "u", tablet_unstable_v2_types_storage.data + 45};
+    zwp_tablet_pad_strip_v2_events[0] = .{"source", "u", tablet_unstable_v2_types_storage.data + 45};
+    zwp_tablet_pad_strip_v2_events[1] = .{"position", "u", tablet_unstable_v2_types_storage.data + 46};
     zwp_tablet_pad_strip_v2_events[2] = .{"stop", "", tablet_unstable_v2_types_storage.data + 0};
-    zwp_tablet_pad_strip_v2_events[3] = .{"frame", "u", tablet_unstable_v2_types_storage.data + 46};
+    zwp_tablet_pad_strip_v2_events[3] = .{"frame", "u", tablet_unstable_v2_types_storage.data + 47};
     zwp_tablet_pad_strip_v2_interface = .{
         "zwp_tablet_pad_strip_v2", 1,
         zwp_tablet_pad_strip_v2_requests.count, zwp_tablet_pad_strip_v2_requests.data,
@@ -822,27 +822,27 @@ tablet_unstable_v2_protocol_init :: () {
     };
 
     zwp_tablet_pad_group_v2_requests[0] = .{"destroy", "", tablet_unstable_v2_types_storage.data + 0};
-    zwp_tablet_pad_group_v2_events[0] = .{"buttons", "a", tablet_unstable_v2_types_storage.data + 47};
-    zwp_tablet_pad_group_v2_events[1] = .{"ring", "n", tablet_unstable_v2_types_storage.data + 48};
-    zwp_tablet_pad_group_v2_events[2] = .{"strip", "n", tablet_unstable_v2_types_storage.data + 49};
-    zwp_tablet_pad_group_v2_events[3] = .{"modes", "u", tablet_unstable_v2_types_storage.data + 50};
+    zwp_tablet_pad_group_v2_events[0] = .{"buttons", "a", tablet_unstable_v2_types_storage.data + 48};
+    zwp_tablet_pad_group_v2_events[1] = .{"ring", "n", tablet_unstable_v2_types_storage.data + 49};
+    zwp_tablet_pad_group_v2_events[2] = .{"strip", "n", tablet_unstable_v2_types_storage.data + 50};
+    zwp_tablet_pad_group_v2_events[3] = .{"modes", "u", tablet_unstable_v2_types_storage.data + 51};
     zwp_tablet_pad_group_v2_events[4] = .{"done", "", tablet_unstable_v2_types_storage.data + 0};
-    zwp_tablet_pad_group_v2_events[5] = .{"mode_switch", "uuu", tablet_unstable_v2_types_storage.data + 51};
+    zwp_tablet_pad_group_v2_events[5] = .{"mode_switch", "uuu", tablet_unstable_v2_types_storage.data + 52};
     zwp_tablet_pad_group_v2_interface = .{
         "zwp_tablet_pad_group_v2", 1,
         zwp_tablet_pad_group_v2_requests.count, zwp_tablet_pad_group_v2_requests.data,
         zwp_tablet_pad_group_v2_events.count, zwp_tablet_pad_group_v2_events.data,
     };
 
-    zwp_tablet_pad_v2_requests[0] = .{"set_feedback", "usu", tablet_unstable_v2_types_storage.data + 52};
+    zwp_tablet_pad_v2_requests[0] = .{"set_feedback", "usu", tablet_unstable_v2_types_storage.data + 55};
     zwp_tablet_pad_v2_requests[1] = .{"destroy", "", tablet_unstable_v2_types_storage.data + 0};
-    zwp_tablet_pad_v2_events[0] = .{"group", "n", tablet_unstable_v2_types_storage.data + 55};
-    zwp_tablet_pad_v2_events[1] = .{"path", "s", tablet_unstable_v2_types_storage.data + 58};
-    zwp_tablet_pad_v2_events[2] = .{"buttons", "u", tablet_unstable_v2_types_storage.data + 59};
+    zwp_tablet_pad_v2_events[0] = .{"group", "n", tablet_unstable_v2_types_storage.data + 58};
+    zwp_tablet_pad_v2_events[1] = .{"path", "s", tablet_unstable_v2_types_storage.data + 59};
+    zwp_tablet_pad_v2_events[2] = .{"buttons", "u", tablet_unstable_v2_types_storage.data + 60};
     zwp_tablet_pad_v2_events[3] = .{"done", "", tablet_unstable_v2_types_storage.data + 0};
-    zwp_tablet_pad_v2_events[4] = .{"button", "uuu", tablet_unstable_v2_types_storage.data + 60};
-    zwp_tablet_pad_v2_events[5] = .{"enter", "uoo", tablet_unstable_v2_types_storage.data + 61};
-    zwp_tablet_pad_v2_events[6] = .{"leave", "uo", tablet_unstable_v2_types_storage.data + 64};
+    zwp_tablet_pad_v2_events[4] = .{"button", "uuu", tablet_unstable_v2_types_storage.data + 61};
+    zwp_tablet_pad_v2_events[5] = .{"enter", "uoo", tablet_unstable_v2_types_storage.data + 64};
+    zwp_tablet_pad_v2_events[6] = .{"leave", "uo", tablet_unstable_v2_types_storage.data + 67};
     zwp_tablet_pad_v2_events[7] = .{"removed", "", tablet_unstable_v2_types_storage.data + 0};
     zwp_tablet_pad_v2_interface = .{
         "zwp_tablet_pad_v2", 1,

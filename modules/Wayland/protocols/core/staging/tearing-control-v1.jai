@@ -97,14 +97,14 @@ tearing_control_v1_protocol_init :: () {
     ];
 
     wp_tearing_control_manager_v1_requests[0] = .{"destroy", "", tearing_control_v1_types_storage.data + 0};
-    wp_tearing_control_manager_v1_requests[1] = .{"get_tearing_control", "no", tearing_control_v1_types_storage.data + 0};
+    wp_tearing_control_manager_v1_requests[1] = .{"get_tearing_control", "no", tearing_control_v1_types_storage.data + 1};
     wp_tearing_control_manager_v1_interface = .{
         "wp_tearing_control_manager_v1", 1,
         wp_tearing_control_manager_v1_requests.count, wp_tearing_control_manager_v1_requests.data,
         0, null,
     };
 
-    wp_tearing_control_v1_requests[0] = .{"set_presentation_hint", "u", tearing_control_v1_types_storage.data + 1};
+    wp_tearing_control_v1_requests[0] = .{"set_presentation_hint", "u", tearing_control_v1_types_storage.data + 3};
     wp_tearing_control_v1_requests[1] = .{"destroy", "", tearing_control_v1_types_storage.data + 0};
     wp_tearing_control_v1_interface = .{
         "wp_tearing_control_v1", 1,

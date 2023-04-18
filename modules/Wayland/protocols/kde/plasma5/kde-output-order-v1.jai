@@ -60,7 +60,7 @@ kde_output_order_v1_protocol_init :: () {
     ];
 
     kde_output_order_v1_requests[0] = .{"destroy", "", kde_output_order_v1_types_storage.data + 0};
-    kde_output_order_v1_events[0] = .{"output", "s", kde_output_order_v1_types_storage.data + 0};
+    kde_output_order_v1_events[0] = .{"output", "s", kde_output_order_v1_types_storage.data + 1};
     kde_output_order_v1_events[1] = .{"done", "", kde_output_order_v1_types_storage.data + 0};
     kde_output_order_v1_interface = .{
         "kde_output_order_v1", 1,

@@ -163,8 +163,8 @@ contrast_protocol_init :: () {
         null,  // 11
     ];
 
-    org_kde_kwin_contrast_manager_requests[0] = .{"create", "no", contrast_types_storage.data + 0};
-    org_kde_kwin_contrast_manager_requests[1] = .{"unset", "o", contrast_types_storage.data + 1};
+    org_kde_kwin_contrast_manager_requests[0] = .{"create", "no", contrast_types_storage.data + 1};
+    org_kde_kwin_contrast_manager_requests[1] = .{"unset", "o", contrast_types_storage.data + 3};
     org_kde_kwin_contrast_manager_interface = .{
         "org_kde_kwin_contrast_manager", 2,
         org_kde_kwin_contrast_manager_requests.count, org_kde_kwin_contrast_manager_requests.data,
@@ -172,12 +172,12 @@ contrast_protocol_init :: () {
     };
 
     org_kde_kwin_contrast_requests[0] = .{"commit", "", contrast_types_storage.data + 0};
-    org_kde_kwin_contrast_requests[1] = .{"set_region", "o", contrast_types_storage.data + 3};
-    org_kde_kwin_contrast_requests[2] = .{"set_contrast", "f", contrast_types_storage.data + 4};
-    org_kde_kwin_contrast_requests[3] = .{"set_intensity", "f", contrast_types_storage.data + 5};
-    org_kde_kwin_contrast_requests[4] = .{"set_saturation", "f", contrast_types_storage.data + 6};
+    org_kde_kwin_contrast_requests[1] = .{"set_region", "?o", contrast_types_storage.data + 4};
+    org_kde_kwin_contrast_requests[2] = .{"set_contrast", "f", contrast_types_storage.data + 5};
+    org_kde_kwin_contrast_requests[3] = .{"set_intensity", "f", contrast_types_storage.data + 6};
+    org_kde_kwin_contrast_requests[4] = .{"set_saturation", "f", contrast_types_storage.data + 7};
     org_kde_kwin_contrast_requests[5] = .{"release", "", contrast_types_storage.data + 0};
-    org_kde_kwin_contrast_requests[6] = .{"set_frost", "iiii", contrast_types_storage.data + 7};
+    org_kde_kwin_contrast_requests[6] = .{"set_frost", "iiii", contrast_types_storage.data + 8};
     org_kde_kwin_contrast_requests[7] = .{"unset_frost", "", contrast_types_storage.data + 0};
     org_kde_kwin_contrast_interface = .{
         "org_kde_kwin_contrast", 2,

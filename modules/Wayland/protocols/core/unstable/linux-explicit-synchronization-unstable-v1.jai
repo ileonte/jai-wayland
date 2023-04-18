@@ -156,7 +156,7 @@ zwp_linux_explicit_synchronization_unstable_v1_protocol_init :: () {
     ];
 
     zwp_linux_explicit_synchronization_v1_requests[0] = .{"destroy", "", zwp_linux_explicit_synchronization_unstable_v1_types_storage.data + 0};
-    zwp_linux_explicit_synchronization_v1_requests[1] = .{"get_synchronization", "no", zwp_linux_explicit_synchronization_unstable_v1_types_storage.data + 0};
+    zwp_linux_explicit_synchronization_v1_requests[1] = .{"get_synchronization", "no", zwp_linux_explicit_synchronization_unstable_v1_types_storage.data + 1};
     zwp_linux_explicit_synchronization_v1_interface = .{
         "zwp_linux_explicit_synchronization_v1", 2,
         zwp_linux_explicit_synchronization_v1_requests.count, zwp_linux_explicit_synchronization_v1_requests.data,
@@ -164,15 +164,15 @@ zwp_linux_explicit_synchronization_unstable_v1_protocol_init :: () {
     };
 
     zwp_linux_surface_synchronization_v1_requests[0] = .{"destroy", "", zwp_linux_explicit_synchronization_unstable_v1_types_storage.data + 0};
-    zwp_linux_surface_synchronization_v1_requests[1] = .{"set_acquire_fence", "h", zwp_linux_explicit_synchronization_unstable_v1_types_storage.data + 1};
-    zwp_linux_surface_synchronization_v1_requests[2] = .{"get_release", "n", zwp_linux_explicit_synchronization_unstable_v1_types_storage.data + 3};
+    zwp_linux_surface_synchronization_v1_requests[1] = .{"set_acquire_fence", "h", zwp_linux_explicit_synchronization_unstable_v1_types_storage.data + 3};
+    zwp_linux_surface_synchronization_v1_requests[2] = .{"get_release", "n", zwp_linux_explicit_synchronization_unstable_v1_types_storage.data + 4};
     zwp_linux_surface_synchronization_v1_interface = .{
         "zwp_linux_surface_synchronization_v1", 2,
         zwp_linux_surface_synchronization_v1_requests.count, zwp_linux_surface_synchronization_v1_requests.data,
         0, null,
     };
 
-    zwp_linux_buffer_release_v1_events[0] = .{"fenced_release", "h", zwp_linux_explicit_synchronization_unstable_v1_types_storage.data + 4};
+    zwp_linux_buffer_release_v1_events[0] = .{"fenced_release", "h", zwp_linux_explicit_synchronization_unstable_v1_types_storage.data + 5};
     zwp_linux_buffer_release_v1_events[1] = .{"immediate_release", "", zwp_linux_explicit_synchronization_unstable_v1_types_storage.data + 0};
     zwp_linux_buffer_release_v1_interface = .{
         "zwp_linux_buffer_release_v1", 1,

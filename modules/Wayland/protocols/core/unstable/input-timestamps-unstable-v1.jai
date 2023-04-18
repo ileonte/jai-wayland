@@ -126,9 +126,9 @@ input_timestamps_unstable_v1_protocol_init :: () {
     ];
 
     zwp_input_timestamps_manager_v1_requests[0] = .{"destroy", "", input_timestamps_unstable_v1_types_storage.data + 0};
-    zwp_input_timestamps_manager_v1_requests[1] = .{"get_keyboard_timestamps", "no", input_timestamps_unstable_v1_types_storage.data + 0};
-    zwp_input_timestamps_manager_v1_requests[2] = .{"get_pointer_timestamps", "no", input_timestamps_unstable_v1_types_storage.data + 1};
-    zwp_input_timestamps_manager_v1_requests[3] = .{"get_touch_timestamps", "no", input_timestamps_unstable_v1_types_storage.data + 3};
+    zwp_input_timestamps_manager_v1_requests[1] = .{"get_keyboard_timestamps", "no", input_timestamps_unstable_v1_types_storage.data + 1};
+    zwp_input_timestamps_manager_v1_requests[2] = .{"get_pointer_timestamps", "no", input_timestamps_unstable_v1_types_storage.data + 3};
+    zwp_input_timestamps_manager_v1_requests[3] = .{"get_touch_timestamps", "no", input_timestamps_unstable_v1_types_storage.data + 5};
     zwp_input_timestamps_manager_v1_interface = .{
         "zwp_input_timestamps_manager_v1", 1,
         zwp_input_timestamps_manager_v1_requests.count, zwp_input_timestamps_manager_v1_requests.data,
@@ -136,7 +136,7 @@ input_timestamps_unstable_v1_protocol_init :: () {
     };
 
     zwp_input_timestamps_v1_requests[0] = .{"destroy", "", input_timestamps_unstable_v1_types_storage.data + 0};
-    zwp_input_timestamps_v1_events[0] = .{"timestamp", "uuu", input_timestamps_unstable_v1_types_storage.data + 5};
+    zwp_input_timestamps_v1_events[0] = .{"timestamp", "uuu", input_timestamps_unstable_v1_types_storage.data + 7};
     zwp_input_timestamps_v1_interface = .{
         "zwp_input_timestamps_v1", 1,
         zwp_input_timestamps_v1_requests.count, zwp_input_timestamps_v1_requests.data,

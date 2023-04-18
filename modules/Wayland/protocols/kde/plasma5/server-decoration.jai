@@ -133,8 +133,8 @@ server_decoration_protocol_init :: () {
         null,  // 5
     ];
 
-    org_kde_kwin_server_decoration_manager_requests[0] = .{"create", "no", server_decoration_types_storage.data + 0};
-    org_kde_kwin_server_decoration_manager_events[0] = .{"default_mode", "u", server_decoration_types_storage.data + 1};
+    org_kde_kwin_server_decoration_manager_requests[0] = .{"create", "no", server_decoration_types_storage.data + 1};
+    org_kde_kwin_server_decoration_manager_events[0] = .{"default_mode", "u", server_decoration_types_storage.data + 3};
     org_kde_kwin_server_decoration_manager_interface = .{
         "org_kde_kwin_server_decoration_manager", 1,
         org_kde_kwin_server_decoration_manager_requests.count, org_kde_kwin_server_decoration_manager_requests.data,
@@ -142,8 +142,8 @@ server_decoration_protocol_init :: () {
     };
 
     org_kde_kwin_server_decoration_requests[0] = .{"release", "", server_decoration_types_storage.data + 0};
-    org_kde_kwin_server_decoration_requests[1] = .{"request_mode", "u", server_decoration_types_storage.data + 3};
-    org_kde_kwin_server_decoration_events[0] = .{"mode", "u", server_decoration_types_storage.data + 4};
+    org_kde_kwin_server_decoration_requests[1] = .{"request_mode", "u", server_decoration_types_storage.data + 4};
+    org_kde_kwin_server_decoration_events[0] = .{"mode", "u", server_decoration_types_storage.data + 5};
     org_kde_kwin_server_decoration_interface = .{
         "org_kde_kwin_server_decoration", 1,
         org_kde_kwin_server_decoration_requests.count, org_kde_kwin_server_decoration_requests.data,

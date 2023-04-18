@@ -162,20 +162,20 @@ surface_extension_protocol_init :: () {
         null,  // 9
     ];
 
-    qt_surface_extension_requests[0] = .{"get_extended_surface", "no", surface_extension_types_storage.data + 0};
+    qt_surface_extension_requests[0] = .{"get_extended_surface", "no", surface_extension_types_storage.data + 1};
     qt_surface_extension_interface = .{
         "qt_surface_extension", 1,
         qt_surface_extension_requests.count, qt_surface_extension_requests.data,
         0, null,
     };
 
-    qt_extended_surface_requests[0] = .{"update_generic_property", "sa", surface_extension_types_storage.data + 1};
-    qt_extended_surface_requests[1] = .{"set_content_orientation_mask", "i", surface_extension_types_storage.data + 3};
-    qt_extended_surface_requests[2] = .{"set_window_flags", "i", surface_extension_types_storage.data + 5};
+    qt_extended_surface_requests[0] = .{"update_generic_property", "sa", surface_extension_types_storage.data + 3};
+    qt_extended_surface_requests[1] = .{"set_content_orientation_mask", "i", surface_extension_types_storage.data + 5};
+    qt_extended_surface_requests[2] = .{"set_window_flags", "i", surface_extension_types_storage.data + 6};
     qt_extended_surface_requests[3] = .{"raise", "", surface_extension_types_storage.data + 0};
     qt_extended_surface_requests[4] = .{"lower", "", surface_extension_types_storage.data + 0};
-    qt_extended_surface_events[0] = .{"onscreen_visibility", "i", surface_extension_types_storage.data + 6};
-    qt_extended_surface_events[1] = .{"set_generic_property", "sa", surface_extension_types_storage.data + 7};
+    qt_extended_surface_events[0] = .{"onscreen_visibility", "i", surface_extension_types_storage.data + 7};
+    qt_extended_surface_events[1] = .{"set_generic_property", "sa", surface_extension_types_storage.data + 8};
     qt_extended_surface_events[2] = .{"close", "", surface_extension_types_storage.data + 0};
     qt_extended_surface_interface = .{
         "qt_extended_surface", 1,

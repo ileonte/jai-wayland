@@ -389,47 +389,47 @@ input_method_unstable_v1_protocol_init :: () {
     ];
 
     zwp_input_method_context_v1_requests[0] = .{"destroy", "", input_method_unstable_v1_types_storage.data + 0};
-    zwp_input_method_context_v1_requests[1] = .{"commit_string", "us", input_method_unstable_v1_types_storage.data + 0};
-    zwp_input_method_context_v1_requests[2] = .{"preedit_string", "uss", input_method_unstable_v1_types_storage.data + 1};
-    zwp_input_method_context_v1_requests[3] = .{"preedit_styling", "uuu", input_method_unstable_v1_types_storage.data + 3};
-    zwp_input_method_context_v1_requests[4] = .{"preedit_cursor", "i", input_method_unstable_v1_types_storage.data + 6};
-    zwp_input_method_context_v1_requests[5] = .{"delete_surrounding_text", "iu", input_method_unstable_v1_types_storage.data + 9};
-    zwp_input_method_context_v1_requests[6] = .{"cursor_position", "ii", input_method_unstable_v1_types_storage.data + 10};
-    zwp_input_method_context_v1_requests[7] = .{"modifiers_map", "a", input_method_unstable_v1_types_storage.data + 12};
-    zwp_input_method_context_v1_requests[8] = .{"keysym", "uuuuu", input_method_unstable_v1_types_storage.data + 14};
-    zwp_input_method_context_v1_requests[9] = .{"grab_keyboard", "n", input_method_unstable_v1_types_storage.data + 15};
-    zwp_input_method_context_v1_requests[10] = .{"key", "uuuu", input_method_unstable_v1_types_storage.data + 20};
-    zwp_input_method_context_v1_requests[11] = .{"modifiers", "uuuuu", input_method_unstable_v1_types_storage.data + 21};
-    zwp_input_method_context_v1_requests[12] = .{"language", "us", input_method_unstable_v1_types_storage.data + 25};
-    zwp_input_method_context_v1_requests[13] = .{"text_direction", "uu", input_method_unstable_v1_types_storage.data + 30};
-    zwp_input_method_context_v1_events[0] = .{"surrounding_text", "suu", input_method_unstable_v1_types_storage.data + 32};
+    zwp_input_method_context_v1_requests[1] = .{"commit_string", "us", input_method_unstable_v1_types_storage.data + 1};
+    zwp_input_method_context_v1_requests[2] = .{"preedit_string", "uss", input_method_unstable_v1_types_storage.data + 3};
+    zwp_input_method_context_v1_requests[3] = .{"preedit_styling", "uuu", input_method_unstable_v1_types_storage.data + 6};
+    zwp_input_method_context_v1_requests[4] = .{"preedit_cursor", "i", input_method_unstable_v1_types_storage.data + 9};
+    zwp_input_method_context_v1_requests[5] = .{"delete_surrounding_text", "iu", input_method_unstable_v1_types_storage.data + 10};
+    zwp_input_method_context_v1_requests[6] = .{"cursor_position", "ii", input_method_unstable_v1_types_storage.data + 12};
+    zwp_input_method_context_v1_requests[7] = .{"modifiers_map", "a", input_method_unstable_v1_types_storage.data + 14};
+    zwp_input_method_context_v1_requests[8] = .{"keysym", "uuuuu", input_method_unstable_v1_types_storage.data + 15};
+    zwp_input_method_context_v1_requests[9] = .{"grab_keyboard", "n", input_method_unstable_v1_types_storage.data + 20};
+    zwp_input_method_context_v1_requests[10] = .{"key", "uuuu", input_method_unstable_v1_types_storage.data + 21};
+    zwp_input_method_context_v1_requests[11] = .{"modifiers", "uuuuu", input_method_unstable_v1_types_storage.data + 25};
+    zwp_input_method_context_v1_requests[12] = .{"language", "us", input_method_unstable_v1_types_storage.data + 30};
+    zwp_input_method_context_v1_requests[13] = .{"text_direction", "uu", input_method_unstable_v1_types_storage.data + 32};
+    zwp_input_method_context_v1_events[0] = .{"surrounding_text", "suu", input_method_unstable_v1_types_storage.data + 34};
     zwp_input_method_context_v1_events[1] = .{"reset", "", input_method_unstable_v1_types_storage.data + 0};
-    zwp_input_method_context_v1_events[2] = .{"content_type", "uu", input_method_unstable_v1_types_storage.data + 34};
-    zwp_input_method_context_v1_events[3] = .{"invoke_action", "uu", input_method_unstable_v1_types_storage.data + 37};
-    zwp_input_method_context_v1_events[4] = .{"commit_state", "u", input_method_unstable_v1_types_storage.data + 39};
-    zwp_input_method_context_v1_events[5] = .{"preferred_language", "s", input_method_unstable_v1_types_storage.data + 41};
+    zwp_input_method_context_v1_events[2] = .{"content_type", "uu", input_method_unstable_v1_types_storage.data + 37};
+    zwp_input_method_context_v1_events[3] = .{"invoke_action", "uu", input_method_unstable_v1_types_storage.data + 39};
+    zwp_input_method_context_v1_events[4] = .{"commit_state", "u", input_method_unstable_v1_types_storage.data + 41};
+    zwp_input_method_context_v1_events[5] = .{"preferred_language", "s", input_method_unstable_v1_types_storage.data + 42};
     zwp_input_method_context_v1_interface = .{
         "zwp_input_method_context_v1", 1,
         zwp_input_method_context_v1_requests.count, zwp_input_method_context_v1_requests.data,
         zwp_input_method_context_v1_events.count, zwp_input_method_context_v1_events.data,
     };
 
-    zwp_input_method_v1_events[0] = .{"activate", "n", input_method_unstable_v1_types_storage.data + 42};
-    zwp_input_method_v1_events[1] = .{"deactivate", "o", input_method_unstable_v1_types_storage.data + 43};
+    zwp_input_method_v1_events[0] = .{"activate", "n", input_method_unstable_v1_types_storage.data + 43};
+    zwp_input_method_v1_events[1] = .{"deactivate", "o", input_method_unstable_v1_types_storage.data + 44};
     zwp_input_method_v1_interface = .{
         "zwp_input_method_v1", 1,
         0, null,
         zwp_input_method_v1_events.count, zwp_input_method_v1_events.data,
     };
 
-    zwp_input_panel_v1_requests[0] = .{"get_input_panel_surface", "no", input_method_unstable_v1_types_storage.data + 44};
+    zwp_input_panel_v1_requests[0] = .{"get_input_panel_surface", "no", input_method_unstable_v1_types_storage.data + 45};
     zwp_input_panel_v1_interface = .{
         "zwp_input_panel_v1", 1,
         zwp_input_panel_v1_requests.count, zwp_input_panel_v1_requests.data,
         0, null,
     };
 
-    zwp_input_panel_surface_v1_requests[0] = .{"set_toplevel", "ou", input_method_unstable_v1_types_storage.data + 45};
+    zwp_input_panel_surface_v1_requests[0] = .{"set_toplevel", "ou", input_method_unstable_v1_types_storage.data + 47};
     zwp_input_panel_surface_v1_requests[1] = .{"set_overlay_panel", "", input_method_unstable_v1_types_storage.data + 0};
     zwp_input_panel_surface_v1_interface = .{
         "zwp_input_panel_surface_v1", 1,

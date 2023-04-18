@@ -194,7 +194,7 @@ xdg_foreign_unstable_v2_protocol_init :: () {
     ];
 
     zxdg_exporter_v2_requests[0] = .{"destroy", "", xdg_foreign_unstable_v2_types_storage.data + 0};
-    zxdg_exporter_v2_requests[1] = .{"export_toplevel", "no", xdg_foreign_unstable_v2_types_storage.data + 0};
+    zxdg_exporter_v2_requests[1] = .{"export_toplevel", "no", xdg_foreign_unstable_v2_types_storage.data + 1};
     zxdg_exporter_v2_interface = .{
         "zxdg_exporter_v2", 1,
         zxdg_exporter_v2_requests.count, zxdg_exporter_v2_requests.data,
@@ -202,7 +202,7 @@ xdg_foreign_unstable_v2_protocol_init :: () {
     };
 
     zxdg_importer_v2_requests[0] = .{"destroy", "", xdg_foreign_unstable_v2_types_storage.data + 0};
-    zxdg_importer_v2_requests[1] = .{"import_toplevel", "ns", xdg_foreign_unstable_v2_types_storage.data + 1};
+    zxdg_importer_v2_requests[1] = .{"import_toplevel", "ns", xdg_foreign_unstable_v2_types_storage.data + 3};
     zxdg_importer_v2_interface = .{
         "zxdg_importer_v2", 1,
         zxdg_importer_v2_requests.count, zxdg_importer_v2_requests.data,
@@ -210,7 +210,7 @@ xdg_foreign_unstable_v2_protocol_init :: () {
     };
 
     zxdg_exported_v2_requests[0] = .{"destroy", "", xdg_foreign_unstable_v2_types_storage.data + 0};
-    zxdg_exported_v2_events[0] = .{"handle", "s", xdg_foreign_unstable_v2_types_storage.data + 3};
+    zxdg_exported_v2_events[0] = .{"handle", "s", xdg_foreign_unstable_v2_types_storage.data + 5};
     zxdg_exported_v2_interface = .{
         "zxdg_exported_v2", 1,
         zxdg_exported_v2_requests.count, zxdg_exported_v2_requests.data,
@@ -218,7 +218,7 @@ xdg_foreign_unstable_v2_protocol_init :: () {
     };
 
     zxdg_imported_v2_requests[0] = .{"destroy", "", xdg_foreign_unstable_v2_types_storage.data + 0};
-    zxdg_imported_v2_requests[1] = .{"set_parent_of", "o", xdg_foreign_unstable_v2_types_storage.data + 5};
+    zxdg_imported_v2_requests[1] = .{"set_parent_of", "o", xdg_foreign_unstable_v2_types_storage.data + 6};
     zxdg_imported_v2_events[0] = .{"destroyed", "", xdg_foreign_unstable_v2_types_storage.data + 0};
     zxdg_imported_v2_interface = .{
         "zxdg_imported_v2", 1,

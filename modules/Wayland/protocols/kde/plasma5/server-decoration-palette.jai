@@ -89,14 +89,14 @@ server_decoration_palette_protocol_init :: () {
         null,  // 3
     ];
 
-    org_kde_kwin_server_decoration_palette_manager_requests[0] = .{"create", "no", server_decoration_palette_types_storage.data + 0};
+    org_kde_kwin_server_decoration_palette_manager_requests[0] = .{"create", "no", server_decoration_palette_types_storage.data + 1};
     org_kde_kwin_server_decoration_palette_manager_interface = .{
         "org_kde_kwin_server_decoration_palette_manager", 1,
         org_kde_kwin_server_decoration_palette_manager_requests.count, org_kde_kwin_server_decoration_palette_manager_requests.data,
         0, null,
     };
 
-    org_kde_kwin_server_decoration_palette_requests[0] = .{"set_palette", "s", server_decoration_palette_types_storage.data + 1};
+    org_kde_kwin_server_decoration_palette_requests[0] = .{"set_palette", "s", server_decoration_palette_types_storage.data + 3};
     org_kde_kwin_server_decoration_palette_requests[1] = .{"release", "", server_decoration_palette_types_storage.data + 0};
     org_kde_kwin_server_decoration_palette_interface = .{
         "org_kde_kwin_server_decoration_palette", 1,

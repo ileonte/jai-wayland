@@ -146,9 +146,9 @@ fullscreen_shell_protocol_init :: () {
     ];
 
     _wl_fullscreen_shell_requests[0] = .{"release", "", fullscreen_shell_types_storage.data + 0};
-    _wl_fullscreen_shell_requests[1] = .{"present_surface", "ouo", fullscreen_shell_types_storage.data + 0};
-    _wl_fullscreen_shell_requests[2] = .{"present_surface_for_mode", "ooin", fullscreen_shell_types_storage.data + 1};
-    _wl_fullscreen_shell_events[0] = .{"capability", "u", fullscreen_shell_types_storage.data + 4};
+    _wl_fullscreen_shell_requests[1] = .{"present_surface", "?ou?o", fullscreen_shell_types_storage.data + 1};
+    _wl_fullscreen_shell_requests[2] = .{"present_surface_for_mode", "ooin", fullscreen_shell_types_storage.data + 4};
+    _wl_fullscreen_shell_events[0] = .{"capability", "u", fullscreen_shell_types_storage.data + 8};
     _wl_fullscreen_shell_interface = .{
         "_wl_fullscreen_shell", 1,
         _wl_fullscreen_shell_requests.count, _wl_fullscreen_shell_requests.data,

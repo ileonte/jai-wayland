@@ -178,13 +178,13 @@ org_kde_plasma_virtual_desktop_protocol_init :: () {
         null,  // 11
     ];
 
-    org_kde_plasma_virtual_desktop_management_requests[0] = .{"get_virtual_desktop", "ns", org_kde_plasma_virtual_desktop_types_storage.data + 0};
-    org_kde_plasma_virtual_desktop_management_requests[1] = .{"request_create_virtual_desktop", "su", org_kde_plasma_virtual_desktop_types_storage.data + 1};
-    org_kde_plasma_virtual_desktop_management_requests[2] = .{"request_remove_virtual_desktop", "s", org_kde_plasma_virtual_desktop_types_storage.data + 3};
-    org_kde_plasma_virtual_desktop_management_events[0] = .{"desktop_created", "su", org_kde_plasma_virtual_desktop_types_storage.data + 5};
-    org_kde_plasma_virtual_desktop_management_events[1] = .{"desktop_removed", "s", org_kde_plasma_virtual_desktop_types_storage.data + 6};
+    org_kde_plasma_virtual_desktop_management_requests[0] = .{"get_virtual_desktop", "ns", org_kde_plasma_virtual_desktop_types_storage.data + 1};
+    org_kde_plasma_virtual_desktop_management_requests[1] = .{"request_create_virtual_desktop", "su", org_kde_plasma_virtual_desktop_types_storage.data + 3};
+    org_kde_plasma_virtual_desktop_management_requests[2] = .{"request_remove_virtual_desktop", "s", org_kde_plasma_virtual_desktop_types_storage.data + 5};
+    org_kde_plasma_virtual_desktop_management_events[0] = .{"desktop_created", "su", org_kde_plasma_virtual_desktop_types_storage.data + 6};
+    org_kde_plasma_virtual_desktop_management_events[1] = .{"desktop_removed", "s", org_kde_plasma_virtual_desktop_types_storage.data + 8};
     org_kde_plasma_virtual_desktop_management_events[2] = .{"done", "", org_kde_plasma_virtual_desktop_types_storage.data + 0};
-    org_kde_plasma_virtual_desktop_management_events[3] = .{"rows", "u", org_kde_plasma_virtual_desktop_types_storage.data + 8};
+    org_kde_plasma_virtual_desktop_management_events[3] = .{"rows", "u", org_kde_plasma_virtual_desktop_types_storage.data + 9};
     org_kde_plasma_virtual_desktop_management_interface = .{
         "org_kde_plasma_virtual_desktop_management", 2,
         org_kde_plasma_virtual_desktop_management_requests.count, org_kde_plasma_virtual_desktop_management_requests.data,
@@ -192,8 +192,8 @@ org_kde_plasma_virtual_desktop_protocol_init :: () {
     };
 
     org_kde_plasma_virtual_desktop_requests[0] = .{"request_activate", "", org_kde_plasma_virtual_desktop_types_storage.data + 0};
-    org_kde_plasma_virtual_desktop_events[0] = .{"desktop_id", "s", org_kde_plasma_virtual_desktop_types_storage.data + 9};
-    org_kde_plasma_virtual_desktop_events[1] = .{"name", "s", org_kde_plasma_virtual_desktop_types_storage.data + 10};
+    org_kde_plasma_virtual_desktop_events[0] = .{"desktop_id", "s", org_kde_plasma_virtual_desktop_types_storage.data + 10};
+    org_kde_plasma_virtual_desktop_events[1] = .{"name", "s", org_kde_plasma_virtual_desktop_types_storage.data + 11};
     org_kde_plasma_virtual_desktop_events[2] = .{"activated", "", org_kde_plasma_virtual_desktop_types_storage.data + 0};
     org_kde_plasma_virtual_desktop_events[3] = .{"deactivated", "", org_kde_plasma_virtual_desktop_types_storage.data + 0};
     org_kde_plasma_virtual_desktop_events[4] = .{"done", "", org_kde_plasma_virtual_desktop_types_storage.data + 0};

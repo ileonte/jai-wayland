@@ -215,24 +215,24 @@ outputmanagement_protocol_init :: () {
         null,  // 22
     ];
 
-    org_kde_kwin_outputmanagement_requests[0] = .{"create_configuration", "n", outputmanagement_types_storage.data + 0};
+    org_kde_kwin_outputmanagement_requests[0] = .{"create_configuration", "n", outputmanagement_types_storage.data + 1};
     org_kde_kwin_outputmanagement_interface = .{
         "org_kde_kwin_outputmanagement", 4,
         org_kde_kwin_outputmanagement_requests.count, org_kde_kwin_outputmanagement_requests.data,
         0, null,
     };
 
-    org_kde_kwin_outputconfiguration_requests[0] = .{"enable", "oi", outputmanagement_types_storage.data + 1};
-    org_kde_kwin_outputconfiguration_requests[1] = .{"mode", "oi", outputmanagement_types_storage.data + 2};
-    org_kde_kwin_outputconfiguration_requests[2] = .{"transform", "oi", outputmanagement_types_storage.data + 4};
-    org_kde_kwin_outputconfiguration_requests[3] = .{"position", "oii", outputmanagement_types_storage.data + 6};
-    org_kde_kwin_outputconfiguration_requests[4] = .{"scale", "oi", outputmanagement_types_storage.data + 8};
+    org_kde_kwin_outputconfiguration_requests[0] = .{"enable", "oi", outputmanagement_types_storage.data + 2};
+    org_kde_kwin_outputconfiguration_requests[1] = .{"mode", "oi", outputmanagement_types_storage.data + 4};
+    org_kde_kwin_outputconfiguration_requests[2] = .{"transform", "oi", outputmanagement_types_storage.data + 6};
+    org_kde_kwin_outputconfiguration_requests[3] = .{"position", "oii", outputmanagement_types_storage.data + 8};
+    org_kde_kwin_outputconfiguration_requests[4] = .{"scale", "oi", outputmanagement_types_storage.data + 11};
     org_kde_kwin_outputconfiguration_requests[5] = .{"apply", "", outputmanagement_types_storage.data + 0};
-    org_kde_kwin_outputconfiguration_requests[6] = .{"scalef", "of", outputmanagement_types_storage.data + 11};
-    org_kde_kwin_outputconfiguration_requests[7] = .{"colorcurves", "oaaa", outputmanagement_types_storage.data + 13};
+    org_kde_kwin_outputconfiguration_requests[6] = .{"scalef", "of", outputmanagement_types_storage.data + 13};
+    org_kde_kwin_outputconfiguration_requests[7] = .{"colorcurves", "oaaa", outputmanagement_types_storage.data + 15};
     org_kde_kwin_outputconfiguration_requests[8] = .{"destroy", "", outputmanagement_types_storage.data + 0};
-    org_kde_kwin_outputconfiguration_requests[9] = .{"overscan", "ou", outputmanagement_types_storage.data + 15};
-    org_kde_kwin_outputconfiguration_requests[10] = .{"set_vrr_policy", "ou", outputmanagement_types_storage.data + 19};
+    org_kde_kwin_outputconfiguration_requests[9] = .{"overscan", "ou", outputmanagement_types_storage.data + 19};
+    org_kde_kwin_outputconfiguration_requests[10] = .{"set_vrr_policy", "ou", outputmanagement_types_storage.data + 21};
     org_kde_kwin_outputconfiguration_events[0] = .{"applied", "", outputmanagement_types_storage.data + 0};
     org_kde_kwin_outputconfiguration_events[1] = .{"failed", "", outputmanagement_types_storage.data + 0};
     org_kde_kwin_outputconfiguration_interface = .{

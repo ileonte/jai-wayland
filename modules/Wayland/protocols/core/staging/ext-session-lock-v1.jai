@@ -190,7 +190,7 @@ ext_session_lock_v1_protocol_init :: () {
     ];
 
     ext_session_lock_manager_v1_requests[0] = .{"destroy", "", ext_session_lock_v1_types_storage.data + 0};
-    ext_session_lock_manager_v1_requests[1] = .{"lock", "n", ext_session_lock_v1_types_storage.data + 0};
+    ext_session_lock_manager_v1_requests[1] = .{"lock", "n", ext_session_lock_v1_types_storage.data + 1};
     ext_session_lock_manager_v1_interface = .{
         "ext_session_lock_manager_v1", 1,
         ext_session_lock_manager_v1_requests.count, ext_session_lock_manager_v1_requests.data,
@@ -198,7 +198,7 @@ ext_session_lock_v1_protocol_init :: () {
     };
 
     ext_session_lock_v1_requests[0] = .{"destroy", "", ext_session_lock_v1_types_storage.data + 0};
-    ext_session_lock_v1_requests[1] = .{"get_lock_surface", "noo", ext_session_lock_v1_types_storage.data + 1};
+    ext_session_lock_v1_requests[1] = .{"get_lock_surface", "noo", ext_session_lock_v1_types_storage.data + 2};
     ext_session_lock_v1_requests[2] = .{"unlock_and_destroy", "", ext_session_lock_v1_types_storage.data + 0};
     ext_session_lock_v1_events[0] = .{"locked", "", ext_session_lock_v1_types_storage.data + 0};
     ext_session_lock_v1_events[1] = .{"finished", "", ext_session_lock_v1_types_storage.data + 0};
@@ -209,8 +209,8 @@ ext_session_lock_v1_protocol_init :: () {
     };
 
     ext_session_lock_surface_v1_requests[0] = .{"destroy", "", ext_session_lock_v1_types_storage.data + 0};
-    ext_session_lock_surface_v1_requests[1] = .{"ack_configure", "u", ext_session_lock_v1_types_storage.data + 2};
-    ext_session_lock_surface_v1_events[0] = .{"configure", "uuu", ext_session_lock_v1_types_storage.data + 5};
+    ext_session_lock_surface_v1_requests[1] = .{"ack_configure", "u", ext_session_lock_v1_types_storage.data + 5};
+    ext_session_lock_surface_v1_events[0] = .{"configure", "uuu", ext_session_lock_v1_types_storage.data + 6};
     ext_session_lock_surface_v1_interface = .{
         "ext_session_lock_surface_v1", 1,
         ext_session_lock_surface_v1_requests.count, ext_session_lock_surface_v1_requests.data,

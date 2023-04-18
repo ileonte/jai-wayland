@@ -147,9 +147,9 @@ fullscreen_shell_unstable_v1_protocol_init :: () {
     ];
 
     zwp_fullscreen_shell_v1_requests[0] = .{"release", "", fullscreen_shell_unstable_v1_types_storage.data + 0};
-    zwp_fullscreen_shell_v1_requests[1] = .{"present_surface", "ouo", fullscreen_shell_unstable_v1_types_storage.data + 0};
-    zwp_fullscreen_shell_v1_requests[2] = .{"present_surface_for_mode", "ooin", fullscreen_shell_unstable_v1_types_storage.data + 1};
-    zwp_fullscreen_shell_v1_events[0] = .{"capability", "u", fullscreen_shell_unstable_v1_types_storage.data + 4};
+    zwp_fullscreen_shell_v1_requests[1] = .{"present_surface", "?ou?o", fullscreen_shell_unstable_v1_types_storage.data + 1};
+    zwp_fullscreen_shell_v1_requests[2] = .{"present_surface_for_mode", "ooin", fullscreen_shell_unstable_v1_types_storage.data + 4};
+    zwp_fullscreen_shell_v1_events[0] = .{"capability", "u", fullscreen_shell_unstable_v1_types_storage.data + 8};
     zwp_fullscreen_shell_v1_interface = .{
         "zwp_fullscreen_shell_v1", 1,
         zwp_fullscreen_shell_v1_requests.count, zwp_fullscreen_shell_v1_requests.data,

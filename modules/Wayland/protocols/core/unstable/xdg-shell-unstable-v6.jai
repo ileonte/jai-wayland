@@ -601,10 +601,10 @@ xdg_shell_unstable_v6_protocol_init :: () {
     ];
 
     zxdg_shell_v6_requests[0] = .{"destroy", "", xdg_shell_unstable_v6_types_storage.data + 0};
-    zxdg_shell_v6_requests[1] = .{"create_positioner", "n", xdg_shell_unstable_v6_types_storage.data + 0};
-    zxdg_shell_v6_requests[2] = .{"get_xdg_surface", "no", xdg_shell_unstable_v6_types_storage.data + 1};
-    zxdg_shell_v6_requests[3] = .{"pong", "u", xdg_shell_unstable_v6_types_storage.data + 2};
-    zxdg_shell_v6_events[0] = .{"ping", "u", xdg_shell_unstable_v6_types_storage.data + 4};
+    zxdg_shell_v6_requests[1] = .{"create_positioner", "n", xdg_shell_unstable_v6_types_storage.data + 1};
+    zxdg_shell_v6_requests[2] = .{"get_xdg_surface", "no", xdg_shell_unstable_v6_types_storage.data + 2};
+    zxdg_shell_v6_requests[3] = .{"pong", "u", xdg_shell_unstable_v6_types_storage.data + 4};
+    zxdg_shell_v6_events[0] = .{"ping", "u", xdg_shell_unstable_v6_types_storage.data + 5};
     zxdg_shell_v6_interface = .{
         "zxdg_shell_v6", 1,
         zxdg_shell_v6_requests.count, zxdg_shell_v6_requests.data,
@@ -612,12 +612,12 @@ xdg_shell_unstable_v6_protocol_init :: () {
     };
 
     zxdg_positioner_v6_requests[0] = .{"destroy", "", xdg_shell_unstable_v6_types_storage.data + 0};
-    zxdg_positioner_v6_requests[1] = .{"set_size", "ii", xdg_shell_unstable_v6_types_storage.data + 5};
-    zxdg_positioner_v6_requests[2] = .{"set_anchor_rect", "iiii", xdg_shell_unstable_v6_types_storage.data + 6};
-    zxdg_positioner_v6_requests[3] = .{"set_anchor", "u", xdg_shell_unstable_v6_types_storage.data + 8};
-    zxdg_positioner_v6_requests[4] = .{"set_gravity", "u", xdg_shell_unstable_v6_types_storage.data + 12};
-    zxdg_positioner_v6_requests[5] = .{"set_constraint_adjustment", "u", xdg_shell_unstable_v6_types_storage.data + 13};
-    zxdg_positioner_v6_requests[6] = .{"set_offset", "ii", xdg_shell_unstable_v6_types_storage.data + 14};
+    zxdg_positioner_v6_requests[1] = .{"set_size", "ii", xdg_shell_unstable_v6_types_storage.data + 6};
+    zxdg_positioner_v6_requests[2] = .{"set_anchor_rect", "iiii", xdg_shell_unstable_v6_types_storage.data + 8};
+    zxdg_positioner_v6_requests[3] = .{"set_anchor", "u", xdg_shell_unstable_v6_types_storage.data + 12};
+    zxdg_positioner_v6_requests[4] = .{"set_gravity", "u", xdg_shell_unstable_v6_types_storage.data + 13};
+    zxdg_positioner_v6_requests[5] = .{"set_constraint_adjustment", "u", xdg_shell_unstable_v6_types_storage.data + 14};
+    zxdg_positioner_v6_requests[6] = .{"set_offset", "ii", xdg_shell_unstable_v6_types_storage.data + 15};
     zxdg_positioner_v6_interface = .{
         "zxdg_positioner_v6", 1,
         zxdg_positioner_v6_requests.count, zxdg_positioner_v6_requests.data,
@@ -625,11 +625,11 @@ xdg_shell_unstable_v6_protocol_init :: () {
     };
 
     zxdg_surface_v6_requests[0] = .{"destroy", "", xdg_shell_unstable_v6_types_storage.data + 0};
-    zxdg_surface_v6_requests[1] = .{"get_toplevel", "n", xdg_shell_unstable_v6_types_storage.data + 15};
-    zxdg_surface_v6_requests[2] = .{"get_popup", "noo", xdg_shell_unstable_v6_types_storage.data + 17};
-    zxdg_surface_v6_requests[3] = .{"set_window_geometry", "iiii", xdg_shell_unstable_v6_types_storage.data + 18};
-    zxdg_surface_v6_requests[4] = .{"ack_configure", "u", xdg_shell_unstable_v6_types_storage.data + 21};
-    zxdg_surface_v6_events[0] = .{"configure", "u", xdg_shell_unstable_v6_types_storage.data + 25};
+    zxdg_surface_v6_requests[1] = .{"get_toplevel", "n", xdg_shell_unstable_v6_types_storage.data + 17};
+    zxdg_surface_v6_requests[2] = .{"get_popup", "noo", xdg_shell_unstable_v6_types_storage.data + 18};
+    zxdg_surface_v6_requests[3] = .{"set_window_geometry", "iiii", xdg_shell_unstable_v6_types_storage.data + 21};
+    zxdg_surface_v6_requests[4] = .{"ack_configure", "u", xdg_shell_unstable_v6_types_storage.data + 25};
+    zxdg_surface_v6_events[0] = .{"configure", "u", xdg_shell_unstable_v6_types_storage.data + 26};
     zxdg_surface_v6_interface = .{
         "zxdg_surface_v6", 1,
         zxdg_surface_v6_requests.count, zxdg_surface_v6_requests.data,
@@ -637,20 +637,20 @@ xdg_shell_unstable_v6_protocol_init :: () {
     };
 
     zxdg_toplevel_v6_requests[0] = .{"destroy", "", xdg_shell_unstable_v6_types_storage.data + 0};
-    zxdg_toplevel_v6_requests[1] = .{"set_parent", "o", xdg_shell_unstable_v6_types_storage.data + 26};
-    zxdg_toplevel_v6_requests[2] = .{"set_title", "s", xdg_shell_unstable_v6_types_storage.data + 27};
-    zxdg_toplevel_v6_requests[3] = .{"set_app_id", "s", xdg_shell_unstable_v6_types_storage.data + 28};
-    zxdg_toplevel_v6_requests[4] = .{"show_window_menu", "ouii", xdg_shell_unstable_v6_types_storage.data + 29};
-    zxdg_toplevel_v6_requests[5] = .{"move", "ou", xdg_shell_unstable_v6_types_storage.data + 30};
-    zxdg_toplevel_v6_requests[6] = .{"resize", "ouu", xdg_shell_unstable_v6_types_storage.data + 34};
-    zxdg_toplevel_v6_requests[7] = .{"set_max_size", "ii", xdg_shell_unstable_v6_types_storage.data + 36};
-    zxdg_toplevel_v6_requests[8] = .{"set_min_size", "ii", xdg_shell_unstable_v6_types_storage.data + 39};
+    zxdg_toplevel_v6_requests[1] = .{"set_parent", "?o", xdg_shell_unstable_v6_types_storage.data + 27};
+    zxdg_toplevel_v6_requests[2] = .{"set_title", "s", xdg_shell_unstable_v6_types_storage.data + 28};
+    zxdg_toplevel_v6_requests[3] = .{"set_app_id", "s", xdg_shell_unstable_v6_types_storage.data + 29};
+    zxdg_toplevel_v6_requests[4] = .{"show_window_menu", "ouii", xdg_shell_unstable_v6_types_storage.data + 30};
+    zxdg_toplevel_v6_requests[5] = .{"move", "ou", xdg_shell_unstable_v6_types_storage.data + 34};
+    zxdg_toplevel_v6_requests[6] = .{"resize", "ouu", xdg_shell_unstable_v6_types_storage.data + 36};
+    zxdg_toplevel_v6_requests[7] = .{"set_max_size", "ii", xdg_shell_unstable_v6_types_storage.data + 39};
+    zxdg_toplevel_v6_requests[8] = .{"set_min_size", "ii", xdg_shell_unstable_v6_types_storage.data + 41};
     zxdg_toplevel_v6_requests[9] = .{"set_maximized", "", xdg_shell_unstable_v6_types_storage.data + 0};
     zxdg_toplevel_v6_requests[10] = .{"unset_maximized", "", xdg_shell_unstable_v6_types_storage.data + 0};
-    zxdg_toplevel_v6_requests[11] = .{"set_fullscreen", "o", xdg_shell_unstable_v6_types_storage.data + 41};
+    zxdg_toplevel_v6_requests[11] = .{"set_fullscreen", "?o", xdg_shell_unstable_v6_types_storage.data + 43};
     zxdg_toplevel_v6_requests[12] = .{"unset_fullscreen", "", xdg_shell_unstable_v6_types_storage.data + 0};
     zxdg_toplevel_v6_requests[13] = .{"set_minimized", "", xdg_shell_unstable_v6_types_storage.data + 0};
-    zxdg_toplevel_v6_events[0] = .{"configure", "iia", xdg_shell_unstable_v6_types_storage.data + 43};
+    zxdg_toplevel_v6_events[0] = .{"configure", "iia", xdg_shell_unstable_v6_types_storage.data + 44};
     zxdg_toplevel_v6_events[1] = .{"close", "", xdg_shell_unstable_v6_types_storage.data + 0};
     zxdg_toplevel_v6_interface = .{
         "zxdg_toplevel_v6", 1,
@@ -659,8 +659,8 @@ xdg_shell_unstable_v6_protocol_init :: () {
     };
 
     zxdg_popup_v6_requests[0] = .{"destroy", "", xdg_shell_unstable_v6_types_storage.data + 0};
-    zxdg_popup_v6_requests[1] = .{"grab", "ou", xdg_shell_unstable_v6_types_storage.data + 44};
-    zxdg_popup_v6_events[0] = .{"configure", "iiii", xdg_shell_unstable_v6_types_storage.data + 47};
+    zxdg_popup_v6_requests[1] = .{"grab", "ou", xdg_shell_unstable_v6_types_storage.data + 47};
+    zxdg_popup_v6_events[0] = .{"configure", "iiii", xdg_shell_unstable_v6_types_storage.data + 49};
     zxdg_popup_v6_events[1] = .{"popup_done", "", xdg_shell_unstable_v6_types_storage.data + 0};
     zxdg_popup_v6_interface = .{
         "zxdg_popup_v6", 1,

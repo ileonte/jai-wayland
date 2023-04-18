@@ -125,7 +125,7 @@ xdg_output_unstable_v1_protocol_init :: () {
     ];
 
     zxdg_output_manager_v1_requests[0] = .{"destroy", "", xdg_output_unstable_v1_types_storage.data + 0};
-    zxdg_output_manager_v1_requests[1] = .{"get_xdg_output", "no", xdg_output_unstable_v1_types_storage.data + 0};
+    zxdg_output_manager_v1_requests[1] = .{"get_xdg_output", "no", xdg_output_unstable_v1_types_storage.data + 1};
     zxdg_output_manager_v1_interface = .{
         "zxdg_output_manager_v1", 3,
         zxdg_output_manager_v1_requests.count, zxdg_output_manager_v1_requests.data,
@@ -133,11 +133,11 @@ xdg_output_unstable_v1_protocol_init :: () {
     };
 
     zxdg_output_v1_requests[0] = .{"destroy", "", xdg_output_unstable_v1_types_storage.data + 0};
-    zxdg_output_v1_events[0] = .{"logical_position", "ii", xdg_output_unstable_v1_types_storage.data + 1};
-    zxdg_output_v1_events[1] = .{"logical_size", "ii", xdg_output_unstable_v1_types_storage.data + 3};
+    zxdg_output_v1_events[0] = .{"logical_position", "ii", xdg_output_unstable_v1_types_storage.data + 3};
+    zxdg_output_v1_events[1] = .{"logical_size", "ii", xdg_output_unstable_v1_types_storage.data + 5};
     zxdg_output_v1_events[2] = .{"done", "", xdg_output_unstable_v1_types_storage.data + 0};
-    zxdg_output_v1_events[3] = .{"name", "s", xdg_output_unstable_v1_types_storage.data + 5};
-    zxdg_output_v1_events[4] = .{"description", "s", xdg_output_unstable_v1_types_storage.data + 7};
+    zxdg_output_v1_events[3] = .{"name", "s", xdg_output_unstable_v1_types_storage.data + 7};
+    zxdg_output_v1_events[4] = .{"description", "s", xdg_output_unstable_v1_types_storage.data + 8};
     zxdg_output_v1_interface = .{
         "zxdg_output_v1", 3,
         zxdg_output_v1_requests.count, zxdg_output_v1_requests.data,

@@ -2132,51 +2132,51 @@ wayland_protocol_init :: () {
         *wl_surface_interface,   // 211
     ];
 
-    wl_display_requests[0] = .{"sync", "n", wayland_types_storage.data + 0};
-    wl_display_requests[1] = .{"get_registry", "n", wayland_types_storage.data + 1};
-    wl_display_events[0] = .{"error", "ous", wayland_types_storage.data + 2};
-    wl_display_events[1] = .{"delete_id", "u", wayland_types_storage.data + 3};
+    wl_display_requests[0] = .{"sync", "n", wayland_types_storage.data + 1};
+    wl_display_requests[1] = .{"get_registry", "n", wayland_types_storage.data + 2};
+    wl_display_events[0] = .{"error", "ous", wayland_types_storage.data + 3};
+    wl_display_events[1] = .{"delete_id", "u", wayland_types_storage.data + 6};
     wl_display_interface = .{
         "wl_display", 1,
         wl_display_requests.count, wl_display_requests.data,
         wl_display_events.count, wl_display_events.data,
     };
 
-    wl_registry_requests[0] = .{"bind", "usun", wayland_types_storage.data + 6};
-    wl_registry_events[0] = .{"global", "usu", wayland_types_storage.data + 7};
-    wl_registry_events[1] = .{"global_remove", "u", wayland_types_storage.data + 9};
+    wl_registry_requests[0] = .{"bind", "usun", wayland_types_storage.data + 7};
+    wl_registry_events[0] = .{"global", "usu", wayland_types_storage.data + 9};
+    wl_registry_events[1] = .{"global_remove", "u", wayland_types_storage.data + 12};
     wl_registry_interface = .{
         "wl_registry", 1,
         wl_registry_requests.count, wl_registry_requests.data,
         wl_registry_events.count, wl_registry_events.data,
     };
 
-    wl_callback_events[0] = .{"done", "u", wayland_types_storage.data + 12};
+    wl_callback_events[0] = .{"done", "u", wayland_types_storage.data + 13};
     wl_callback_interface = .{
         "wl_callback", 1,
         0, null,
         wl_callback_events.count, wl_callback_events.data,
     };
 
-    wl_compositor_requests[0] = .{"create_surface", "n", wayland_types_storage.data + 13};
-    wl_compositor_requests[1] = .{"create_region", "n", wayland_types_storage.data + 14};
+    wl_compositor_requests[0] = .{"create_surface", "n", wayland_types_storage.data + 14};
+    wl_compositor_requests[1] = .{"create_region", "n", wayland_types_storage.data + 15};
     wl_compositor_interface = .{
         "wl_compositor", 6,
         wl_compositor_requests.count, wl_compositor_requests.data,
         0, null,
     };
 
-    wl_shm_pool_requests[0] = .{"create_buffer", "niiiiu", wayland_types_storage.data + 15};
+    wl_shm_pool_requests[0] = .{"create_buffer", "niiiiu", wayland_types_storage.data + 16};
     wl_shm_pool_requests[1] = .{"destroy", "", wayland_types_storage.data + 0};
-    wl_shm_pool_requests[2] = .{"resize", "i", wayland_types_storage.data + 16};
+    wl_shm_pool_requests[2] = .{"resize", "i", wayland_types_storage.data + 22};
     wl_shm_pool_interface = .{
         "wl_shm_pool", 1,
         wl_shm_pool_requests.count, wl_shm_pool_requests.data,
         0, null,
     };
 
-    wl_shm_requests[0] = .{"create_pool", "nhi", wayland_types_storage.data + 22};
-    wl_shm_events[0] = .{"format", "u", wayland_types_storage.data + 23};
+    wl_shm_requests[0] = .{"create_pool", "nhi", wayland_types_storage.data + 23};
+    wl_shm_events[0] = .{"format", "u", wayland_types_storage.data + 26};
     wl_shm_interface = .{
         "wl_shm", 1,
         wl_shm_requests.count, wl_shm_requests.data,
@@ -2191,77 +2191,77 @@ wayland_protocol_init :: () {
         wl_buffer_events.count, wl_buffer_events.data,
     };
 
-    wl_data_offer_requests[0] = .{"accept", "us", wayland_types_storage.data + 26};
-    wl_data_offer_requests[1] = .{"receive", "sh", wayland_types_storage.data + 27};
+    wl_data_offer_requests[0] = .{"accept", "u?s", wayland_types_storage.data + 27};
+    wl_data_offer_requests[1] = .{"receive", "sh", wayland_types_storage.data + 29};
     wl_data_offer_requests[2] = .{"destroy", "", wayland_types_storage.data + 0};
     wl_data_offer_requests[3] = .{"finish", "", wayland_types_storage.data + 0};
-    wl_data_offer_requests[4] = .{"set_actions", "uu", wayland_types_storage.data + 29};
-    wl_data_offer_events[0] = .{"offer", "s", wayland_types_storage.data + 31};
-    wl_data_offer_events[1] = .{"source_actions", "u", wayland_types_storage.data + 33};
-    wl_data_offer_events[2] = .{"action", "u", wayland_types_storage.data + 34};
+    wl_data_offer_requests[4] = .{"set_actions", "uu", wayland_types_storage.data + 31};
+    wl_data_offer_events[0] = .{"offer", "s", wayland_types_storage.data + 33};
+    wl_data_offer_events[1] = .{"source_actions", "u", wayland_types_storage.data + 34};
+    wl_data_offer_events[2] = .{"action", "u", wayland_types_storage.data + 35};
     wl_data_offer_interface = .{
         "wl_data_offer", 3,
         wl_data_offer_requests.count, wl_data_offer_requests.data,
         wl_data_offer_events.count, wl_data_offer_events.data,
     };
 
-    wl_data_source_requests[0] = .{"offer", "s", wayland_types_storage.data + 35};
+    wl_data_source_requests[0] = .{"offer", "s", wayland_types_storage.data + 36};
     wl_data_source_requests[1] = .{"destroy", "", wayland_types_storage.data + 0};
-    wl_data_source_requests[2] = .{"set_actions", "u", wayland_types_storage.data + 36};
-    wl_data_source_events[0] = .{"target", "s", wayland_types_storage.data + 37};
-    wl_data_source_events[1] = .{"send", "sh", wayland_types_storage.data + 38};
+    wl_data_source_requests[2] = .{"set_actions", "u", wayland_types_storage.data + 37};
+    wl_data_source_events[0] = .{"target", "?s", wayland_types_storage.data + 38};
+    wl_data_source_events[1] = .{"send", "sh", wayland_types_storage.data + 39};
     wl_data_source_events[2] = .{"cancelled", "", wayland_types_storage.data + 0};
     wl_data_source_events[3] = .{"dnd_drop_performed", "", wayland_types_storage.data + 0};
     wl_data_source_events[4] = .{"dnd_finished", "", wayland_types_storage.data + 0};
-    wl_data_source_events[5] = .{"action", "u", wayland_types_storage.data + 39};
+    wl_data_source_events[5] = .{"action", "u", wayland_types_storage.data + 41};
     wl_data_source_interface = .{
         "wl_data_source", 3,
         wl_data_source_requests.count, wl_data_source_requests.data,
         wl_data_source_events.count, wl_data_source_events.data,
     };
 
-    wl_data_device_requests[0] = .{"start_drag", "ooou", wayland_types_storage.data + 41};
-    wl_data_device_requests[1] = .{"set_selection", "ou", wayland_types_storage.data + 42};
+    wl_data_device_requests[0] = .{"start_drag", "?oo?ou", wayland_types_storage.data + 42};
+    wl_data_device_requests[1] = .{"set_selection", "?ou", wayland_types_storage.data + 46};
     wl_data_device_requests[2] = .{"release", "", wayland_types_storage.data + 0};
-    wl_data_device_events[0] = .{"data_offer", "n", wayland_types_storage.data + 46};
-    wl_data_device_events[1] = .{"enter", "uoffo", wayland_types_storage.data + 48};
+    wl_data_device_events[0] = .{"data_offer", "n", wayland_types_storage.data + 48};
+    wl_data_device_events[1] = .{"enter", "uoff?o", wayland_types_storage.data + 49};
     wl_data_device_events[2] = .{"leave", "", wayland_types_storage.data + 0};
-    wl_data_device_events[3] = .{"motion", "uff", wayland_types_storage.data + 49};
+    wl_data_device_events[3] = .{"motion", "uff", wayland_types_storage.data + 54};
     wl_data_device_events[4] = .{"drop", "", wayland_types_storage.data + 0};
-    wl_data_device_events[5] = .{"selection", "o", wayland_types_storage.data + 54};
+    wl_data_device_events[5] = .{"selection", "?o", wayland_types_storage.data + 57};
     wl_data_device_interface = .{
         "wl_data_device", 3,
         wl_data_device_requests.count, wl_data_device_requests.data,
         wl_data_device_events.count, wl_data_device_events.data,
     };
 
-    wl_data_device_manager_requests[0] = .{"create_data_source", "n", wayland_types_storage.data + 57};
-    wl_data_device_manager_requests[1] = .{"get_data_device", "no", wayland_types_storage.data + 58};
+    wl_data_device_manager_requests[0] = .{"create_data_source", "n", wayland_types_storage.data + 58};
+    wl_data_device_manager_requests[1] = .{"get_data_device", "no", wayland_types_storage.data + 59};
     wl_data_device_manager_interface = .{
         "wl_data_device_manager", 3,
         wl_data_device_manager_requests.count, wl_data_device_manager_requests.data,
         0, null,
     };
 
-    wl_shell_requests[0] = .{"get_shell_surface", "no", wayland_types_storage.data + 59};
+    wl_shell_requests[0] = .{"get_shell_surface", "no", wayland_types_storage.data + 61};
     wl_shell_interface = .{
         "wl_shell", 1,
         wl_shell_requests.count, wl_shell_requests.data,
         0, null,
     };
 
-    wl_shell_surface_requests[0] = .{"pong", "u", wayland_types_storage.data + 61};
-    wl_shell_surface_requests[1] = .{"move", "ou", wayland_types_storage.data + 63};
-    wl_shell_surface_requests[2] = .{"resize", "ouu", wayland_types_storage.data + 64};
+    wl_shell_surface_requests[0] = .{"pong", "u", wayland_types_storage.data + 63};
+    wl_shell_surface_requests[1] = .{"move", "ou", wayland_types_storage.data + 64};
+    wl_shell_surface_requests[2] = .{"resize", "ouu", wayland_types_storage.data + 66};
     wl_shell_surface_requests[3] = .{"set_toplevel", "", wayland_types_storage.data + 0};
-    wl_shell_surface_requests[4] = .{"set_transient", "oiiu", wayland_types_storage.data + 66};
-    wl_shell_surface_requests[5] = .{"set_fullscreen", "uuo", wayland_types_storage.data + 69};
-    wl_shell_surface_requests[6] = .{"set_popup", "ouoiiu", wayland_types_storage.data + 73};
-    wl_shell_surface_requests[7] = .{"set_maximized", "o", wayland_types_storage.data + 76};
-    wl_shell_surface_requests[8] = .{"set_title", "s", wayland_types_storage.data + 82};
-    wl_shell_surface_requests[9] = .{"set_class", "s", wayland_types_storage.data + 83};
-    wl_shell_surface_events[0] = .{"ping", "u", wayland_types_storage.data + 84};
-    wl_shell_surface_events[1] = .{"configure", "uii", wayland_types_storage.data + 85};
+    wl_shell_surface_requests[4] = .{"set_transient", "oiiu", wayland_types_storage.data + 69};
+    wl_shell_surface_requests[5] = .{"set_fullscreen", "uu?o", wayland_types_storage.data + 73};
+    wl_shell_surface_requests[6] = .{"set_popup", "ouoiiu", wayland_types_storage.data + 76};
+    wl_shell_surface_requests[7] = .{"set_maximized", "?o", wayland_types_storage.data + 82};
+    wl_shell_surface_requests[8] = .{"set_title", "s", wayland_types_storage.data + 83};
+    wl_shell_surface_requests[9] = .{"set_class", "s", wayland_types_storage.data + 84};
+    wl_shell_surface_events[0] = .{"ping", "u", wayland_types_storage.data + 85};
+    wl_shell_surface_events[1] = .{"configure", "uii", wayland_types_storage.data + 86};
     wl_shell_surface_events[2] = .{"popup_done", "", wayland_types_storage.data + 0};
     wl_shell_surface_interface = .{
         "wl_shell_surface", 1,
@@ -2270,51 +2270,51 @@ wayland_protocol_init :: () {
     };
 
     wl_surface_requests[0] = .{"destroy", "", wayland_types_storage.data + 0};
-    wl_surface_requests[1] = .{"attach", "oii", wayland_types_storage.data + 86};
-    wl_surface_requests[2] = .{"damage", "iiii", wayland_types_storage.data + 89};
-    wl_surface_requests[3] = .{"frame", "n", wayland_types_storage.data + 92};
-    wl_surface_requests[4] = .{"set_opaque_region", "o", wayland_types_storage.data + 96};
-    wl_surface_requests[5] = .{"set_input_region", "o", wayland_types_storage.data + 97};
+    wl_surface_requests[1] = .{"attach", "?oii", wayland_types_storage.data + 89};
+    wl_surface_requests[2] = .{"damage", "iiii", wayland_types_storage.data + 92};
+    wl_surface_requests[3] = .{"frame", "n", wayland_types_storage.data + 96};
+    wl_surface_requests[4] = .{"set_opaque_region", "?o", wayland_types_storage.data + 97};
+    wl_surface_requests[5] = .{"set_input_region", "?o", wayland_types_storage.data + 98};
     wl_surface_requests[6] = .{"commit", "", wayland_types_storage.data + 0};
-    wl_surface_requests[7] = .{"set_buffer_transform", "i", wayland_types_storage.data + 98};
-    wl_surface_requests[8] = .{"set_buffer_scale", "i", wayland_types_storage.data + 99};
-    wl_surface_requests[9] = .{"damage_buffer", "iiii", wayland_types_storage.data + 100};
-    wl_surface_requests[10] = .{"offset", "ii", wayland_types_storage.data + 101};
-    wl_surface_events[0] = .{"enter", "o", wayland_types_storage.data + 105};
-    wl_surface_events[1] = .{"leave", "o", wayland_types_storage.data + 107};
-    wl_surface_events[2] = .{"preferred_buffer_scale", "i", wayland_types_storage.data + 108};
-    wl_surface_events[3] = .{"preferred_buffer_transform", "u", wayland_types_storage.data + 109};
+    wl_surface_requests[7] = .{"set_buffer_transform", "i", wayland_types_storage.data + 99};
+    wl_surface_requests[8] = .{"set_buffer_scale", "i", wayland_types_storage.data + 100};
+    wl_surface_requests[9] = .{"damage_buffer", "iiii", wayland_types_storage.data + 101};
+    wl_surface_requests[10] = .{"offset", "ii", wayland_types_storage.data + 105};
+    wl_surface_events[0] = .{"enter", "o", wayland_types_storage.data + 107};
+    wl_surface_events[1] = .{"leave", "o", wayland_types_storage.data + 108};
+    wl_surface_events[2] = .{"preferred_buffer_scale", "i", wayland_types_storage.data + 109};
+    wl_surface_events[3] = .{"preferred_buffer_transform", "u", wayland_types_storage.data + 110};
     wl_surface_interface = .{
         "wl_surface", 6,
         wl_surface_requests.count, wl_surface_requests.data,
         wl_surface_events.count, wl_surface_events.data,
     };
 
-    wl_seat_requests[0] = .{"get_pointer", "n", wayland_types_storage.data + 110};
-    wl_seat_requests[1] = .{"get_keyboard", "n", wayland_types_storage.data + 111};
-    wl_seat_requests[2] = .{"get_touch", "n", wayland_types_storage.data + 112};
+    wl_seat_requests[0] = .{"get_pointer", "n", wayland_types_storage.data + 111};
+    wl_seat_requests[1] = .{"get_keyboard", "n", wayland_types_storage.data + 112};
+    wl_seat_requests[2] = .{"get_touch", "n", wayland_types_storage.data + 113};
     wl_seat_requests[3] = .{"release", "", wayland_types_storage.data + 0};
-    wl_seat_events[0] = .{"capabilities", "u", wayland_types_storage.data + 113};
-    wl_seat_events[1] = .{"name", "s", wayland_types_storage.data + 114};
+    wl_seat_events[0] = .{"capabilities", "u", wayland_types_storage.data + 114};
+    wl_seat_events[1] = .{"name", "s", wayland_types_storage.data + 115};
     wl_seat_interface = .{
         "wl_seat", 9,
         wl_seat_requests.count, wl_seat_requests.data,
         wl_seat_events.count, wl_seat_events.data,
     };
 
-    wl_pointer_requests[0] = .{"set_cursor", "uoii", wayland_types_storage.data + 115};
+    wl_pointer_requests[0] = .{"set_cursor", "u?oii", wayland_types_storage.data + 116};
     wl_pointer_requests[1] = .{"release", "", wayland_types_storage.data + 0};
-    wl_pointer_events[0] = .{"enter", "uoff", wayland_types_storage.data + 116};
-    wl_pointer_events[1] = .{"leave", "uo", wayland_types_storage.data + 120};
-    wl_pointer_events[2] = .{"motion", "uff", wayland_types_storage.data + 124};
-    wl_pointer_events[3] = .{"button", "uuuu", wayland_types_storage.data + 126};
-    wl_pointer_events[4] = .{"axis", "uuf", wayland_types_storage.data + 129};
+    wl_pointer_events[0] = .{"enter", "uoff", wayland_types_storage.data + 120};
+    wl_pointer_events[1] = .{"leave", "uo", wayland_types_storage.data + 124};
+    wl_pointer_events[2] = .{"motion", "uff", wayland_types_storage.data + 126};
+    wl_pointer_events[3] = .{"button", "uuuu", wayland_types_storage.data + 129};
+    wl_pointer_events[4] = .{"axis", "uuf", wayland_types_storage.data + 133};
     wl_pointer_events[5] = .{"frame", "", wayland_types_storage.data + 0};
-    wl_pointer_events[6] = .{"axis_source", "u", wayland_types_storage.data + 133};
-    wl_pointer_events[7] = .{"axis_stop", "uu", wayland_types_storage.data + 136};
-    wl_pointer_events[8] = .{"axis_discrete", "ui", wayland_types_storage.data + 137};
-    wl_pointer_events[9] = .{"axis_value120", "ui", wayland_types_storage.data + 139};
-    wl_pointer_events[10] = .{"axis_relative_direction", "uu", wayland_types_storage.data + 141};
+    wl_pointer_events[6] = .{"axis_source", "u", wayland_types_storage.data + 136};
+    wl_pointer_events[7] = .{"axis_stop", "uu", wayland_types_storage.data + 137};
+    wl_pointer_events[8] = .{"axis_discrete", "ui", wayland_types_storage.data + 139};
+    wl_pointer_events[9] = .{"axis_value120", "ui", wayland_types_storage.data + 141};
+    wl_pointer_events[10] = .{"axis_relative_direction", "uu", wayland_types_storage.data + 143};
     wl_pointer_interface = .{
         "wl_pointer", 9,
         wl_pointer_requests.count, wl_pointer_requests.data,
@@ -2322,12 +2322,12 @@ wayland_protocol_init :: () {
     };
 
     wl_keyboard_requests[0] = .{"release", "", wayland_types_storage.data + 0};
-    wl_keyboard_events[0] = .{"keymap", "uhu", wayland_types_storage.data + 143};
-    wl_keyboard_events[1] = .{"enter", "uoa", wayland_types_storage.data + 145};
-    wl_keyboard_events[2] = .{"leave", "uo", wayland_types_storage.data + 148};
-    wl_keyboard_events[3] = .{"key", "uuuu", wayland_types_storage.data + 151};
-    wl_keyboard_events[4] = .{"modifiers", "uuuuu", wayland_types_storage.data + 153};
-    wl_keyboard_events[5] = .{"repeat_info", "ii", wayland_types_storage.data + 157};
+    wl_keyboard_events[0] = .{"keymap", "uhu", wayland_types_storage.data + 145};
+    wl_keyboard_events[1] = .{"enter", "uoa", wayland_types_storage.data + 148};
+    wl_keyboard_events[2] = .{"leave", "uo", wayland_types_storage.data + 151};
+    wl_keyboard_events[3] = .{"key", "uuuu", wayland_types_storage.data + 153};
+    wl_keyboard_events[4] = .{"modifiers", "uuuuu", wayland_types_storage.data + 157};
+    wl_keyboard_events[5] = .{"repeat_info", "ii", wayland_types_storage.data + 162};
     wl_keyboard_interface = .{
         "wl_keyboard", 9,
         wl_keyboard_requests.count, wl_keyboard_requests.data,
@@ -2335,13 +2335,13 @@ wayland_protocol_init :: () {
     };
 
     wl_touch_requests[0] = .{"release", "", wayland_types_storage.data + 0};
-    wl_touch_events[0] = .{"down", "uuoiff", wayland_types_storage.data + 162};
-    wl_touch_events[1] = .{"up", "uui", wayland_types_storage.data + 164};
-    wl_touch_events[2] = .{"motion", "uiff", wayland_types_storage.data + 170};
+    wl_touch_events[0] = .{"down", "uuoiff", wayland_types_storage.data + 164};
+    wl_touch_events[1] = .{"up", "uui", wayland_types_storage.data + 170};
+    wl_touch_events[2] = .{"motion", "uiff", wayland_types_storage.data + 173};
     wl_touch_events[3] = .{"frame", "", wayland_types_storage.data + 0};
     wl_touch_events[4] = .{"cancel", "", wayland_types_storage.data + 0};
-    wl_touch_events[5] = .{"shape", "iff", wayland_types_storage.data + 173};
-    wl_touch_events[6] = .{"orientation", "if", wayland_types_storage.data + 177};
+    wl_touch_events[5] = .{"shape", "iff", wayland_types_storage.data + 177};
+    wl_touch_events[6] = .{"orientation", "if", wayland_types_storage.data + 180};
     wl_touch_interface = .{
         "wl_touch", 9,
         wl_touch_requests.count, wl_touch_requests.data,
@@ -2349,12 +2349,12 @@ wayland_protocol_init :: () {
     };
 
     wl_output_requests[0] = .{"release", "", wayland_types_storage.data + 0};
-    wl_output_events[0] = .{"geometry", "iiiiissi", wayland_types_storage.data + 180};
-    wl_output_events[1] = .{"mode", "uiii", wayland_types_storage.data + 182};
+    wl_output_events[0] = .{"geometry", "iiiiissi", wayland_types_storage.data + 182};
+    wl_output_events[1] = .{"mode", "uiii", wayland_types_storage.data + 190};
     wl_output_events[2] = .{"done", "", wayland_types_storage.data + 0};
-    wl_output_events[3] = .{"scale", "i", wayland_types_storage.data + 190};
-    wl_output_events[4] = .{"name", "s", wayland_types_storage.data + 194};
-    wl_output_events[5] = .{"description", "s", wayland_types_storage.data + 195};
+    wl_output_events[3] = .{"scale", "i", wayland_types_storage.data + 194};
+    wl_output_events[4] = .{"name", "s", wayland_types_storage.data + 195};
+    wl_output_events[5] = .{"description", "s", wayland_types_storage.data + 196};
     wl_output_interface = .{
         "wl_output", 4,
         wl_output_requests.count, wl_output_requests.data,
@@ -2362,8 +2362,8 @@ wayland_protocol_init :: () {
     };
 
     wl_region_requests[0] = .{"destroy", "", wayland_types_storage.data + 0};
-    wl_region_requests[1] = .{"add", "iiii", wayland_types_storage.data + 196};
-    wl_region_requests[2] = .{"subtract", "iiii", wayland_types_storage.data + 197};
+    wl_region_requests[1] = .{"add", "iiii", wayland_types_storage.data + 197};
+    wl_region_requests[2] = .{"subtract", "iiii", wayland_types_storage.data + 201};
     wl_region_interface = .{
         "wl_region", 1,
         wl_region_requests.count, wl_region_requests.data,
@@ -2371,7 +2371,7 @@ wayland_protocol_init :: () {
     };
 
     wl_subcompositor_requests[0] = .{"destroy", "", wayland_types_storage.data + 0};
-    wl_subcompositor_requests[1] = .{"get_subsurface", "noo", wayland_types_storage.data + 201};
+    wl_subcompositor_requests[1] = .{"get_subsurface", "noo", wayland_types_storage.data + 205};
     wl_subcompositor_interface = .{
         "wl_subcompositor", 1,
         wl_subcompositor_requests.count, wl_subcompositor_requests.data,
@@ -2379,9 +2379,9 @@ wayland_protocol_init :: () {
     };
 
     wl_subsurface_requests[0] = .{"destroy", "", wayland_types_storage.data + 0};
-    wl_subsurface_requests[1] = .{"set_position", "ii", wayland_types_storage.data + 205};
-    wl_subsurface_requests[2] = .{"place_above", "o", wayland_types_storage.data + 208};
-    wl_subsurface_requests[3] = .{"place_below", "o", wayland_types_storage.data + 210};
+    wl_subsurface_requests[1] = .{"set_position", "ii", wayland_types_storage.data + 208};
+    wl_subsurface_requests[2] = .{"place_above", "o", wayland_types_storage.data + 210};
+    wl_subsurface_requests[3] = .{"place_below", "o", wayland_types_storage.data + 211};
     wl_subsurface_requests[4] = .{"set_sync", "", wayland_types_storage.data + 0};
     wl_subsurface_requests[5] = .{"set_desync", "", wayland_types_storage.data + 0};
     wl_subsurface_interface = .{

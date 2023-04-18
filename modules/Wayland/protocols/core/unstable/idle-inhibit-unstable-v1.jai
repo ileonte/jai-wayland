@@ -79,7 +79,7 @@ idle_inhibit_unstable_v1_protocol_init :: () {
     ];
 
     zwp_idle_inhibit_manager_v1_requests[0] = .{"destroy", "", idle_inhibit_unstable_v1_types_storage.data + 0};
-    zwp_idle_inhibit_manager_v1_requests[1] = .{"create_inhibitor", "no", idle_inhibit_unstable_v1_types_storage.data + 0};
+    zwp_idle_inhibit_manager_v1_requests[1] = .{"create_inhibitor", "no", idle_inhibit_unstable_v1_types_storage.data + 1};
     zwp_idle_inhibit_manager_v1_interface = .{
         "zwp_idle_inhibit_manager_v1", 1,
         zwp_idle_inhibit_manager_v1_requests.count, zwp_idle_inhibit_manager_v1_requests.data,

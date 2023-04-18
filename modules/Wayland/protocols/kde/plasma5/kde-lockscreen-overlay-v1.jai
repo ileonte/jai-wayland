@@ -52,7 +52,7 @@ kde_lockscreen_overlay_v1_protocol_init :: () {
         *wl_surface_interface,   // 1
     ];
 
-    kde_lockscreen_overlay_v1_requests[0] = .{"allow", "o", kde_lockscreen_overlay_v1_types_storage.data + 0};
+    kde_lockscreen_overlay_v1_requests[0] = .{"allow", "o", kde_lockscreen_overlay_v1_types_storage.data + 1};
     kde_lockscreen_overlay_v1_requests[1] = .{"destroy", "", kde_lockscreen_overlay_v1_types_storage.data + 0};
     kde_lockscreen_overlay_v1_interface = .{
         "kde_lockscreen_overlay_v1", 1,

@@ -123,17 +123,17 @@ dpms_protocol_init :: () {
         null,  // 5
     ];
 
-    org_kde_kwin_dpms_manager_requests[0] = .{"get", "no", dpms_types_storage.data + 0};
+    org_kde_kwin_dpms_manager_requests[0] = .{"get", "no", dpms_types_storage.data + 1};
     org_kde_kwin_dpms_manager_interface = .{
         "org_kde_kwin_dpms_manager", 1,
         org_kde_kwin_dpms_manager_requests.count, org_kde_kwin_dpms_manager_requests.data,
         0, null,
     };
 
-    org_kde_kwin_dpms_requests[0] = .{"set", "u", dpms_types_storage.data + 1};
+    org_kde_kwin_dpms_requests[0] = .{"set", "u", dpms_types_storage.data + 3};
     org_kde_kwin_dpms_requests[1] = .{"release", "", dpms_types_storage.data + 0};
-    org_kde_kwin_dpms_events[0] = .{"supported", "u", dpms_types_storage.data + 3};
-    org_kde_kwin_dpms_events[1] = .{"mode", "u", dpms_types_storage.data + 4};
+    org_kde_kwin_dpms_events[0] = .{"supported", "u", dpms_types_storage.data + 4};
+    org_kde_kwin_dpms_events[1] = .{"mode", "u", dpms_types_storage.data + 5};
     org_kde_kwin_dpms_events[2] = .{"done", "", dpms_types_storage.data + 0};
     org_kde_kwin_dpms_interface = .{
         "org_kde_kwin_dpms", 1,

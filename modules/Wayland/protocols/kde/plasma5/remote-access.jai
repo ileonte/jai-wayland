@@ -130,9 +130,9 @@ remote_access_protocol_init :: () {
         null,  // 9
     ];
 
-    org_kde_kwin_remote_access_manager_requests[0] = .{"get_buffer", "ni", remote_access_types_storage.data + 0};
+    org_kde_kwin_remote_access_manager_requests[0] = .{"get_buffer", "ni", remote_access_types_storage.data + 1};
     org_kde_kwin_remote_access_manager_requests[1] = .{"release", "", remote_access_types_storage.data + 0};
-    org_kde_kwin_remote_access_manager_events[0] = .{"buffer_ready", "io", remote_access_types_storage.data + 1};
+    org_kde_kwin_remote_access_manager_events[0] = .{"buffer_ready", "io", remote_access_types_storage.data + 3};
     org_kde_kwin_remote_access_manager_interface = .{
         "org_kde_kwin_remote_access_manager", 1,
         org_kde_kwin_remote_access_manager_requests.count, org_kde_kwin_remote_access_manager_requests.data,
@@ -140,7 +140,7 @@ remote_access_protocol_init :: () {
     };
 
     org_kde_kwin_remote_buffer_requests[0] = .{"release", "", remote_access_types_storage.data + 0};
-    org_kde_kwin_remote_buffer_events[0] = .{"gbm_handle", "huuuu", remote_access_types_storage.data + 3};
+    org_kde_kwin_remote_buffer_events[0] = .{"gbm_handle", "huuuu", remote_access_types_storage.data + 5};
     org_kde_kwin_remote_buffer_interface = .{
         "org_kde_kwin_remote_buffer", 1,
         org_kde_kwin_remote_buffer_requests.count, org_kde_kwin_remote_buffer_requests.data,

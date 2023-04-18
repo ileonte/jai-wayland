@@ -55,7 +55,7 @@ single_pixel_buffer_v1_protocol_init :: () {
     ];
 
     wp_single_pixel_buffer_manager_v1_requests[0] = .{"destroy", "", single_pixel_buffer_v1_types_storage.data + 0};
-    wp_single_pixel_buffer_manager_v1_requests[1] = .{"create_u32_rgba_buffer", "nuuuu", single_pixel_buffer_v1_types_storage.data + 0};
+    wp_single_pixel_buffer_manager_v1_requests[1] = .{"create_u32_rgba_buffer", "nuuuu", single_pixel_buffer_v1_types_storage.data + 1};
     wp_single_pixel_buffer_manager_v1_interface = .{
         "wp_single_pixel_buffer_manager_v1", 1,
         wp_single_pixel_buffer_manager_v1_requests.count, wp_single_pixel_buffer_manager_v1_requests.data,

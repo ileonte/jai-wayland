@@ -141,16 +141,16 @@ presentation_time_protocol_init :: () {
     ];
 
     wp_presentation_requests[0] = .{"destroy", "", presentation_time_types_storage.data + 0};
-    wp_presentation_requests[1] = .{"feedback", "on", presentation_time_types_storage.data + 0};
-    wp_presentation_events[0] = .{"clock_id", "u", presentation_time_types_storage.data + 1};
+    wp_presentation_requests[1] = .{"feedback", "on", presentation_time_types_storage.data + 1};
+    wp_presentation_events[0] = .{"clock_id", "u", presentation_time_types_storage.data + 3};
     wp_presentation_interface = .{
         "wp_presentation", 1,
         wp_presentation_requests.count, wp_presentation_requests.data,
         wp_presentation_events.count, wp_presentation_events.data,
     };
 
-    wp_presentation_feedback_events[0] = .{"sync_output", "o", presentation_time_types_storage.data + 3};
-    wp_presentation_feedback_events[1] = .{"presented", "uuuuuuu", presentation_time_types_storage.data + 4};
+    wp_presentation_feedback_events[0] = .{"sync_output", "o", presentation_time_types_storage.data + 4};
+    wp_presentation_feedback_events[1] = .{"presented", "uuuuuuu", presentation_time_types_storage.data + 5};
     wp_presentation_feedback_events[2] = .{"discarded", "", presentation_time_types_storage.data + 0};
     wp_presentation_feedback_interface = .{
         "wp_presentation_feedback", 1,

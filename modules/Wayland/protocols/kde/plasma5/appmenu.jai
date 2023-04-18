@@ -90,14 +90,14 @@ appmenu_protocol_init :: () {
         null,  // 4
     ];
 
-    org_kde_kwin_appmenu_manager_requests[0] = .{"create", "no", appmenu_types_storage.data + 0};
+    org_kde_kwin_appmenu_manager_requests[0] = .{"create", "no", appmenu_types_storage.data + 1};
     org_kde_kwin_appmenu_manager_interface = .{
         "org_kde_kwin_appmenu_manager", 1,
         org_kde_kwin_appmenu_manager_requests.count, org_kde_kwin_appmenu_manager_requests.data,
         0, null,
     };
 
-    org_kde_kwin_appmenu_requests[0] = .{"set_address", "ss", appmenu_types_storage.data + 1};
+    org_kde_kwin_appmenu_requests[0] = .{"set_address", "ss", appmenu_types_storage.data + 3};
     org_kde_kwin_appmenu_requests[1] = .{"release", "", appmenu_types_storage.data + 0};
     org_kde_kwin_appmenu_interface = .{
         "org_kde_kwin_appmenu", 1,

@@ -152,20 +152,20 @@ xdg_activation_v1_protocol_init :: () {
     ];
 
     xdg_activation_v1_requests[0] = .{"destroy", "", xdg_activation_v1_types_storage.data + 0};
-    xdg_activation_v1_requests[1] = .{"get_activation_token", "n", xdg_activation_v1_types_storage.data + 0};
-    xdg_activation_v1_requests[2] = .{"activate", "so", xdg_activation_v1_types_storage.data + 1};
+    xdg_activation_v1_requests[1] = .{"get_activation_token", "n", xdg_activation_v1_types_storage.data + 1};
+    xdg_activation_v1_requests[2] = .{"activate", "so", xdg_activation_v1_types_storage.data + 2};
     xdg_activation_v1_interface = .{
         "xdg_activation_v1", 1,
         xdg_activation_v1_requests.count, xdg_activation_v1_requests.data,
         0, null,
     };
 
-    xdg_activation_token_v1_requests[0] = .{"set_serial", "uo", xdg_activation_v1_types_storage.data + 2};
-    xdg_activation_token_v1_requests[1] = .{"set_app_id", "s", xdg_activation_v1_types_storage.data + 4};
-    xdg_activation_token_v1_requests[2] = .{"set_surface", "o", xdg_activation_v1_types_storage.data + 6};
+    xdg_activation_token_v1_requests[0] = .{"set_serial", "uo", xdg_activation_v1_types_storage.data + 4};
+    xdg_activation_token_v1_requests[1] = .{"set_app_id", "s", xdg_activation_v1_types_storage.data + 6};
+    xdg_activation_token_v1_requests[2] = .{"set_surface", "o", xdg_activation_v1_types_storage.data + 7};
     xdg_activation_token_v1_requests[3] = .{"commit", "", xdg_activation_v1_types_storage.data + 0};
     xdg_activation_token_v1_requests[4] = .{"destroy", "", xdg_activation_v1_types_storage.data + 0};
-    xdg_activation_token_v1_events[0] = .{"done", "s", xdg_activation_v1_types_storage.data + 7};
+    xdg_activation_token_v1_events[0] = .{"done", "s", xdg_activation_v1_types_storage.data + 8};
     xdg_activation_token_v1_interface = .{
         "xdg_activation_token_v1", 1,
         xdg_activation_token_v1_requests.count, xdg_activation_token_v1_requests.data,

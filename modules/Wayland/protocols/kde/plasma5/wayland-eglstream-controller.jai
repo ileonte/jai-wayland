@@ -68,8 +68,8 @@ wl_eglstream_controller_protocol_init :: () {
         null,  // 5
     ];
 
-    wl_eglstream_controller_requests[0] = .{"attach_eglstream_consumer", "oo", wl_eglstream_controller_types_storage.data + 0};
-    wl_eglstream_controller_requests[1] = .{"attach_eglstream_consumer_attribs", "ooa", wl_eglstream_controller_types_storage.data + 1};
+    wl_eglstream_controller_requests[0] = .{"attach_eglstream_consumer", "oo", wl_eglstream_controller_types_storage.data + 1};
+    wl_eglstream_controller_requests[1] = .{"attach_eglstream_consumer_attribs", "ooa", wl_eglstream_controller_types_storage.data + 3};
     wl_eglstream_controller_interface = .{
         "wl_eglstream_controller", 2,
         wl_eglstream_controller_requests.count, wl_eglstream_controller_requests.data,

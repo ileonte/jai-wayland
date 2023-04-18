@@ -99,7 +99,7 @@ fractional_scale_v1_protocol_init :: () {
     ];
 
     wp_fractional_scale_manager_v1_requests[0] = .{"destroy", "", fractional_scale_v1_types_storage.data + 0};
-    wp_fractional_scale_manager_v1_requests[1] = .{"get_fractional_scale", "no", fractional_scale_v1_types_storage.data + 0};
+    wp_fractional_scale_manager_v1_requests[1] = .{"get_fractional_scale", "no", fractional_scale_v1_types_storage.data + 1};
     wp_fractional_scale_manager_v1_interface = .{
         "wp_fractional_scale_manager_v1", 1,
         wp_fractional_scale_manager_v1_requests.count, wp_fractional_scale_manager_v1_requests.data,
@@ -107,7 +107,7 @@ fractional_scale_v1_protocol_init :: () {
     };
 
     wp_fractional_scale_v1_requests[0] = .{"destroy", "", fractional_scale_v1_types_storage.data + 0};
-    wp_fractional_scale_v1_events[0] = .{"preferred_scale", "u", fractional_scale_v1_types_storage.data + 1};
+    wp_fractional_scale_v1_events[0] = .{"preferred_scale", "u", fractional_scale_v1_types_storage.data + 3};
     wp_fractional_scale_v1_interface = .{
         "wp_fractional_scale_v1", 1,
         wp_fractional_scale_v1_requests.count, wp_fractional_scale_v1_requests.data,

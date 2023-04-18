@@ -80,7 +80,7 @@ xwayland_keyboard_grab_unstable_v1_protocol_init :: () {
     ];
 
     zwp_xwayland_keyboard_grab_manager_v1_requests[0] = .{"destroy", "", xwayland_keyboard_grab_unstable_v1_types_storage.data + 0};
-    zwp_xwayland_keyboard_grab_manager_v1_requests[1] = .{"grab_keyboard", "noo", xwayland_keyboard_grab_unstable_v1_types_storage.data + 0};
+    zwp_xwayland_keyboard_grab_manager_v1_requests[1] = .{"grab_keyboard", "noo", xwayland_keyboard_grab_unstable_v1_types_storage.data + 1};
     zwp_xwayland_keyboard_grab_manager_v1_interface = .{
         "zwp_xwayland_keyboard_grab_manager_v1", 1,
         zwp_xwayland_keyboard_grab_manager_v1_requests.count, zwp_xwayland_keyboard_grab_manager_v1_requests.data,

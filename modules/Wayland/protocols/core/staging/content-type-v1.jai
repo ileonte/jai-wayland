@@ -99,7 +99,7 @@ content_type_v1_protocol_init :: () {
     ];
 
     wp_content_type_manager_v1_requests[0] = .{"destroy", "", content_type_v1_types_storage.data + 0};
-    wp_content_type_manager_v1_requests[1] = .{"get_surface_content_type", "no", content_type_v1_types_storage.data + 0};
+    wp_content_type_manager_v1_requests[1] = .{"get_surface_content_type", "no", content_type_v1_types_storage.data + 1};
     wp_content_type_manager_v1_interface = .{
         "wp_content_type_manager_v1", 1,
         wp_content_type_manager_v1_requests.count, wp_content_type_manager_v1_requests.data,
@@ -107,7 +107,7 @@ content_type_v1_protocol_init :: () {
     };
 
     wp_content_type_v1_requests[0] = .{"destroy", "", content_type_v1_types_storage.data + 0};
-    wp_content_type_v1_requests[1] = .{"set_content_type", "u", content_type_v1_types_storage.data + 1};
+    wp_content_type_v1_requests[1] = .{"set_content_type", "u", content_type_v1_types_storage.data + 3};
     wp_content_type_v1_interface = .{
         "wp_content_type_v1", 1,
         wp_content_type_v1_requests.count, wp_content_type_v1_requests.data,

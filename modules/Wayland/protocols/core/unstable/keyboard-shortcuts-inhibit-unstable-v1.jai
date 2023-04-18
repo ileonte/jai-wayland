@@ -101,7 +101,7 @@ keyboard_shortcuts_inhibit_unstable_v1_protocol_init :: () {
     ];
 
     zwp_keyboard_shortcuts_inhibit_manager_v1_requests[0] = .{"destroy", "", keyboard_shortcuts_inhibit_unstable_v1_types_storage.data + 0};
-    zwp_keyboard_shortcuts_inhibit_manager_v1_requests[1] = .{"inhibit_shortcuts", "noo", keyboard_shortcuts_inhibit_unstable_v1_types_storage.data + 0};
+    zwp_keyboard_shortcuts_inhibit_manager_v1_requests[1] = .{"inhibit_shortcuts", "noo", keyboard_shortcuts_inhibit_unstable_v1_types_storage.data + 1};
     zwp_keyboard_shortcuts_inhibit_manager_v1_interface = .{
         "zwp_keyboard_shortcuts_inhibit_manager_v1", 1,
         zwp_keyboard_shortcuts_inhibit_manager_v1_requests.count, zwp_keyboard_shortcuts_inhibit_manager_v1_requests.data,

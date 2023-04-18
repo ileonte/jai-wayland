@@ -77,7 +77,7 @@ keystate_protocol_init :: () {
 
     org_kde_kwin_keystate_requests[0] = .{"fetchStates", "", keystate_types_storage.data + 0};
     org_kde_kwin_keystate_requests[1] = .{"destroy", "", keystate_types_storage.data + 0};
-    org_kde_kwin_keystate_events[0] = .{"stateChanged", "uu", keystate_types_storage.data + 0};
+    org_kde_kwin_keystate_events[0] = .{"stateChanged", "uu", keystate_types_storage.data + 1};
     org_kde_kwin_keystate_interface = .{
         "org_kde_kwin_keystate", 4,
         org_kde_kwin_keystate_requests.count, org_kde_kwin_keystate_requests.data,

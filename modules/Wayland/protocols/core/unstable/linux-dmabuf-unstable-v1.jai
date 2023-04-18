@@ -298,11 +298,11 @@ linux_dmabuf_unstable_v1_protocol_init :: () {
     ];
 
     zwp_linux_dmabuf_v1_requests[0] = .{"destroy", "", linux_dmabuf_unstable_v1_types_storage.data + 0};
-    zwp_linux_dmabuf_v1_requests[1] = .{"create_params", "n", linux_dmabuf_unstable_v1_types_storage.data + 0};
-    zwp_linux_dmabuf_v1_requests[2] = .{"get_default_feedback", "n", linux_dmabuf_unstable_v1_types_storage.data + 1};
-    zwp_linux_dmabuf_v1_requests[3] = .{"get_surface_feedback", "no", linux_dmabuf_unstable_v1_types_storage.data + 2};
-    zwp_linux_dmabuf_v1_events[0] = .{"format", "u", linux_dmabuf_unstable_v1_types_storage.data + 3};
-    zwp_linux_dmabuf_v1_events[1] = .{"modifier", "uuu", linux_dmabuf_unstable_v1_types_storage.data + 5};
+    zwp_linux_dmabuf_v1_requests[1] = .{"create_params", "n", linux_dmabuf_unstable_v1_types_storage.data + 1};
+    zwp_linux_dmabuf_v1_requests[2] = .{"get_default_feedback", "n", linux_dmabuf_unstable_v1_types_storage.data + 2};
+    zwp_linux_dmabuf_v1_requests[3] = .{"get_surface_feedback", "no", linux_dmabuf_unstable_v1_types_storage.data + 3};
+    zwp_linux_dmabuf_v1_events[0] = .{"format", "u", linux_dmabuf_unstable_v1_types_storage.data + 5};
+    zwp_linux_dmabuf_v1_events[1] = .{"modifier", "uuu", linux_dmabuf_unstable_v1_types_storage.data + 6};
     zwp_linux_dmabuf_v1_interface = .{
         "zwp_linux_dmabuf_v1", 4,
         zwp_linux_dmabuf_v1_requests.count, zwp_linux_dmabuf_v1_requests.data,
@@ -310,10 +310,10 @@ linux_dmabuf_unstable_v1_protocol_init :: () {
     };
 
     zwp_linux_buffer_params_v1_requests[0] = .{"destroy", "", linux_dmabuf_unstable_v1_types_storage.data + 0};
-    zwp_linux_buffer_params_v1_requests[1] = .{"add", "huuuuu", linux_dmabuf_unstable_v1_types_storage.data + 6};
-    zwp_linux_buffer_params_v1_requests[2] = .{"create", "iiuu", linux_dmabuf_unstable_v1_types_storage.data + 9};
-    zwp_linux_buffer_params_v1_requests[3] = .{"create_immed", "niiuu", linux_dmabuf_unstable_v1_types_storage.data + 15};
-    zwp_linux_buffer_params_v1_events[0] = .{"created", "n", linux_dmabuf_unstable_v1_types_storage.data + 19};
+    zwp_linux_buffer_params_v1_requests[1] = .{"add", "huuuuu", linux_dmabuf_unstable_v1_types_storage.data + 9};
+    zwp_linux_buffer_params_v1_requests[2] = .{"create", "iiuu", linux_dmabuf_unstable_v1_types_storage.data + 15};
+    zwp_linux_buffer_params_v1_requests[3] = .{"create_immed", "niiuu", linux_dmabuf_unstable_v1_types_storage.data + 19};
+    zwp_linux_buffer_params_v1_events[0] = .{"created", "n", linux_dmabuf_unstable_v1_types_storage.data + 24};
     zwp_linux_buffer_params_v1_events[1] = .{"failed", "", linux_dmabuf_unstable_v1_types_storage.data + 0};
     zwp_linux_buffer_params_v1_interface = .{
         "zwp_linux_buffer_params_v1", 4,
@@ -323,12 +323,12 @@ linux_dmabuf_unstable_v1_protocol_init :: () {
 
     zwp_linux_dmabuf_feedback_v1_requests[0] = .{"destroy", "", linux_dmabuf_unstable_v1_types_storage.data + 0};
     zwp_linux_dmabuf_feedback_v1_events[0] = .{"done", "", linux_dmabuf_unstable_v1_types_storage.data + 0};
-    zwp_linux_dmabuf_feedback_v1_events[1] = .{"format_table", "hu", linux_dmabuf_unstable_v1_types_storage.data + 24};
-    zwp_linux_dmabuf_feedback_v1_events[2] = .{"main_device", "a", linux_dmabuf_unstable_v1_types_storage.data + 25};
+    zwp_linux_dmabuf_feedback_v1_events[1] = .{"format_table", "hu", linux_dmabuf_unstable_v1_types_storage.data + 25};
+    zwp_linux_dmabuf_feedback_v1_events[2] = .{"main_device", "a", linux_dmabuf_unstable_v1_types_storage.data + 27};
     zwp_linux_dmabuf_feedback_v1_events[3] = .{"tranche_done", "", linux_dmabuf_unstable_v1_types_storage.data + 0};
-    zwp_linux_dmabuf_feedback_v1_events[4] = .{"tranche_target_device", "a", linux_dmabuf_unstable_v1_types_storage.data + 27};
-    zwp_linux_dmabuf_feedback_v1_events[5] = .{"tranche_formats", "a", linux_dmabuf_unstable_v1_types_storage.data + 28};
-    zwp_linux_dmabuf_feedback_v1_events[6] = .{"tranche_flags", "u", linux_dmabuf_unstable_v1_types_storage.data + 29};
+    zwp_linux_dmabuf_feedback_v1_events[4] = .{"tranche_target_device", "a", linux_dmabuf_unstable_v1_types_storage.data + 28};
+    zwp_linux_dmabuf_feedback_v1_events[5] = .{"tranche_formats", "a", linux_dmabuf_unstable_v1_types_storage.data + 29};
+    zwp_linux_dmabuf_feedback_v1_events[6] = .{"tranche_flags", "u", linux_dmabuf_unstable_v1_types_storage.data + 30};
     zwp_linux_dmabuf_feedback_v1_interface = .{
         "zwp_linux_dmabuf_feedback_v1", 4,
         zwp_linux_dmabuf_feedback_v1_requests.count, zwp_linux_dmabuf_feedback_v1_requests.data,

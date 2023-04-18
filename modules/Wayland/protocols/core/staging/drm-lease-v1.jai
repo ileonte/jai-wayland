@@ -251,10 +251,10 @@ drm_lease_v1_protocol_init :: () {
         null,  // 9
     ];
 
-    wp_drm_lease_device_v1_requests[0] = .{"create_lease_request", "n", drm_lease_v1_types_storage.data + 0};
+    wp_drm_lease_device_v1_requests[0] = .{"create_lease_request", "n", drm_lease_v1_types_storage.data + 1};
     wp_drm_lease_device_v1_requests[1] = .{"release", "", drm_lease_v1_types_storage.data + 0};
-    wp_drm_lease_device_v1_events[0] = .{"drm_fd", "h", drm_lease_v1_types_storage.data + 1};
-    wp_drm_lease_device_v1_events[1] = .{"connector", "n", drm_lease_v1_types_storage.data + 2};
+    wp_drm_lease_device_v1_events[0] = .{"drm_fd", "h", drm_lease_v1_types_storage.data + 2};
+    wp_drm_lease_device_v1_events[1] = .{"connector", "n", drm_lease_v1_types_storage.data + 3};
     wp_drm_lease_device_v1_events[2] = .{"done", "", drm_lease_v1_types_storage.data + 0};
     wp_drm_lease_device_v1_events[3] = .{"released", "", drm_lease_v1_types_storage.data + 0};
     wp_drm_lease_device_v1_interface = .{
@@ -264,9 +264,9 @@ drm_lease_v1_protocol_init :: () {
     };
 
     wp_drm_lease_connector_v1_requests[0] = .{"destroy", "", drm_lease_v1_types_storage.data + 0};
-    wp_drm_lease_connector_v1_events[0] = .{"name", "s", drm_lease_v1_types_storage.data + 3};
-    wp_drm_lease_connector_v1_events[1] = .{"description", "s", drm_lease_v1_types_storage.data + 4};
-    wp_drm_lease_connector_v1_events[2] = .{"connector_id", "u", drm_lease_v1_types_storage.data + 5};
+    wp_drm_lease_connector_v1_events[0] = .{"name", "s", drm_lease_v1_types_storage.data + 4};
+    wp_drm_lease_connector_v1_events[1] = .{"description", "s", drm_lease_v1_types_storage.data + 5};
+    wp_drm_lease_connector_v1_events[2] = .{"connector_id", "u", drm_lease_v1_types_storage.data + 6};
     wp_drm_lease_connector_v1_events[3] = .{"done", "", drm_lease_v1_types_storage.data + 0};
     wp_drm_lease_connector_v1_events[4] = .{"withdrawn", "", drm_lease_v1_types_storage.data + 0};
     wp_drm_lease_connector_v1_interface = .{
@@ -275,8 +275,8 @@ drm_lease_v1_protocol_init :: () {
         wp_drm_lease_connector_v1_events.count, wp_drm_lease_connector_v1_events.data,
     };
 
-    wp_drm_lease_request_v1_requests[0] = .{"request_connector", "o", drm_lease_v1_types_storage.data + 6};
-    wp_drm_lease_request_v1_requests[1] = .{"submit", "n", drm_lease_v1_types_storage.data + 7};
+    wp_drm_lease_request_v1_requests[0] = .{"request_connector", "o", drm_lease_v1_types_storage.data + 7};
+    wp_drm_lease_request_v1_requests[1] = .{"submit", "n", drm_lease_v1_types_storage.data + 8};
     wp_drm_lease_request_v1_interface = .{
         "wp_drm_lease_request_v1", 1,
         wp_drm_lease_request_v1_requests.count, wp_drm_lease_request_v1_requests.data,
@@ -284,7 +284,7 @@ drm_lease_v1_protocol_init :: () {
     };
 
     wp_drm_lease_v1_requests[0] = .{"destroy", "", drm_lease_v1_types_storage.data + 0};
-    wp_drm_lease_v1_events[0] = .{"lease_fd", "h", drm_lease_v1_types_storage.data + 8};
+    wp_drm_lease_v1_events[0] = .{"lease_fd", "h", drm_lease_v1_types_storage.data + 9};
     wp_drm_lease_v1_events[1] = .{"finished", "", drm_lease_v1_types_storage.data + 0};
     wp_drm_lease_v1_interface = .{
         "wp_drm_lease_v1", 1,
