@@ -1,6 +1,6 @@
 #import "Basic";
 #import "POSIX";
-#import "wayland";
+#import "Wayland";
 
 print_messages :: (prefix: string, base: *wl_message, count: s32) {
     for 0..count - 1 {
