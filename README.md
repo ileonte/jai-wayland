@@ -10,4 +10,4 @@ Wayland support for the Jai standard library
 1. to go back to "normal" simply remove the local module directory containing the modified modules from the import path search list
 
 ## Usage
-Use the standard modules (`Simp`, `GetRect`, `Window_Creation`, `Input`) as normal, there is not new API.
+Use the standard modules (`Simp`, `GetRect`, `Window_Creation`, `Input`) as normal, there is no new API.
