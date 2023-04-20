@@ -115,9 +115,6 @@ swap_buffers :: (win: LDWindow) {
     }
 }
 
-#scope_file
-GL :: #import "GL";
-
 gl_initialized :: (display: LDDisplay) -> bool {
     if display.tag == {
         case X11Display; return isa(display, X11Display).glx_ctx != null;
@@ -133,6 +130,9 @@ gl_initialized :: (win: LDWindow) -> bool {
         case; return false;
     }
 }
+
+#scope_file
+GL :: #import "GL";
 
 egl_create_context :: (native_display: EGLNativeDisplayType, major_version := 0, minor_version := 0,
     compatibility := false, debug := false) -> EGLDisplay, EGLContext, EGLConfig

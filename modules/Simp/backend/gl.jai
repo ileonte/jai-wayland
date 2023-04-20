@@ -50,9 +50,10 @@ backend_init :: (info: *Window_Info) {
     }
 
     if do_first_time_init {
-        proc : GetProcAddressFunction = null;
         #if OS == .LINUX LD.make_current(info.window);
-        #if OS == .MACOS NSOpenGLContext.makeCurrentContext(the_gl_context);
+        #if OS == .MACOS {
+            NSOpenGLContext.makeCurrentContext(the_gl_context);
+        }
 
         gl_load(*gl);
         gl_enable_debug_output(break_on_error = true);
@@ -134,7 +135,7 @@ swap_buffers :: (window: Window_Type, vsync := true) {  // @Incomplete: Have som
         SwapBuffers(dc);
     } else #if OS == .LINUX {
         info := find_window_info(window);
-        if !info {
+        if (!info) || !LD.gl_initialized(window) {
             log_error("Simp: Attempt to swap_buffers on a previously unseen window!\n");
             return;
         }
